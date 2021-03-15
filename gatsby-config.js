@@ -1,61 +1,66 @@
-const { prismicRepo, releaseID, accessToken } = require('./prismic-configuration')
-const linkResolver = require('./src/utils/linkResolver')
-
-const reponame = process.env.PRISMIC_REPO_NAME || prismicRepo
-const apiKey = process.env.PRISMIC_API_KEY || accessToken
-const prismicReleaseID = process.env.PRISMIC_RELEASE_ID || releaseID
-
-const homepageSchema = require('./custom_types/homepage.json')
-const pageSchema = require('./custom_types/page.json')
-const topMenuSchema = require('./custom_types/top_menu.json')
-
-const gastbySourcePrismicConfig = {
-  resolve: 'gatsby-source-prismic',
-  options: {
-    repositoryName: reponame,
-    accessToken: apiKey,
-    releaseID: prismicReleaseID,
-    linkResolver: () => (doc) => linkResolver(doc),
-    schemas: {
-      // Custom types mapped to schemas
-      homepage: homepageSchema,
-      page: pageSchema,
-      top_menu: topMenuSchema,
-    },
-    // add prismic toolbar
-    prismicToolbar: true,
-  },
-}
+/**
+ * Configure your Gatsby site with this file.
+ *
+ * See: https://www.gatsbyjs.com/docs/gatsby-config/
+ */
+const path = require('path')
 
 module.exports = {
+  /* Your site config here */
   siteMetadata: {
-    title: 'Multi-language site',
-    description: 'Sample multi-language website with Prismic CMS & Gatsby.js',
+    title: "Canfone Gatsby",
+    description: "Canfone for Gatsby version.",
   },
   plugins: [
-    gastbySourcePrismicConfig,
-    'gatsby-plugin-react-helmet',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    'gatsby-plugin-sass',
+    `gatsby-transformer-sharp`, 
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-fontawesome-css`,
+    `gatsby-plugin-sass`,
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `img`,
+    //     path: path.join(__dirname, `src`, `img`),
+    //   },
+    // },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-plugin-preload-fonts`,
       options: {
-        name: 'images',
-        path: `${__dirname}/src/images`,
+        fonts: [
+          {
+            family: `Open Sans`,
+            variants: [`300`,`400`,`600`,`700`,`800`]
+          },
+          {
+            family: `Roboto`,
+            variants: [`300`,`400`,`500`,`700`,`900`]
+          },
+          {
+            family: `Barlow|Barlow Semi Condensed`,
+            variants: [`300`,`400`,`500`,`700`]
+          },
+        ],
+        display: 'swap'
       },
     },
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
-        start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'src/images/favicon.png',
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-load-script',
+    //   options: {
+    //     src: '/js/index.js',
+    //   },
+    // },
+    // {
+    //   resolve: 'gatsby-plugin-load-script',
+    //   options: {
+    //     src: '/js/base.js',
+    //   },
+    // },
+    // {
+    //   resolve: 'gatsby-plugin-load-script',
+    //   options: {
+    //     src: 'https://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js',
+    //   },
+    // }
   ],
 }

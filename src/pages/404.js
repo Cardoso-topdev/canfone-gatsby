@@ -1,25 +1,12 @@
-import React from 'react'
-import { withUnpublishedPreview } from 'gatsby-source-prismic'
-import { PageTemplate } from '../templates/Page'
-import { HomepageTemplate } from '../templates/Homepage'
+import React from "react"
 
-const Page404 = () => (
-  <div className="not-found">
-    <h1>404</h1>
-    <h3>The page you are looking for was not found</h3>
-    <p>
-      <a href="/">
-        <button type="button">Return to homepage</button>
-      </a>
-    </p>
-  </div>
+import Layout from "../layouts"
+
+const NotFoundPage = (anything) => console.log(anything) || (
+  <Layout>
+    <h1>NOT FOUND</h1>
+    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+  </Layout>
 )
 
-export default withUnpublishedPreview(Page404, {
-  templateMap: {
-    page: PageTemplate,
-    homepage: HomepageTemplate,
-    prismicPage: PageTemplate,
-    prismicHomepage: HomepageTemplate,
-  },
-})
+export default NotFoundPage

@@ -5,16 +5,25 @@ import {
 import FAChat from "../components/fa-chat"
 import CanMap from "../components/canfone-map"
 import PageHeader from "../components/page-header"
+import { Helmet } from 'react-helmet'
 
 export default function Internet() {
   return <>
+    <Helmet>
+      <link rel="stylesheet" type="text/css" href="https://ws1.postescanada-canadapost.ca/css/addresscomplete-2.30.min.css?key=JH73-CY14-ZK13-GG77" />
+
+      <script type="text/javascript" src="https://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js"></script>
+      <script type="text/javascript" src="js/base.js"></script>
+      <script type="text/javascript" src="js/phone.js"></script>
+      <script type="text/javascript" src="js/shop.js"></script>
+    </Helmet>
     <div className="header-phone">
-      <PageHeader 
+      <PageHeader
         title1="Canfone Phone Packages"
         title2="Crystal Clear, Unlimited Calling"
         serviceType="Monthly plans starting from"
         price="$10"
-        />
+      />
     </div>
 
     <FAChat />
@@ -36,3 +45,4 @@ export default function Internet() {
     </div>
   </>
 }
+

@@ -7,55 +7,6 @@ const phoneOpenTriggers = document.querySelectorAll('.phone-open')
 const nextPageButtons = document.querySelectorAll(".next-page-btn")
 const nextPageLinks = document.querySelectorAll(".next-page-link")
 
-/*
-const speed_counter_01 = new CountUp('speed_counter_01', 30, {
-  startVal: 0,
-  duration: 1,
-  useEasing: true,
-  useGrouping: false,
-});
-
-const speed_counter_02 = new CountUp('speed_counter_02', 60, {
-  startVal: 0,
-  duration: 1.5,
-  useEasing: true,
-  useGrouping: false,
-})
-
-const speed_counter_03 = new CountUp('speed_counter_03', 100, {
-  startVal: 0,
-  duration: 2,
-  useEasing: false,
-  useGrouping: false,
-})
-
-window.addEventListener('load', (event) => {
-  var waypoint1 = new Waypoint({
-    element: document.getElementById('waypoint'),
-    handler: function(direction) {
-      if (direction == "up") {
-        speed_counter_01.reset();
-        speed_counter_02.reset();
-        speed_counter_03.reset();
-      } else {
-        speed_counter_01.start();
-        speed_counter_02.start();
-        speed_counter_03.start();
-      }
-    },
-    offset: '80%'
-  });
-});
-*/
-/*
- * If page has beed scrolled down and is reloaded/refreshed the header
- * will be large with a space for the PSA, this resets the page position 
- * to top before unload.
- */
-
-//window.addEventListener('beforeunload', scrollToTop);
-
-
 var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
 (function () {
   var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
@@ -66,9 +17,7 @@ var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
   s0.parentNode.insertBefore(s1, s0);
 })();
 
-
 (function (o) { var b = "https://api.autopilothq.com/anywhere/", t = "2097f1f7723444569a52a018c5d397281c52b020e007489488e4d2a41a3c84d1", a = window.AutopilotAnywhere = { _runQueue: [], run: function () { this._runQueue.push(arguments); } }, c = encodeURIComponent, s = "SCRIPT", d = document, l = d.getElementsByTagName(s)[0], p = "t=" + c(d.title || "") + "&u=" + c(d.location.href || "") + "&r=" + c(d.referrer || ""), j = "text/javascript", z, y; if (!window.Autopilot) window.Autopilot = a; if (o.app) p = "devmode=true&" + p; z = function (src, asy) { var e = d.createElement(s); e.src = src; e.type = j; e.async = asy; l.parentNode.insertBefore(e, l); }; y = function () { z(b + t + '?' + p, true); }; if (window.attachEvent) { window.attachEvent("onload", y); } else { window.addEventListener("load", y, false); } })({});
-
 
 !function (f, b, e, v, n, t, s) {
   if (f.fbq) return; n = f.fbq = function () {

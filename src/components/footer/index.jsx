@@ -64,10 +64,10 @@ export default function HomePage() {
         </div>
         <div className="text-right pr-16">
           <a href="https://www.facebook.com/canfonemtl/" target="_blank" rel="noreferrer" >
-            <FontAwesomeIcon icon={faFacebookSquare} className="pr-2 text-2xl text-gray-600"/>
+            <FontAwesomeIcon icon={faFacebookSquare}  size="2x"  className="pr-2 text-gray-600"/>
           </a>
           <a href="https://www.instagram.com/canfone_internet/" target="_blank" rel="noreferrer" >
-            <FontAwesomeIcon icon={faInstagram} className="rounded-md pr-2 text-2xl text-gray-600"/>
+            <FontAwesomeIcon icon={faInstagram} size="2x" className="rounded-md pr-2 text-2xl text-gray-600"/>
           </a>
         </div>
       </div>
@@ -75,10 +75,10 @@ export default function HomePage() {
         <div className="pl-4"><img id="Logo" className="header-logo-small" src={Logo_120} alt="" /></div>
         <div className="flex-1 text-right pr-4">
           <a href="https://www.facebook.com/canfonemtl/" target="_blank" rel="noreferrer" >
-            <FontAwesomeIcon icon={faFacebookSquare} className="pr-2 text-2xl text-gray-600"/>
+            <FontAwesomeIcon icon={faFacebookSquare}  size="2x" className="pr-2 text-gray-600"/>
           </a>
           <a href="https://www.instagram.com/canfone_internet/" target="_blank" rel="noreferrer" >
-            <FontAwesomeIcon icon={faInstagram} className="rounded-md pr-2 text-2xl text-gray-600"/>
+            <FontAwesomeIcon icon={faInstagram} size="2x" className="rounded-md pr-2 text-2xl text-gray-600"/>
           </a>
         </div>
       </div>

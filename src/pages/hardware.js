@@ -10,7 +10,6 @@ export default function HardwarePage({data}) {
   </Layout>
 }
 
-
 export const query = graphql`
   query HardwarePageQuery {
     site {

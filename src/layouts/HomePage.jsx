@@ -11,9 +11,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faCheck
 } from '@fortawesome/free-solid-svg-icons'
+import {Helmet} from 'react-helmet'
 
 export default function HomePage() {
   return <>
+    <Helmet>
+      <link rel="stylesheet" type="text/css" href="https://ws1.postescanada-canadapost.ca/css/addresscomplete-2.30.min.css?key=JH73-CY14-ZK13-GG77" />
+      <script type="text/javascript" src='https://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js'></script>
+      <script type="text/javascript" src='js/base.js'></script>
+      <script type="text/javascript" src='js/index.js'></script>
+    </Helmet>
     <div className="header-landing">
       <div className="py-64 pl-8 md:w-3/5 md:py-40 md:pl-24">
         <h1 className="text-3xl lg:text-5xl text-white font-semibold">Fast, Friendly Internet</h1>

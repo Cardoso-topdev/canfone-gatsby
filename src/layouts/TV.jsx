@@ -9,17 +9,26 @@ import {
 } from "../utils/imgloader"
 import FAChat from "../components/fa-chat"
 import PageHeader from "../components/page-header"
+import { Helmet } from 'react-helmet'
 
 export default function Internet() {
   return <>
+    <Helmet>
+      <link rel="stylesheet" type="text/css" href="https://ws1.postescanada-canadapost.ca/css/addresscomplete-2.30.min.css?key=JH73-CY14-ZK13-GG77" />
+
+      <script type="text/javascript" src="https://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js"></script>
+      <script type="text/javascript" src="js/base.js"></script>
+      <script type="text/javascript" src="js/tv.js"></script>
+      <script type="text/javascript" src="js/shop.js"></script>
+    </Helmet>
     <div className="header-tv">
-      <PageHeader 
+      <PageHeader
         title1="Unbeatable Digital TV"
         title2="Digital TV at an Unbeatable Price"
         title3="Great Selection, Locals Included"
         serviceType="Monthly basic package"
         price="$35"
-        />
+      />
       <div className="ml-4 md:ml-20 pt-1">
         <Link className="text-orange-500 underline" to="/">Channel Lineup</Link>
       </div>
@@ -31,7 +40,7 @@ export default function Internet() {
       <h3 className="text-base p-2 text-white bg-canfone-grey">Great news! Canfone TV is available at:</h3>
       <div className="flex border-t border-gray-400 py-2 w-full">
         <div className="pt-1 px-3 text-2xl text-canfone-red">
-          <FontAwesomeIcon icon={faMapMarker}/>
+          <FontAwesomeIcon icon={faMapMarker} />
         </div>
         <div className="flex-1 pt-2 "><h3 id="service-address" className="text-sm md:text-xl"> </h3></div>
         <div className="px-4">
@@ -65,7 +74,7 @@ export default function Internet() {
       <h2 className="text-xl md:text-2xl font-light text-steel-blue-400 pt-1 text-center">Build a customized TV experience that is unique to you</h2>
       <div className="lg:flex mx-auto pt-2">
         <div className="p-4 md:p-8 lg:w-1/2">
-          <img src={Img__family_tv_8E6152AD1267} className="border border-grey-400 shadow-2xl" alt=""/>
+          <img src={Img__family_tv_8E6152AD1267} className="border border-grey-400 shadow-2xl" alt="" />
         </div>
         <div className="lg:flex-1 px-4 md:px-8 pt-4 md:pt-10">
           <h2 className="text-xl font-semibold uppercase text-steel-blue-600">Bespoke Television, Oh Yeah!</h2>

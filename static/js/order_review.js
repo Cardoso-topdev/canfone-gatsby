@@ -1,4 +1,6 @@
-console.log("TV, hombre...")
+
+  const menu = document.getElementById('menu');
+  const toggle = () => menu.classList.toggle("hidden");
 
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   (function(){
@@ -21,22 +23,3 @@ console.log("TV, hombre...")
   s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '688518877945597');
   fbq('track', 'PageView');
-
-
-// If there is no address in localStorage activate the availability-check modal
-const popupModal = document.getElementById('availability-check-modal');
-const bodyBlackout = document.querySelector('.body-blackout');
-console.log("localStorage.getItem('service_address'):", localStorage.getItem('service_address'))
-if (localStorage.getItem('service_address') == null || localStorage.getItem('service_address') === '') {
-  popupModal.classList.add('is-visible')
-  bodyBlackout.classList.add('is-blacked-out')
-  
-  bodyBlackout.addEventListener('click', () => {
-    popupModal.classList.remove('is-visible')
-    bodyBlackout.classList.remove('is-blacked-out')
-  })  
-}
-
-// Update page content
-let service_address = localStorage.getItem('service_address');
-document.getElementById("service-address").innerHTML = service_address;

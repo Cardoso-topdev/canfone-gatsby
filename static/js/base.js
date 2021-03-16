@@ -6,6 +6,8 @@
 const modalTriggers = document.querySelectorAll('.modal-popup-trigger');
 const bodyBlackout = document.querySelector('.body-blackout');
 
+window.onload= function (){
+
 // Add Order_ID
 if (localStorage.getItem('order_id') == null) 
   localStorage.setItem('order_id', getOrderID());
@@ -347,4 +349,6 @@ function resizeNav() {
       }
     }
   }
+}
+
 }

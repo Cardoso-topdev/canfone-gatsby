@@ -12,6 +12,7 @@ module.exports = {
     description: "Canfone for Gatsby version.",
   },
   plugins: [
+    `gatsby-plugin-postcss`,
     `gatsby-transformer-sharp`, 
     `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`,

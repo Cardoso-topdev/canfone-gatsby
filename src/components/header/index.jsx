@@ -4,20 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faList
 } from '@fortawesome/free-solid-svg-icons'
-import {Helmet} from 'react-helmet'
 
 import {Logo_120} from "../../utils/imgloader"
 // import Logo from "../../img/logo_120.png"
 
 export default function Header({ children, title }) {
   return <>
-    <Helmet>
-      <title>{title}</title>
-      <link rel="stylesheet" type="text/css" href="https://ws1.postescanada-canadapost.ca/css/addresscomplete-2.30.min.css?key=JH73-CY14-ZK13-GG77" />
-      <script type="text/javascript" src="https://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js"></script>
-      {/* <script type="text/javascript" src="js/base.js"></script> */}
-      <script type="text/javascript" src="js/index.js"></script>
-    </Helmet>
     <nav id="Header" className="flex header-large px-3 flex text-white">
       <div className="ml-1 md:ml-4">
         <Link to="/"><img id="Logo" className="hidden lg:block header-logo-large" src={Logo_120} alt="logo" /></Link>
@@ -58,10 +50,10 @@ export default function Header({ children, title }) {
             Business
       </button>
         </div>
-        <Link to="/" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="internet.html">Internet</Link>
-        <Link to="/" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="tv.html">TV</Link>
-        <Link to="/" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="phone.html">Phone</Link>
-        <Link to="/" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="account.html">Account</Link>
+        <Link to="/internet" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="internet.html">Internet</Link>
+        <Link to="/tv" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="tv.html">TV</Link>
+        <Link to="/phone" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="phone.html">Phone</Link>
+        <Link to="/account" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="account.html">Account</Link>
       </div>
     </div>
 

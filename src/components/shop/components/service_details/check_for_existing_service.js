@@ -103,7 +103,7 @@ function CheckForExistingService({order_data, updateServiceStatus}) {
               <RadioGroup aria-label="network-drop" name="network-drop" value={drop_type} onChange={handleDropTypeChange}>
                 <div className="flex justify-between mx-4">
                   <div className="mx-4 text-center">
-                    <img src={withPrefix("img/network-drop-cable.png" className="border border-gray-500 mb-2" />
+                    <img src="img/network-drop-cable.png" className="border border-gray-500 mb-2" />
                     <FormControlLabel 
                       value="Cable" 
                       control={<Radio />} 
@@ -113,7 +113,7 @@ function CheckForExistingService({order_data, updateServiceStatus}) {
                   </div>
 
                   <div className="mx-4 text-center">
-                    <img src={withPrefix("img/network-drop-dsl.png" className="border border-gray-500 mb-2" />
+                    <img src="img/network-drop-dsl.png" className="border border-gray-500 mb-2" />
                     <FormControlLabel 
                       value="DSL" 
                       control={<Radio />} 
@@ -123,7 +123,7 @@ function CheckForExistingService({order_data, updateServiceStatus}) {
                   </div>
 
                   <div className="mx-4 text-center">
-                    <img src={withPrefix("img/network-drop-none.png" className="border border-gray-500 mb-2" />
+                    <img src="img/network-drop-none.png" className="border border-gray-500 mb-2" />
                     <FormControlLabel 
                       value="None" 
                       control={<Radio />} 
@@ -133,7 +133,7 @@ function CheckForExistingService({order_data, updateServiceStatus}) {
                   </div>
 
                   <div className="mx-4 text-center">
-                    <img src={withPrefix("img/network-drop-unknown.png" className="border border-gray-500 mb-2" />
+                    <img src="img/network-drop-unknown.png" className="border border-gray-500 mb-2" />
                     <FormControlLabel 
                       value="Unknown" 
                       control={<Radio />} 

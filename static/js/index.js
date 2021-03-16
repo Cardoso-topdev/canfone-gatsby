@@ -44,19 +44,19 @@ function scrollToTop(e) {
 tvOpenTriggers.forEach(trigger => {
   trigger.addEventListener('click', (e) => {
     console.log(e.target.dataset.targetContent)
-    window.location = "tv.html"
+    window.location = "tv"
   })
 })
 
 phoneOpenTriggers.forEach(trigger => {
   trigger.addEventListener('click', (e) => {
     console.log(e.target.dataset.targetContent)
-    window.location = "phone.html"
+    window.location = "phone"
   })
 })
 
 function nextPage(target) {
-  // location.href='internet.html'
+  // location.href='internet'
   console.log(target)
 }
 

@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import TV from "../layouts/TV"
 import { Helmet } from 'react-helmet'
 import { withPrefix } from "gatsby"
+import "../components/shop"
 
 export default function TVPage({data}) {
   console.log(data)
@@ -18,7 +19,7 @@ export default function TVPage({data}) {
     <script type="text/javascript" src={withPrefix("https://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js")}></script>
     <script type="text/javascript" src={withPrefix("js/base.js")}></script>
     <script type="text/javascript" src={withPrefix("js/tv.js")}></script>
-    <script type="text/javascript" src={withPrefix("js/shop.js")}></script>
+    {/* <script type="text/javascript" src={withPrefix("js/shop/index.js")}></script> */}
   </Helmet>
   <Layout title={data.site.siteMetadata.title}>
     <TV />

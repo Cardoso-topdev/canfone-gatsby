@@ -3,6 +3,7 @@ import Layout from "../layouts"
 import OrderReview from "../layouts/OrderReview"
 import {  withPrefix, graphql } from 'gatsby'
 import {Helmet} from 'react-helmet'
+import "../components/shop"
 
 export default function OrderReviewPage({data}) {
   console.log(data)
@@ -16,7 +17,7 @@ export default function OrderReviewPage({data}) {
       />
       <script type="text/javascript" src={withPrefix("https://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js")}></script>
       <script type="text/javascript" src={withPrefix("js/base.js")}></script>
-      <script type="text/javascript" src={withPrefix("js/shop.js")}></script>
+      {/* <script type="text/javascript" src={withPrefix("js/shop/index.js")}></script> */}
       <script type="text/javascript" src={withPrefix("js/order_view.js")}></script>
     </Helmet>
     <Layout title={data.site.siteMetadata.title}>

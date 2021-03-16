@@ -455,7 +455,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
 
         <div className="text-center py-8">
           <h3 className="grey-700 text-base font-semibold uppercase">All transactions are safe and secure</h3>
-          <img src={withPrefix("img/credit-cards-872Y.png" className="py-3 mx-auto" />
+          <img src="img/credit-cards-872Y.png" className="py-3 mx-auto" />
           <h4 className="grey-700 text-sm font-semibold uppercase">Encrypted 128-bit SSL Payment</h4>
         </div>        
 

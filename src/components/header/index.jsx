@@ -32,10 +32,10 @@ export default function Header({ children, title }) {
         </div>
         <div id="Menu" className="hidden w-full lg:flex lg:items-center lg:w-auto">
           <div id="NavLinks" className="top-nav nav-links-large flex justify-end lg:flex-grow">
-            <Link to="/" className="next-page-link top-nav-inactive uppercase block mx-5 lg:inline-block lg:mt-0 text-gray-100 cursor-pointer" data-next-page="internet.html">Internet</Link>
-            <Link to="/" className="next-page-link top-nav-inactive uppercase block mx-5 lg:inline-block lg:mt-0 text-gray-100 cursor-pointer" data-next-page="tv.html">TV</Link>
-            <Link to="/" className="next-page-link top-nav-inactive uppercase block mx-5 lg:inline-block lg:mt-0 text-gray-100 cursor-pointer" data-next-page="phone.html">Phone</Link>
-            <Link to="/" className="next-page-link top-nav-inactive uppercase block mx-5 lg:inline-block lg:mt-0 text-gray-100 cursor-pointer" data-next-page="account.html">Account</Link>
+            <Link to="/internet" className="next-page-link top-nav-inactive uppercase block mx-5 lg:inline-block lg:mt-0 text-gray-100 cursor-pointer" data-next-page="internet">Internet</Link>
+            <Link to="/tv" className="next-page-link top-nav-inactive uppercase block mx-5 lg:inline-block lg:mt-0 text-gray-100 cursor-pointer" data-next-page="tv">TV</Link>
+            <Link to="/phone" className="next-page-link top-nav-inactive uppercase block mx-5 lg:inline-block lg:mt-0 text-gray-100 cursor-pointer" data-next-page="phone">Phone</Link>
+            <Link to="/account" className="next-page-link top-nav-inactive uppercase block mx-5 lg:inline-block lg:mt-0 text-gray-100 cursor-pointer" data-next-page="account">Account</Link>
           </div>
         </div>
       </div>
@@ -50,10 +50,10 @@ export default function Header({ children, title }) {
             Business
       </button>
         </div>
-        <Link to="/internet" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="internet.html">Internet</Link>
-        <Link to="/tv" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="tv.html">TV</Link>
-        <Link to="/phone" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="phone.html">Phone</Link>
-        <Link to="/account" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="account.html">Account</Link>
+        <Link to="/internet" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="internet">Internet</Link>
+        <Link to="/tv" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="tv">TV</Link>
+        <Link to="/phone" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="phone">Phone</Link>
+        <Link to="/account" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="account">Account</Link>
       </div>
     </div>
 

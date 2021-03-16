@@ -63,11 +63,13 @@ document.getElementById("SetServiceAddress").addEventListener("click", function(
 
     // After address update, Index moves to the Internet page
     // After address update, other pages also move to the Internet page
-    if (window.location.href.indexOf("index.html") > -1) {
-      window.location = 'internet.html';
-    } else {
-      window.location = 'internet.html';
-    }
+    // if (window.location.href.indexOf("index") > -1) {
+    //   window.location = 'internet.html';
+    // } else {
+    //   window.location = 'internet.html';
+    // }
+    window.location = '/';
+
   }
   // Set an expiry time of + 6 hrs and reset pricing string in localStorage to '', it will be 
   // retrieved in the Internet, TV or Phone component

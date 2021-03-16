@@ -23,7 +23,7 @@ function TV({packages, order_data, setTVPackage}) {
       <div className="mx-6 md:px-16">
         <h1 className="text-xl md:text-3xl font-semibold grey-800 py-4">Basic Channels include:</h1>
         <div className="text-center">
-          <img className="m-auto" src={withPrefix("img/basic-channels.png" />
+          <img className="m-auto" src="img/basic-channels.png" />
         </div>
         <div className="md:mx-8 mt-8 lg:mt-16 mb-10 text-center">
           <h1 className="text-lg md:text-xl font-semibold grey-500 pb-3">Add additional channels anytime.</h1>

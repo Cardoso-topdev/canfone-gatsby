@@ -103,13 +103,13 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
       </div>
 
       <div className="p-4">
-        <div className={clsx("border-b border-gray-400", (current_path == '/en/internet.html') && 'pl-3')}>
+        <div className={clsx("border-b border-gray-400", (current_path == '/en/internet') && 'pl-3')}>
           <div className="my-1 px-3 border-l-4 border-teal-400">
             <div className="flex items-end">
               <div className="flex-1">
-                <a href="internet.html#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">Internet Package</a>
+                <a href="internet#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">Internet Package</a>
               </div>
-              <a href="internet.html#modify" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
+              <a href="internet#modify" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
             </div>
             {(order_data.internet_package_name.length > 0) ?
               <div>

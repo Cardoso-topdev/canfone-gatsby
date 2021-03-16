@@ -214,7 +214,7 @@ class Shop extends Component {
     // Run input validaton
     let validation_error = false;
     switch (current_path) {
-      case '/en/internet.html':
+      case '/en/internet':
         console.log('Validating interent');
         break;
       case '/en/tv.html':
@@ -272,10 +272,10 @@ class Shop extends Component {
 
     // Next Step Decision Tree
     if (!validation_error) {
-      if (current_path === '/en/internet.html') {
-        window.location = "tv.html"
+      if (current_path === '/en/internet') {
+        window.location = "tv"
       } else if (current_path === '/en/tv.html') {
-        window.location = "phone.html"
+        window.location = "phone"
       } else if (current_path === '/en/phone.html') {
         window.location = "hardware.html"
       } else if (current_path === '/en/hardware.html') {
@@ -821,7 +821,7 @@ class Shop extends Component {
           <div className="lg:flex-1 px-3">
             <Router>
               <Internet 
-                path="/en/internet.html"
+                path="/en/internet"
                 packages={internet_packages}
                 order_data={order_data}
                 setInternetPackage={this.setInternetPackage}

@@ -1,3 +1,4 @@
+$( document ).ready(function() {
 var card =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -2531,3 +2532,5 @@ var card =
 
 /***/ })
 /******/ ]);
+
+})

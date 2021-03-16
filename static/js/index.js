@@ -1,7 +1,7 @@
 //import { CountUp } from 'countup.js';
 //import 'waypoints/lib/noframework.waypoints.min.js';
 console.log("Up and running - INDEX, hombre...")
-
+$( document ).ready(function() {
 const tvOpenTriggers = document.querySelectorAll('.tv-open')
 const phoneOpenTriggers = document.querySelectorAll('.phone-open')
 const nextPageButtons = document.querySelectorAll(".next-page-btn")
@@ -107,3 +107,4 @@ nextPageButtons.forEach(function (btn) {
 });
 
 
+})

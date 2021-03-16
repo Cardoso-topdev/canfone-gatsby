@@ -19,12 +19,12 @@ function Item({id, title, description, price, selected_tv_package_id, setTVPacka
           <div className="flex items-start pt-5">
             <h2 className="text-2xl md:text-3xl font-semibold text-grey-800">{title} <span className="text-xs md:text-base grey-600 font-normal">powered by</span></h2>
             <div style={{height: 75}}>
-              <img src="img/atop.png" />
+              <img src={withPrefix("img/atop.png" />
             </div>
           </div>
           <p className="grey-600 font-light mt-3 mb-4">{description}</p>
           <div>
-            <img src="img/basic-channel-logos.png" />
+            <img src={withPrefix("img/basic-channel-logos.png" />
           </div>
         </div>
         <div className="md:border-l md:border-gray-400 md:pl-6 mx-4 my-3 md:pt-3">

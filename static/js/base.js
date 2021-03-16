@@ -3,10 +3,10 @@
  */
 
 // Set up the modal triggers
+$( document ).ready(function() {
+  console.log("base passed!")
 const modalTriggers = document.querySelectorAll('.modal-popup-trigger');
 const bodyBlackout = document.querySelector('.body-blackout');
-
-window.onload= function (){
 
 // Add Order_ID
 if (localStorage.getItem('order_id') == null) 
@@ -300,8 +300,9 @@ document.getElementById("MobileMenuBtn").addEventListener("click", function(even
 });
 
 // Allow keyboard ESC to close modal
-document.onkeydown = function(event) {
-  let e = event || window.event;
+document.addEventListener('keydown', logKey);
+
+function logKey(e) {
   var isEscape = false;
   if ("key" in e) {
       isEscape = (e.key === "Escape" || e.key === "Esc");
@@ -313,7 +314,12 @@ document.onkeydown = function(event) {
     popupModal.classList.remove('is-visible')
     bodyBlackout.classList.remove('is-blacked-out')
   }
-};
+}
+
+// document.onkeydown = function(event) {
+//   let e = event || window.event;
+  
+// };
 
 
 /*
@@ -351,4 +357,4 @@ function resizeNav() {
   }
 }
 
-}
+})

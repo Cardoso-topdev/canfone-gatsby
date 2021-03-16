@@ -1,6 +1,6 @@
 console.log("Live in ORDERS, hombre...");
 console.log(localStorage.getItem('service_address'))
-
+$( document ).ready(function() {
 const service_address = document.getElementById("Service_Address");
 const tally_service_address = document.getElementById("Tally_Service_Address");
 const order_stage = 2;
@@ -25,7 +25,4 @@ if (service_address !== null) {
 if (tally_service_address !== null) {
   tally_service_address.innerHTML = localStorage.getItem('service_address')
 }
-
-
-
-
+})

@@ -1,4 +1,4 @@
-
+$( document ).ready(function() {
   const menu = document.getElementById('menu');
   const toggle = () => menu.classList.toggle("hidden");
 
@@ -24,3 +24,4 @@
   s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '688518877945597');
   fbq('track', 'PageView');
+  })

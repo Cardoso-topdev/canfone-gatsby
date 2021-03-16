@@ -1,5 +1,5 @@
 console.log("TV, hombre...")
-
+$( document ).ready(function() {
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   (function(){
   var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -40,3 +40,4 @@ if (localStorage.getItem('service_address') == null || localStorage.getItem('ser
 // Update page content
 let service_address = localStorage.getItem('service_address');
 document.getElementById("service-address").innerHTML = service_address;
+})

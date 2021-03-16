@@ -1,11 +1,7 @@
 import React from "react"
-import {Helmet} from 'react-helmet'
 
 export default function OrderConfirmation() {
   return <>
-    <Helmet>
-      <script type="text/javascript" src='js/order_confirmation.js'></script>
-    </Helmet>
     <div className="pt-20 md:pt-32 px-8">
       <h1 className="text-4xl font-semibold grey-700 text-center pt-20 pb-12">Thanks for your order!</h1>
       <h2 className="text-xl text-center grey-700 pt-16">Your order reference is <span id="order_reference"></span></h2>

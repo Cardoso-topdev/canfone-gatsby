@@ -1,11 +1,7 @@
 import React from "react"
-import { Helmet } from 'react-helmet'
 
 export default function TOS() {
   return <>
-    <Helmet>
-      <script type="text/javascript" src='js/tos.js'></script>
-    </Helmet>
     <div className="pt-20 md:pt-32 px-8">
       <h2 className="text-3xl font-semibld text-center pb-6">Terms of Service</h2>
       <p className="py-2">THIS AGREEMENT FOR CANFONE.COM INC., (here-in-after referred to as “CANFONE.COM WEB SERVICES”) SERVICES (hereinafter referred to as the “Agreement”) is made and effective as of the date of acceptance, by and between you, (here-in-after referred to as “Client”) and CANFONE.COM WEB SERVICES,</p>

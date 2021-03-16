@@ -44,12 +44,12 @@ function Item({
               <h4 className="text-sm text-center grey-600 font-light pt-0">Download</h4>
             </div>
             <div className="inline px-3 md:pl-4 md:pr-12">
-              <img src="img/speed-upload.png" className="mx-auto" />
+              <img src={withPrefix("img/speed-upload.png" className="mx-auto" />
               <h4 className="text-base md:text-lg text-center font-semibold grey-800 pt-1">{`${upload_speed} Mbps`}</h4>
               <h4 className="text-sm text-center grey-600 font-light pt-0">Upload</h4>
             </div>
             <div className="inline px-3 md:pl-4 md:pr-12">
-              <img src="img/usage-unlimited.png" className="mx-auto py-2"/>
+              <img src={withPrefix("img/usage-unlimited.png" className="mx-auto py-2"/>
               <h4 className="text-base md:text-lg text-center font-semibold grey-800 pt-1">Unlimited</h4>
               <h4 className="text-sm text-center grey-600 font-light pt-0">Data</h4>
             </div>

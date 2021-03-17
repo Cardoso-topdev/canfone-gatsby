@@ -18,6 +18,13 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-resolve-src`,
+      oprions: {
+        src: path.resolve(__dirname, 'src'),
+        utils: path.resolve(__dirname, 'utils'),
+      }
+    },
     // {
     //   resolve: `gatsby-source-filesystem`,
     //   options: {

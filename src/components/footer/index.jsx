@@ -1,5 +1,5 @@
 import React from "react"
-import { Logo_120 } from "../../utils/imgloader"
+import { GATSBY_IMGS } from "utils/imgloader"
 import { Link } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -58,7 +58,7 @@ export default function HomePage() {
 
     <div className="mx-6 md:mx-16 border-t border-gray-700">
       <div className="hidden md:flex items-end pt-4 md:pt-12">
-        <div className="pl-4"><img id="Logo" className="header-logo-small" src={Logo_120} alt="" /></div>
+        <div className="pl-4"><img id="Logo" className="header-logo-small" src={GATSBY_IMGS["img/logo_120.png"]} alt="" /></div>
         <div className="flex-1">
           <p className="text-xs text-gray-600 font-light text-center">&copy; 2020-2021 Canfone Inc.</p>
         </div>
@@ -72,7 +72,7 @@ export default function HomePage() {
         </div>
       </div>
       <div className="flex md:hidden items-end pt-4 md:pt-12">
-        <div className="pl-4"><img id="Logo" className="header-logo-small" src={Logo_120} alt="" /></div>
+        <div className="pl-4"><img id="Logo" className="header-logo-small" src={GATSBY_IMGS["img/logo_120.png"]} alt="" /></div>
         <div className="flex-1 text-right pr-4">
           <a href="https://www.facebook.com/canfonemtl/" target="_blank" rel="noreferrer" >
             <FontAwesomeIcon icon={faFacebookSquare}  size="2x" className="pr-2 text-gray-600"/>

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import ReactMarkdown from 'react-markdown'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { GATSBY_IMGS } from "utils/imgloader"
 
 const useStyles = makeStyles(theme => ({
   select_btn: {
@@ -11,14 +12,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Item({item, selectHardware, selected_hardware_id}) {
-  const {id, category, name, description, image_src, initial_cost, monthly_fee, region_id, rating} = item
+  const {id, name, description, image_src, initial_cost} = item
+  // const {category, monthly_fee, region_id, rating } = item
   const classes = useStyles();
 
   return (
     <div className="md:flex md:items-center px-4 py-2 my-2 border border-gray-400">
       {(image_src.length > 0) ?
         <div className="md:w-1/3">
-          <img src={`img/${image_src}`} className="mx-auto md:mx-0" />
+          <img src={GATSBY_IMGS[`img/${image_src}`]} className="mx-auto md:mx-0" alt="" />
         </div>
         :
         <div className="md:w-1/3">
@@ -32,7 +34,7 @@ function Item({item, selectHardware, selected_hardware_id}) {
         </div>
 
         <div className="md:flex md:items-center md:pt-3">
-          {(initial_cost == 0) ?
+          {(initial_cost === 0) ?
             <Fragment>
               <h1 className="md:flex-1 text-3xl text-canfone-teal font-semibold text-center md:text-right pr-3">$0<span className="text-sm grey-450 pl-3">Included</span></h1>
               <div className="text-center mt-4 md:mt-0 md:text-left md:pl-5">

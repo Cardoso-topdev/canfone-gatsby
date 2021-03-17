@@ -9,6 +9,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Alert, AlertTitle } from '@material-ui/lab';
+import { GATSBY_IMGS } from "utils/imgloader"
 
 const useStyles = makeStyles(theme => ({
   alert_root: {
@@ -65,10 +66,10 @@ function CheckForExistingService({order_data, updateServiceStatus}) {
     localStorage.setItem("existing_drop", event.target.value);
   }
 
-  const [age, setAge] = React.useState('');
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+  // const [age, setAge] = React.useState('');
+  // const handleChange = (event) => {
+  //   setAge(event.target.value);
+  // };
 
   return (
     <div className={clsx("mb-6 mx-6 pb-6 border border-gray-600 shadow-md", !order_data.verification_passed_service_status && 'border-red-600')}>
@@ -103,7 +104,7 @@ function CheckForExistingService({order_data, updateServiceStatus}) {
               <RadioGroup aria-label="network-drop" name="network-drop" value={drop_type} onChange={handleDropTypeChange}>
                 <div className="flex justify-between mx-4">
                   <div className="mx-4 text-center">
-                    <img src="img/network-drop-cable.png" className="border border-gray-500 mb-2" />
+                    <img src={GATSBY_IMGS["img/network-drop-cable.png"]} className="border border-gray-500 mb-2" alt="" />
                     <FormControlLabel 
                       value="Cable" 
                       control={<Radio />} 
@@ -113,7 +114,7 @@ function CheckForExistingService({order_data, updateServiceStatus}) {
                   </div>
 
                   <div className="mx-4 text-center">
-                    <img src="img/network-drop-dsl.png" className="border border-gray-500 mb-2" />
+                    <img src={GATSBY_IMGS["img/network-drop-dsl.png"]} className="border border-gray-500 mb-2" alt="" />
                     <FormControlLabel 
                       value="DSL" 
                       control={<Radio />} 
@@ -123,7 +124,7 @@ function CheckForExistingService({order_data, updateServiceStatus}) {
                   </div>
 
                   <div className="mx-4 text-center">
-                    <img src="img/network-drop-none.png" className="border border-gray-500 mb-2" />
+                    <img src={GATSBY_IMGS["img/network-drop-none.png"]} className="border border-gray-500 mb-2" alt="" />
                     <FormControlLabel 
                       value="None" 
                       control={<Radio />} 
@@ -133,7 +134,7 @@ function CheckForExistingService({order_data, updateServiceStatus}) {
                   </div>
 
                   <div className="mx-4 text-center">
-                    <img src="img/network-drop-unknown.png" className="border border-gray-500 mb-2" />
+                    <img src={GATSBY_IMGS["img/network-drop-unknown.png"]} className="border border-gray-500 mb-2" alt="" />
                     <FormControlLabel 
                       value="Unknown" 
                       control={<Radio />} 

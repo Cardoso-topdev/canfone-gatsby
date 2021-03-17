@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReactMarkdown from 'react-markdown'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { GATSBY_IMGS } from "utils/imgloader"
 
 const useStyles = makeStyles(theme => ({
   select_btn: {
@@ -18,7 +19,7 @@ function Item({
   let price_no_contract = residential_no_contract;
   let price_two_year = residential_two_year;
 
-  if (customer_type == 'BUSINESS') {
+  if (customer_type === 'BUSINESS') {
     price_no_contract = business_no_contract;
     price_two_year = business_two_year;
   }
@@ -39,17 +40,17 @@ function Item({
           <ReactMarkdown source={description} />
           <div className="flex pt-3">
             <div className="inline px-3 md:pl-4 md:pr-12">
-              <img src={`img/speed-${download_speed}.png`} className="mx-auto" />
+              <img src={GATSBY_IMGS[`img/speed-${download_speed}.png`]} className="mx-auto" alt=""/>
               <h4 className="text-base md:text-lg text-center font-semibold grey-800 pt-1">{`${download_speed} Mbps`}</h4>
               <h4 className="text-sm text-center grey-600 font-light pt-0">Download</h4>
             </div>
             <div className="inline px-3 md:pl-4 md:pr-12">
-              <img src="img/speed-upload.png" className="mx-auto" />
+              <img src={GATSBY_IMGS["img/speed-upload.png"]} className="mx-auto" alt=""/>
               <h4 className="text-base md:text-lg text-center font-semibold grey-800 pt-1">{`${upload_speed} Mbps`}</h4>
               <h4 className="text-sm text-center grey-600 font-light pt-0">Upload</h4>
             </div>
             <div className="inline px-3 md:pl-4 md:pr-12">
-              <img src="img/usage-unlimited.png" className="mx-auto py-2"/>
+              <img src={GATSBY_IMGS["img/usage-unlimited.png"]} className="mx-auto py-2"alt=""/>
               <h4 className="text-base md:text-lg text-center font-semibold grey-800 pt-1">Unlimited</h4>
               <h4 className="text-sm text-center grey-600 font-light pt-0">Data</h4>
             </div>

@@ -13,8 +13,6 @@ export default function TosPage({data}) {
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossOrigin="anonymous"
     />
-    <script type="text/javascript" src={withPrefix("js/base.js")}></script>
-    <script type="text/javascript" src='js/tos.js'></script>
   </Helmet>
   <Layout title={data.site.siteMetadata.title}>
     <TOS />

@@ -13,6 +13,8 @@ export default function Home({data}) {
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossOrigin="anonymous"
     />
+    <script type="text/javascript" src={withPrefix("js/common/page_init.js")}></script>
+    
     <script type="text/javascript" src={withPrefix('https://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js')}></script>
     <script type="text/javascript" src={withPrefix('js/base.js')}></script>
     <script type="text/javascript" src={withPrefix('js/index.js')}></script>

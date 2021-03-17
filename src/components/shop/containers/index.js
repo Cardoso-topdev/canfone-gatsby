@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Router, Link } from "@reach/router"
+import { Router } from "@reach/router"
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import TextField from '@material-ui/core/TextField';
-import moment from 'moment';
-import { purple } from '@material-ui/core/colors';
+// import Modal from '@material-ui/core/Modal';
+// import Backdrop from '@material-ui/core/Backdrop';
+// import Fade from '@material-ui/core/Fade';
+// import TextField from '@material-ui/core/TextField';
+// import moment from 'moment';
+// import { purple } from '@material-ui/core/colors';
 
 import { getPricing, getPromo } from '../actions';
-import Hardware from '../components/hardware_products/';
-import Internet from '../components/internet_products/';
+import Hardware from '../components/hardware_products';
+import Internet from '../components/internet_products';
 import OrderReview from '../components/order_review';
 import OrderSheet from '../components/order_sheet';
-import Phone from '../components/phone_products/';
-import ServiceDetails from '../components/service_details/';
-import TV from '../components/tv_products/';
+import Phone from '../components/phone_products';
+import ServiceDetails from '../components/service_details';
+import TV from '../components/tv_products';
 
 
 class Shop extends Component {
   constructor(props) {
     super(props);
-    window.Shop = this;
+    // window.Shop = this;
 
     let date = new Date()
     const earliestInstallDate = date.setDate(date.getDate() + 7);
@@ -142,7 +142,8 @@ class Shop extends Component {
 
   componentDidUpdate(prevProps) {
     // Pop up Customer Info modal if customer_info_name or customer_info_phone missing form localStorage
-    {/*
+    /*
+    {
     console.log("componentDidUpdate")
     
     if (this.state.customer_info_modal_open === false) {
@@ -152,12 +153,12 @@ class Shop extends Component {
         })
       }
     }
-    */}
+    */
 
     //console.log("In componentDidUpdate:", prevProps.packages.hexuid);
     //console.log("In componentDidUpdate:", this.props.packages.hexuid);
     if (this.props.packages.hexuid !== prevProps.packages.hexuid) {
-      if (this.props.packages.hexuid == null) {
+      if (this.props.packages.hexuid === null) {
         localStorage.setItem('OBD_hexuid', '');
       } else {
         localStorage.setItem('OBD_hexuid', this.props.packages.hexuid);
@@ -204,7 +205,7 @@ class Shop extends Component {
   nextStep() {
     console.log("Next step, y'all");
     // Determine the current path
-    let re = /\/\w\w\/\w+.html/;
+    let re = /\/\w\w\/\w/;
     let pathArray = re.exec(window.location.href)
     let current_path = null
     if (pathArray != null) {
@@ -214,17 +215,17 @@ class Shop extends Component {
     // Run input validaton
     let validation_error = false;
     switch (current_path) {
-      case '/en/internet':
+      case 'internet':
         console.log('Validating interent');
         break;
-      case '/en/tv.html':
+      case 'tv':
         console.log('Validating tv');
         // Set localStorage 'tv_package_id' to 0 if no selection made
-        if (localStorage.getItem('tv_package_id') == null) {
+        if (localStorage.getItem('tv_package_id') === null) {
           localStorage.setItem('tv_package_id', 0);
         }
         break;
-      case '/en/phone.html':
+      case 'phone':
         if (this.state.phone_package_id > 0 && this.state.phone_port === '') {
           this.setState({
             validation_pass_port_number_option: false
@@ -241,14 +242,14 @@ class Shop extends Component {
           }
         }
         // Set localStorage 'phone_package_id' to 0 if no selection made
-        if (localStorage.getItem('phone_package_id') == null) {
+        if (localStorage.getItem('phone_package_id') === null) {
           localStorage.setItem('phone_package_id', 0);
         }
-        if (localStorage.getItem('phone_port') == null) {
+        if (localStorage.getItem('phone_port') === null) {
           localStorage.setItem('phone_port', 'NO');
         }
         break;
-      case '/en/hardware.html':
+      case 'hardware':
         if (this.state.internet_hardware_id === 0) {
           this.setState({
             validation_pass_internet_hardware_option: false
@@ -256,7 +257,7 @@ class Shop extends Component {
           validation_error = true;
         }
         break;
-      case '/en/service_details.html':     
+      case 'service_details':     
         if (this.state.has_active_service === '') {
           this.setState({
             verification_passed_service_status: false
@@ -272,20 +273,20 @@ class Shop extends Component {
 
     // Next Step Decision Tree
     if (!validation_error) {
-      if (current_path === '/en/internet') {
+      if (current_path === 'internet') {
         window.location = "tv"
-      } else if (current_path === '/en/tv.html') {
+      } else if (current_path === 'tv') {
         window.location = "phone"
-      } else if (current_path === '/en/phone.html') {
-        window.location = "hardware.html"
-      } else if (current_path === '/en/hardware.html') {
-        window.location = "service_details.html"
-      } else if (current_path === '/en/service_details.html') {
-        window.location = "order_review.html"    
-      } else if (current_path === '/en/order_review.html') {
-        window.location = "thanks.html"
+      } else if (current_path === 'phone') {
+        window.location = "hardware"
+      } else if (current_path === 'hardware') {
+        window.location = "service_details"
+      } else if (current_path === 'service_details') {
+        window.location = "order_review"    
+      } else if (current_path === 'order_review') {
+        window.location = "thanks"
       } else {
-        window.location = "index.html"
+        window.location = "index"
       }
     }
   }
@@ -461,7 +462,7 @@ class Shop extends Component {
     // this.props.packages.internet has only those packages available to the customer based on their provided address
     let internet_package = [];
     console.log('No Internet package has been selected')
-    if (option == 'PHONE') {
+    if (option === 'PHONE') {
       internet_package = this.props.packages.internet.find((item) => item.download_speed >= 5) || this.props.packages.internet[0];
     } else {
       internet_package = this.props.packages.internet.find((item) => item.download_speed >= 10) || this.props.packages.internet[1];
@@ -470,11 +471,11 @@ class Shop extends Component {
     // Default fee is the No Contract fee
     let fee = internet_package.residential_no_contract;
     if (this.state.customer_type === 'RESIDENTIAL') {
-      if (this.state.service_contract == '2YR') {
+      if (this.state.service_contract === '2YR') {
         fee = internet_package.residential_two_year;
       }
     } else {
-      if (this.state.service_contract == 'NONE') {
+      if (this.state.service_contract === 'NONE') {
         fee = internet_package.business_no_contract;
       } else {
         fee = internet_package.business_two_year;
@@ -503,11 +504,11 @@ class Shop extends Component {
     // Default fee is the No Contract fee
     let fee = internet_package.residential_no_contract;
     if (this.state.customer_type === 'RESIDENTIAL') {
-      if (this.state.service_contract == '2YR') {
+      if (this.state.service_contract === '2YR') {
         fee = internet_package.residential_two_year;
       }
     } else {
-      if (this.state.service_contract == 'NONE') {
+      if (this.state.service_contract === 'NONE') {
         fee = internet_package.business_no_contract;
       } else {
         fee = internet_package.business_two_year;
@@ -577,7 +578,7 @@ class Shop extends Component {
       console.log("internet_package:", internet_package)
       fee = internet_package.residential_no_contract;
       if (this.state.customer_type === 'RESIDENTIAL') {
-        if (e.currentTarget.value == '2YR') {
+        if (e.currentTarget.value === '2YR') {
           console.log("1")
           fee = internet_package.residential_two_year;
         } else {
@@ -585,7 +586,7 @@ class Shop extends Component {
           fee = internet_package.residential_no_contract
         }
       } else {
-        if (e.currentTarget.value == 'NONE') {
+        if (e.currentTarget.value === 'NONE') {
           console.log("3")
           fee = internet_package.business_no_contract;
         } else {
@@ -821,20 +822,20 @@ class Shop extends Component {
           <div className="lg:flex-1 px-3">
             <Router>
               <Internet 
-                path="/en/internet"
+                path="internet"
                 packages={internet_packages}
                 order_data={order_data}
                 setInternetPackage={this.setInternetPackage}
                 setServiceContract={this.setServiceContract}
               />
               <TV 
-                path="/en/tv.html" 
+                path="tv" 
                 packages={tv_packages}
                 order_data={order_data}
                 setTVPackage={this.setTVPackage}
               />
               <Phone 
-                path="/en/phone.html" 
+                path="phone" 
                 packages={phone_packages}
                 order_data={order_data}
                 setPhonePackage={this.setPhonePackage}
@@ -842,7 +843,7 @@ class Shop extends Component {
                 updatePhonePortAuthorization={this.updatePhonePortAuthorization}
               />
               <Hardware 
-                path="/en/hardware.html" 
+                path="hardware" 
                 hardware_options={hardware}
                 order_data={order_data}
                 selectInternetHardware={this.selectInternetHardware}
@@ -850,7 +851,7 @@ class Shop extends Component {
                 selectPhoneHardware={this.selectPhoneHardware}
               />
               <ServiceDetails 
-                path="/en/service_details.html"
+                path="service_details"
                 order_data={order_data}
                 //setInstallationDate={this.setInstallationDate}
                 //setInstallationTime={this.setInstallationTime}
@@ -859,7 +860,7 @@ class Shop extends Component {
                 //updatePhonePortOption={this.updatePhonePortOption}
               />
               <OrderReview 
-                path="/en/order_review.html"
+                path="order_review"
                 order_data={order_data}
                 checkPromoCode={this.checkPromoCode}
                 setDefaultInternetHardware={this.setDefaultInternetHardware}

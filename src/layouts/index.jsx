@@ -9,10 +9,12 @@ import Footer from "../components/footer"
 import Modals from "../components/modals"
 
 export default function Layout({ children, title }) {
-  return <div className={containerStyles.container}>
+  return <>
+  <div className={containerStyles.container}>
     <Header title={title} />
     <Modals />
     {children}
     <Footer />
   </div>
+  </>
 }

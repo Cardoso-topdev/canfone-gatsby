@@ -20,7 +20,9 @@ import {
  */
 function *getPricing(action) {
   try {
+    console.log("SAGA API REQUEST SENT")
     const response = yield call(api_getPricing, action.address);
+    console.log("SAGA API RESPONSE:", response.data)
     yield put(getPricingSuccess(response.data));
   } catch (error) {
     console.log('Error loading pricing data:', error.message);

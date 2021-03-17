@@ -5,15 +5,16 @@ import {
   faList
 } from '@fortawesome/free-solid-svg-icons'
 
-import {Logo_120} from "../../utils/imgloader"
-// import Logo from "../../img/logo_120.png"
+import { GATSBY_IMGS } from "utils/imgloader"
+// import Logo from "../../img/GATSBY_IMGS["img/logo_120.png"].png"
+console.log("GATSBY_IMGS: ", GATSBY_IMGS["img/logo_120.png"])
 
 export default function Header({ children, title }) {
   return <>
     <nav id="Header" className="flex header-large px-3 flex text-white">
       <div className="ml-1 md:ml-4">
-        <Link to="/"><img id="Logo" className="hidden lg:block header-logo-large" src={Logo_120} alt="logo" /></Link>
-        <Link to="/"><img id="Logo" className="lg:hidden header-logo-small" src={Logo_120} alt="logo" /></Link>
+        <Link to="/"><img id="Logo" className="hidden lg:block header-logo-large" src={GATSBY_IMGS["img/logo_120.png"]} alt="logo" /></Link>
+        <Link to="/"><img id="Logo" className="lg:hidden header-logo-small" src={GATSBY_IMGS["img/logo_120.png"]} alt="logo" /></Link>
       </div>
       <div className="flex-grow text-right">
         <div className="inline-block lg:hidden text-right mt-5 mr-3">
@@ -45,10 +46,10 @@ export default function Header({ children, title }) {
         <div className="mb-5">
           <button className="bg-canfone-red border border-canfone-red text-white font-bold py-2 px-4 mr-6 rounded">
             Residential
-      </button>
+          </button>
           <button className="border border-gray-100 text-white font-bold py-2 px-4 rounded">
             Business
-      </button>
+          </button>
         </div>
         <Link to="/internet" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="internet">Internet</Link>
         <Link to="/tv" className="next-page-link block border-t border-grey-500 py-3 uppercase text-gray-100 cursor-pointer" data-next-page="tv">TV</Link>

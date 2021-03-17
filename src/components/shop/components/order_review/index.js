@@ -13,6 +13,7 @@ import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
+import { GATSBY_IMGS } from "utils/imgloader"
 
 const useStyles = makeStyles((theme) => ({
   promo_input: {
@@ -60,10 +61,10 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
 
   const classes = useStyles();
 
-  const [validation_error, setValidationError] = useState(false);
+  // const [validation_error, setValidationError] = useState(false);
   const [contact_name_validated, setContactNameValidated] = useState(true);
   const [contact_phone_validated, setContactPhoneValidated] = useState(true);
-  const [contact_email_validated, setContactEmailValidated] = useState(true);
+  const [contact_email_validated] = useState(true);
   const [card_number_validated, setCardNumberValidated] = useState(true);
   const [card_name_validated, setCardNameValidated] = useState(true);
   const [card_month_validated, setCardMonthValidated] = useState(true);
@@ -76,7 +77,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
     setContactName(titleCaseName(event.target.value));
     setCardName(titleCaseName(event.target.value));
     if (event.target.value > 5)
-      setContactNameValidated
+      setContactNameValidated(false)
   };
 
   const [contact_phone, setContactPhone] = React.useState('');
@@ -165,7 +166,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
 
   const submitOrder = () => {
     const URL = "http://0.0.0.0:8000/api/v1/order/";
-    const _URL = "https://redloco.ca/api/v1/order/";
+    // const URL = "https://redloco.ca/api/v1/order/";
     // const URL = `${ROOT_URL}/api/v1/promo/${code}`;
     // console.log("{ ...localStorage }:", { ...localStorage })
     let validates = true;
@@ -236,7 +237,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
     if (!tos_checked) {
       validates = false;
       setTOSValidated(false);
-      setValidationError(true);
+      // setValidationError(true);
     }
 
     let data = JSON.stringify({ 
@@ -259,7 +260,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
         data: data
       }).then(function (response) {
         console.log(response)
-        window.location = "order_confirmation.html"
+        window.location = "order_confirmation"
       });
     }
   }
@@ -280,7 +281,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
             <div className="w-8/12">
               <p className="text-sm grey-600">{order_data.internet_package_name}</p>
               <p className="text-sm grey-600">{order_data.internet_hardware_description}</p>
-              {(order_data.has_active_service == 'NO') ?
+              {(order_data.has_active_service === 'NO') ?
                 <p className="text-sm grey-600">New Service</p>
                 :
                 <p className="text-sm grey-600">Replacing an Existing Service</p>
@@ -455,7 +456,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
 
         <div className="text-center py-8">
           <h3 className="grey-700 text-base font-semibold uppercase">All transactions are safe and secure</h3>
-          <img src="img/credit-cards-872Y.png" className="py-3 mx-auto" />
+          <img src={GATSBY_IMGS["img/credit-cards-872Y.png"]} className="py-3 mx-auto" alt=""/>
           <h4 className="grey-700 text-sm font-semibold uppercase">Encrypted 128-bit SSL Payment</h4>
         </div>        
 
@@ -467,7 +468,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
               onChange={handleTosCheckedChange}
               inputProps={{ 'aria-label': 'secondary checkbox' }}
             />
-            <p className="px-1 grey-600">I accept the Canfone <a href="tos.html" className="text-blue-500">Terms of Service</a>.</p>
+            <p className="px-1 grey-600">I accept the Canfone <a href="tos" className="text-blue-500">Terms of Service</a>.</p>
           </div>
           <div className="pt-0 text-center">
             <Button variant="contained" color="primary" size="large" onClick={submitOrder}>

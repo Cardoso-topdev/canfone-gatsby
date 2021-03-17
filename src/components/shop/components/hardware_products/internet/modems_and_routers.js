@@ -1,7 +1,5 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown'
+import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -9,6 +7,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import { Alert, AlertTitle } from '@material-ui/lab';
+import { GATSBY_IMGS } from "utils/imgloader"
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -32,10 +31,10 @@ function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_i
   const classes = useStyles();
   const internet_package_speed = parseInt(localStorage.getItem('internet_package_speed')) || 0;
 
-  const [age, setAge] = React.useState('');
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+  // const [age, setAge] = React.useState('');
+  // const handleChange = (event) => {
+  //   setAge(event.target.value);
+  // };
 
   const [has_modem, setHasModem] = React.useState(localStorage.getItem('has_modem') || 'NO');
   const toggleHasModem = (event) => {
@@ -48,10 +47,10 @@ function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_i
     }
   };
 
-  const [hardware_option_id, setHardwareOption] = React.useState('');
-  const handleOptionChange = (event) => {
-    setHardwareOption(event.target.value);
-  };
+  // const [hardware_option_id, setHardwareOption] = React.useState('');
+  // const handleOptionChange = (event) => {
+  //   setHardwareOption(event.target.value);
+  // };
 
   const [modem, setModem] = React.useState('');
   const handleModemChange = (event) => {
@@ -85,7 +84,7 @@ function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_i
         </div>
         <h2 className="flex-1 md:pl-2 text-sm md:text-base font-semibold">I already have a modem that I will use.</h2>
       </div>
-      {(has_modem == true) ?
+      {(has_modem === true) ?
         <div className="px-4 py-2 my-2 border border-gray-400">
           <h2 className="text-lg font-semibold grey-600">What model of modem do you have?</h2>
           <FormControl variant="outlined" className={classes.formControl}>
@@ -134,12 +133,12 @@ function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_i
           <div className="hidden md:flex items-center px-4 py-2 my-2 border border-gray-400">
             {internet_package_speed <= 60 &&
               <div className="w-1/3 mx-auto px-2 py-3">
-                <img src="img/6b6141_hapAC.jpg" />
+                <img src={GATSBY_IMGS["img/6b6141_hapAC.jpg"]} alt="" />
               </div>
             }
             {internet_package_speed > 60 &&
               <div className="w-1/3 mx-auto px-2 py-3">
-                <img src="img/tc4300_hapAC.jpg" />
+                <img src={GATSBY_IMGS["img/tc4300_hapAC.jpg"]} alt="" />
               </div>
             }
             <div className="flex-1 py-2 px-3">
@@ -204,12 +203,12 @@ function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_i
             </div>
             {internet_package_speed <= 60 &&
               <div className="w-2/3 mx-auto pt-3">
-                <img src="img/6b6141_hapAC.jpg" />
+                <img src={GATSBY_IMGS["img/6b6141_hapAC.jpg"]} alt="" />
               </div>
             }
             {internet_package_speed > 60 &&
               <div className="w-2/3 mx-auto pt-3">
-                <img src="img/tc4300_hapAC.jpg" />
+                <img src={GATSBY_IMGS["img/tc4300_hapAC.jpg"]} alt="" />
               </div>
             }
             {renderPricing()}

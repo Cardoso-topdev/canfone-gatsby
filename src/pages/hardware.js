@@ -15,9 +15,11 @@ export default function HardwarePage({data}) {
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossOrigin="anonymous"
     />
+    <script type="text/javascript" src={withPrefix("js/common/page_init.js")}></script>
+    <script type="text/javascript" src={withPrefix("js/common/modal_init.js")}></script>
+
     <script type="text/javascript" src={withPrefix("https://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js")}></script>
     <script type="text/javascript" src={withPrefix("js/base.js")}></script>
-    <script type="text/javascript" src={withPrefix("js/hardware.js")}></script>
     {/* <script type="text/javascript" src={withPrefix("js/shop/index.js")}></script> */}
   </Helmet>
   <Layout title={data.site.siteMetadata.title}>

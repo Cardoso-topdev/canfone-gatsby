@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -15,63 +15,63 @@ const useStyles = makeStyles(theme => ({
 function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage}) {
   //console.log("In the Order Sheet - order_data:", order_data)
   // Determine Next btn text
-  let re = /\/\w\w\/[\w]+.html/;
   let link_text = 'Next';
-  let pathArray = re.exec(window.location.href);
-  let current_path = pathArray[0]
-  if (current_path == '/en/service_details.html') {
+  let pathArray = window.location.href.split("/");
+
+  let current_path = pathArray[pathArray.length-1] === "" ? pathArray[pathArray.length-2] : pathArray[pathArray.length-1]
+  if (current_path === 'service_details') {
     link_text = 'Review & Pay'
   };
   const classes = useStyles();
-  const [checked, setChecked] = React.useState(true);
+  // const [checked, setChecked] = React.useState(true);
 
-  const handleChange = event => {
-    setChecked(event.target.checked);
-  };
+  // const handleChange = event => {
+  //   setChecked(event.target.checked);
+  // };
 
   const calculateTax = (amt) => {
-    if (order_data.province == 'NL') {
+    if (order_data.province === 'NL') {
       return(amt*0.15)
-    } else if (order_data.province == 'QC') {
+    } else if (order_data.province === 'QC') {
       return(amt*0.14975)
-    } else if (order_data.province == 'NS') {
+    } else if (order_data.province === 'NS') {
       return(amt*0.13)
-    } else if (order_data.province == 'NU') {
+    } else if (order_data.province === 'NU') {
       return(amt*0.05)
-    } else if (order_data.province == 'PE') {
+    } else if (order_data.province === 'PE') {
       return(amt*0.15)
-    } else if (order_data.province == 'NB') {
+    } else if (order_data.province === 'NB') {
       return(amt*0.15)
-    } else if (order_data.province == 'ON') {
+    } else if (order_data.province === 'ON') {
       return(amt*0.13)
-    } else if (order_data.province == 'MB') {
+    } else if (order_data.province === 'MB') {
       return(amt*0.12)
-    } else if (order_data.province == 'SK') {
+    } else if (order_data.province === 'SK') {
       return(amt*0.11)
-    } else if (order_data.province == 'NT') {
+    } else if (order_data.province === 'NT') {
       return(amt*0.05)
-    } else if (order_data.province == 'AB') {
+    } else if (order_data.province === 'AB') {
       return(amt*0.05)
-    } else if (order_data.province == 'BC') {
+    } else if (order_data.province === 'BC') {
       return(amt*0.12)
-    } else if (order_data.province == 'YT') {
+    } else if (order_data.province === 'YT') {
       return(amt*0.05)
     }
   }
 
-  const resetOrder = () => {
-    let city = localStorage.getItem('city') || '';
-    let province = localStorage.getItem('province') || '';
-    let postal_code = localStorage.getItem('postal_code') || '';
-    let service_address = localStorage.getItem('service_address') || '';
-    let order_id = Math.random().toString(36).substr(2, 9).toUpperCase();
-    localStorage.clear();
-    localStorage.setItem('city', city)
-    localStorage.setItem('province', province)
-    localStorage.setItem('postal_code', postal_code)
-    localStorage.setItem('service_address', service_address)
-    localStorage.setItem('order_id', order_id)
-  }
+  // const resetOrder = () => {
+  //   let city = localStorage.getItem('city') || '';
+  //   let province = localStorage.getItem('province') || '';
+  //   let postal_code = localStorage.getItem('postal_code') || '';
+  //   let service_address = localStorage.getItem('service_address') || '';
+  //   let order_id = Math.random().toString(36).substr(2, 9).toUpperCase();
+  //   localStorage.clear();
+  //   localStorage.setItem('city', city)
+  //   localStorage.setItem('province', province)
+  //   localStorage.setItem('postal_code', postal_code)
+  //   localStorage.setItem('service_address', service_address)
+  //   localStorage.setItem('order_id', order_id)
+  // }
 
   let total_one_time_costs = order_data.internet_hardware_one_time_fee + order_data.tv_hardware_one_time_fee + 
     order_data.phone_hardware_one_time_fee;
@@ -80,11 +80,11 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
 
   let promo_code_message = '';
   let promo_code_value = 0;
-  if (order_data.promo_code_type == 'Fixed Dollar Amount - onetime') {
+  if (order_data.promo_code_type === 'Fixed Dollar Amount - onetime') {
     promo_code_message = 'Save $' + order_data.promo_code_value;
     promo_code_value = parseFloat(order_data.promo_code_value);
     total_one_time_costs -= promo_code_value;
-  } else if (order_data.promo_code_type == 'Fixed Dollar Amount - monthly') {
+  } else if (order_data.promo_code_type === 'Fixed Dollar Amount - monthly') {
     promo_code_message = 'Save $' + order_data.promo_code_value + ' per Month';
     promo_code_value = parseFloat(order_data.promo_code_value);
     total_monthly_fees -= promo_code_value;
@@ -97,13 +97,13 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
       <div className="flex px-4 bg-canfone-teal">
         <div className=" flex-1 text-white text-2xl py-2 uppercase">Your Order</div>
         {/*<div className="text-white text-2xl my-2 mr-3 cursor-pointer" onClick={resetOrder}><i className="fas fa-trash-alt"></i></div>*/}
-        <div className={clsx("mt-4", (current_path == '/en/order_review.html') && 'hidden')} onClick={nextStep}>
+        <div className={clsx("mt-4", (current_path === 'order_review') && 'hidden')} role="button" onKeyDown={() => console.log("Key pressed!")} onClick={nextStep}>
           <i className="far fa-arrow-alt-circle-right text-2xl text-white cursor-pointer"></i>
         </div>
       </div>
 
       <div className="p-4">
-        <div className={clsx("border-b border-gray-400", (current_path == '/en/internet') && 'pl-3')}>
+        <div className={clsx("border-b border-gray-400", (current_path === 'internet') && 'pl-3')}>
           <div className="my-1 px-3 border-l-4 border-teal-400">
             <div className="flex items-end">
               <div className="flex-1">
@@ -124,7 +124,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
                     {`$${order_data.internet_package_fee.toFixed(2)}`}
                   </div>
                 </div>
-                {(order_data.service_contract == '2YR') ?
+                {(order_data.service_contract === '2YR') ?
                   <p className="grey-600 text-xs">2-YR Contract</p>
                 :
                   <p className="grey-600 text-xs">No Contract</p>
@@ -136,11 +136,11 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
           </div>
         </div>
 
-        <div className={clsx("border-b border-gray-400", (current_path == '/en/tv.html') && 'pl-3')}>
+        <div className={clsx("border-b border-gray-400", (current_path === 'tv') && 'pl-3')}>
           <div className="my-1 px-3 py-1 border-l-4 border-teal-400">
             <div className="flex items-end">
               <div className="flex-1">
-                <a href="tv.html#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">TV Package</a>
+                <a href="tv#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">TV Package</a>
               </div>
               { (order_data.tv_package_id > 0) ?
                 <button 
@@ -150,8 +150,8 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
                 </button>
                 :
                 <button 
-                  className={clsx("text-sm text-canfone-teal underline text-right", (current_path == '/en/tv.html') && 'invisible')}
-                  onClick={() => {window.location = "tv.html#modify"}}>
+                  className={clsx("text-sm text-canfone-teal underline text-right", (current_path === 'tv') && 'invisible')}
+                  onClick={() => {window.location = "tv#modify"}}>
                   Add
                 </button>
               }
@@ -176,11 +176,11 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
           </div>
         </div>
 
-        <div className={clsx("border-b border-gray-400", (current_path == '/en/phone.html') && 'pl-3')}>
+        <div className={clsx("border-b border-gray-400", (current_path === 'phone') && 'pl-3')}>
           <div className="my-1 px-3 py-1 border-l-4 border-teal-400">
             <div className="flex items-end">
               <div className="flex-1">
-                <a href="phone.html#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">Phone Package</a>
+                <a href="phone#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">Phone Package</a>
               </div>
               { (order_data.phone_package_id > 0) ?
                 <button 
@@ -190,8 +190,8 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
                 </button>
                 :
                 <button 
-                  className={clsx("text-sm text-canfone-teal underline text-right", (current_path == '/en/phone.html') && 'invisible')}
-                  onClick={() => {window.location = "phone.html#modify"}}>
+                  className={clsx("text-sm text-canfone-teal underline text-right", (current_path === 'phone') && 'invisible')}
+                  onClick={() => {window.location = "phone#modify"}}>
                   Add
                 </button>
               }
@@ -216,14 +216,14 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
           </div>
         </div>
 
-        <div className={clsx("border-b border-gray-400", (current_path == '/en/hardware.html') && 'pl-3')}>
+        <div className={clsx("border-b border-gray-400", (current_path === 'hardware') && 'pl-3')}>
           <div className="my-1 px-3 py-1 border-l-4 border-teal-400">
             <div className="flex pb-2">
               <div className="flex-1">
-                <a href="hardware.html#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">Hardware</a>
+                <a href="hardware#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">Hardware</a>
               </div>
               <div>
-                <a href="hardware.html#modify" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
+                <a href="hardware#modify" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
               </div>
             </div>
             <Fragment>
@@ -238,7 +238,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
               {order_data.phone_hardware_name &&
                 <p className="text-xs grey-500"><i className="fas fa-check-circle text-canfone-teal px-1"></i>{order_data.phone_hardware_name}</p>
               }
-              {(order_data.internet_hardware_description.length == 0 && order_data.tv_hardware_name.length == 0 && order_data.phone_hardware_name.length == 0) &&
+              {(order_data.internet_hardware_description.length === 0 && order_data.tv_hardware_name.length === 0 && order_data.phone_hardware_name.length === 0) &&
                 <p className="text-sm grey-400">
                   None Selected
                 </p>
@@ -275,14 +275,14 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
           </div>
         </div>
 
-        <div className={clsx("border-b border-gray-400", (current_path == '/en/service_details.html') && 'pl-3')}>
+        <div className={clsx("border-b border-gray-400", (current_path === 'service_details') && 'pl-3')}>
           <div className="my-1 px-2 py-1 border-l-4 border-teal-400">
             <div className="flex pb-2">
               <div className="flex-1">
-                <a href="service_details.html#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">Service Details</a>
+                <a href="service_details#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">Service Details</a>
               </div>
               <div>
-                <a href="service_details.html#modify" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
+                <a href="service_details#modify" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
               </div>
             </div>
             <Fragment>
@@ -346,7 +346,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
         </div>
       </div>
 
-      <div className={clsx("mt-2 mx-4 mb-4", (current_path == '/en/order_review.html') && 'hidden')}>
+      <div className={clsx("mt-2 mx-4 mb-4", (current_path === 'order_review') && 'hidden')}>
         <Button 
           variant="contained" 
           color="secondary" 

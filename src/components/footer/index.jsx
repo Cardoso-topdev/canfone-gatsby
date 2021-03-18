@@ -1,6 +1,5 @@
 import React from "react"
 import { GATSBY_IMGS } from "utils/imgloader"
-import { Link } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebookSquare,
@@ -19,28 +18,28 @@ export default function HomePage() {
         <div className="inline-block align-top px-10 md:px-6">
           <h2 className="text-teal-300 text-lg uppercase pb-2 md:pb-4">Shop</h2>
           <ul className="text-white font-normal">
-            <li className="font-light pb-2"><Link to="/internet">Internet</Link></li>
-            <li className="font-light pb-2"><Link to="/tv">TV</Link></li>
-            <li className="font-light pb-2"><Link to="/phone">Phone</Link></li>
+            <li className="font-light pb-2"><a href="/internet">Internet</a></li>
+            <li className="font-light pb-2"><a href="/tv">TV</a></li>
+            <li className="font-light pb-2"><a href="/phone">Phone</a></li>
           </ul>
         </div>
 
         <div className="inline-block align-top px-6">
           <h2 className="text-teal-300 text-lg uppercase pb-2 md:pb-4">Support</h2>
           <ul className="text-white font-normal">
-            <li className="font-light pb-2"><Link to="/account">Self Service</Link></li>
+            <li className="font-light pb-2"><a href="/account">Self Service</a></li>
             <li className="font-light pb-2">Chat</li>
             <li className="font-light pb-2">FAQ</li>
           </ul>
         </div>
 
         <div className="inline-block align-top px-10 md:px-6 pt-4 md:pt-0">
-          <h2 className="text-teal-300 text-lg uppercase pb-2 md:pb-4"><Link to="/account">My Account</Link></h2>
+          <h2 className="text-teal-300 text-lg uppercase pb-2 md:pb-4"><a href="/account">My Account</a></h2>
           <ul className="text-white font-normal">
-            <li className="font-light pb-2"><Link to="/account">My Dashboard</Link></li>
-            <li className="font-light pb-2"><Link to="/account">Setup/Change Banking</Link></li>
-            <li className="font-light pb-2"><Link to="/account">Setup/Change Credit Card</Link></li>
-            <li className="font-light pb-2"><Link to="/account">Make a Payment</Link></li>
+            <li className="font-light pb-2"><a href="/account">My Dashboard</a></li>
+            <li className="font-light pb-2"><a href="/account">Setup/Change Banking</a></li>
+            <li className="font-light pb-2"><a href="/account">Setup/Change Credit Card</a></li>
+            <li className="font-light pb-2"><a href="/account">Make a Payment</a></li>
           </ul>
         </div>
 

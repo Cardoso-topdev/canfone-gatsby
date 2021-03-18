@@ -1,11 +1,15 @@
 //import { CountUp } from 'countup.js';
 //import 'waypoints/lib/noframework.waypoints.min.js';
 console.log("Up and running - INDEX, hombre...")
+let tvOpenTriggers = document.querySelectorAll('.tv-open')
+let phoneOpenTriggers = document.querySelectorAll('.phone-open')
+let nextPageButtons = document.querySelectorAll(".next-page-btn")
+let nextPageLinks = document.querySelectorAll(".next-page-link")
 $( document ).ready(function() {
-const tvOpenTriggers = document.querySelectorAll('.tv-open')
-const phoneOpenTriggers = document.querySelectorAll('.phone-open')
-const nextPageButtons = document.querySelectorAll(".next-page-btn")
-const nextPageLinks = document.querySelectorAll(".next-page-link")
+tvOpenTriggers = document.querySelectorAll('.tv-open')
+phoneOpenTriggers = document.querySelectorAll('.phone-open')
+nextPageButtons = document.querySelectorAll(".next-page-btn")
+nextPageLinks = document.querySelectorAll(".next-page-link")
 
 function scrollToTop(e) {
   // Chrome requires returnValue to be set.

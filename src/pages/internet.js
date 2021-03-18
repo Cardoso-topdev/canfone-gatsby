@@ -6,7 +6,6 @@ import {Helmet} from 'react-helmet'
 // import "../components/shop"
 
 export default function Home({data}) {
-  console.log(data)
   return <>
   <Helmet>
     <link rel="stylesheet" type="text/css" href="https://ws1.postescanada-canadapost.ca/css/addresscomplete-2.30.min.css?key=JH73-CY14-ZK13-GG77" />
@@ -15,7 +14,6 @@ export default function Home({data}) {
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossOrigin="anonymous"
     />
-    <script type="text/javascript" src={withPrefix("js/shop/index.js")}></script>
     <script type="text/javascript" src={withPrefix("js/common/page_init.js")}></script>
     <script type="text/javascript" src={withPrefix("js/common/modal_init.js")}></script>
 

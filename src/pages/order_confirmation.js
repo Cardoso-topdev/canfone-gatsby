@@ -13,6 +13,8 @@ export default function OrderConfirmationPage({data}) {
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossOrigin="anonymous"
     />
+    <script type="text/javascript" src={withPrefix("js/common/page_init.js")}></script>
+    
     <script type="text/javascript" src={withPrefix("js/base.js")}></script>
     <script type="text/javascript" src='js/order_confirmation.js'></script>
   </Helmet>

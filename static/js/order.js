@@ -1,9 +1,7 @@
 console.log("Live in ORDERS, hombre...");
-console.log(localStorage.getItem('service_address'))
-$(document).ready(function () {
+function func_order() {
   const service_address = document.getElementById("Service_Address");
   const tally_service_address = document.getElementById("Tally_Service_Address");
-  const order_stage = 2;
 
   // If on the order submission page
   // This is spec'd to either return a reference to the element or null
@@ -12,9 +10,6 @@ $(document).ready(function () {
     submit_order_btn.addEventListener("click", function (event) {
       console.log("Order Submitted");
       // Submit order to RL Engine
-
-
-
     });
   }
 
@@ -25,4 +20,10 @@ $(document).ready(function () {
   if (tally_service_address !== null) {
     tally_service_address.innerHTML = localStorage.getItem('service_address')
   }
-})
+}
+
+if(window.addEventListener){
+  window.addEventListener('load',func_order,false);
+}else{
+  window.attachEvent('onload',func_order);
+}

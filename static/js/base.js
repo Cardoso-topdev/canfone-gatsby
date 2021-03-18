@@ -3,11 +3,6 @@ function getOrderID() {
   return Math.random().toString(36).substr(2, 9).toUpperCase();
 };
 
-
-/*
- * Manage Customer Type
-*/
-
 function updateCustomerTypeInNav(customer_type = 'RESIDENTIAL') {
   const business_link = document.getElementById('BusinessLink');
   const residential_link = document.getElementById('ResidentialLink');
@@ -36,9 +31,6 @@ function logKey(e) {
   }
 }
 
-/*
- * Basic Functions
- */
 function resizeNav() {
   let media_query = window.matchMedia("(max-width: 640px)");
   if (!media_query.matches) {
@@ -71,9 +63,7 @@ function resizeNav() {
   }
 }
 
-// Set up the modal triggers
-// $(document).ready(function () {
-window.onload = function() {
+function base() {
   console.log("base passed!")
   const modalTriggers = document.querySelectorAll('.modal-popup-trigger');
   // const bodyBlackout = document.querySelector('.body-blackout');
@@ -270,4 +260,9 @@ window.onload = function() {
   // Allow keyboard ESC to close modal
   document.addEventListener('keydown', logKey);
 }
-// })
+
+if(window.addEventListener){
+    window.addEventListener('load',base,false);
+}else{
+    window.attachEvent('onload',base);
+}

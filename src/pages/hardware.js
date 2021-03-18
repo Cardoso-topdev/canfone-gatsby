@@ -20,7 +20,6 @@ export default function HardwarePage({data}) {
 
     <script type="text/javascript" src={withPrefix("https://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js")}></script>
     <script type="text/javascript" src={withPrefix("js/base.js")}></script>
-    {/* <script type="text/javascript" src={withPrefix("js/shop/index.js")}></script> */}
   </Helmet>
   <Layout title={data.site.siteMetadata.title}>
     <Hardware />

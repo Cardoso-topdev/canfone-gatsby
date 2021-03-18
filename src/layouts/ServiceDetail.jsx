@@ -1,3 +1,4 @@
+import ShopComponent from "components/shop"
 import React from "react"
 import FAChat from "../components/fa-chat"
 
@@ -14,7 +15,9 @@ export default function ServiceDetail() {
     </div>
 
     <FAChat />
-
+    <div id="shop_component" className="hidden">
+      <ShopComponent />
+    </div>
     <div id="shop" className="my-8">
       <div className="spinner">
         <div className="cube1"></div>

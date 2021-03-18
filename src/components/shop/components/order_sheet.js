@@ -16,9 +16,9 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
   //console.log("In the Order Sheet - order_data:", order_data)
   // Determine Next btn text
   let link_text = 'Next';
-  let pathArray = window.location.href.split("/");
+  let pathArray = (typeof window !== 'undefined') ? window.location.href.split("/") : null;
 
-  let current_path = pathArray[pathArray.length-1] === "" ? pathArray[pathArray.length-2] : pathArray[pathArray.length-1]
+  let current_path = pathArray ? (pathArray[pathArray.length-1] === "" ? pathArray[pathArray.length-2] : pathArray[pathArray.length-1]) : "/"
   if (current_path === 'service_details') {
     link_text = 'Review & Pay'
   };
@@ -56,6 +56,8 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
       return(amt*0.12)
     } else if (order_data.province === 'YT') {
       return(amt*0.05)
+    } else {
+      return (amt*0.05)
     }
   }
 

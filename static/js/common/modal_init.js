@@ -1,4 +1,3 @@
-$( document ).ready(function() {
  
 // If there is no address in localStorage activate the availability-check modal
 const popupModal = document.getElementById('availability-check-modal');
@@ -15,7 +14,8 @@ if (localStorage.getItem('service_address') == null || localStorage.getItem('ser
 }
 
 // Update page content
-let service_address = localStorage.getItem('service_address');
-document.getElementById("service-address").innerHTML = service_address;
-
-})
+let service_addr = localStorage.getItem('service_address');
+let ele_service_addr = document.getElementById("service-address")
+if ( ele_service_addr){
+  ele_service_addr.innerHTML = service_addr;
+}

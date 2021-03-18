@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../layouts"
 import TOS from "../layouts/TOS"
-import {  withPrefix, graphql } from 'gatsby'
+import {  graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
 export default function TosPage({data}) {

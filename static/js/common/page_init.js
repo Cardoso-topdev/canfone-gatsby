@@ -1,4 +1,3 @@
-$( document ).ready(function() {
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   (function(){
   var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -20,5 +19,3 @@ $( document ).ready(function() {
   s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '688518877945597');
   fbq('track', 'PageView');
-
-})

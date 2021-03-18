@@ -29,21 +29,23 @@ const useStyles = makeStyles(theme => ({
 
 function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_id, hardware_validated}) {
   const classes = useStyles();
-  const internet_package_speed = parseInt(localStorage.getItem('internet_package_speed')) || 0;
+  const internet_package_speed = (typeof window !== 'undefined') ? (parseInt(localStorage.getItem('internet_package_speed')) || 0) : 0;
 
   // const [age, setAge] = React.useState('');
   // const handleChange = (event) => {
   //   setAge(event.target.value);
   // };
 
-  const [has_modem, setHasModem] = React.useState(localStorage.getItem('has_modem') || 'NO');
+  const [has_modem, setHasModem] = React.useState((typeof window !== 'undefined') ? (localStorage.getItem('has_modem') || 'NO') : 'NO');
   const toggleHasModem = (event) => {
     if (event.target.checked) {
       setHasModem('YES');
-      localStorage.setItem('has_modem', 'YES')
+      if (typeof window !== 'undefined')
+        localStorage.setItem('has_modem', 'YES')
     } else {
       setHasModem('NO');
-      localStorage.setItem('has_modem', 'NO')
+      if (typeof window !== 'undefined')
+        localStorage.setItem('has_modem', 'NO')
     }
   };
 

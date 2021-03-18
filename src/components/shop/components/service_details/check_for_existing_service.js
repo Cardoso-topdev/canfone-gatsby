@@ -42,28 +42,32 @@ function CheckForExistingService({order_data, updateServiceStatus}) {
     setServiceStatus(event.target.value);
     updateServiceStatus(event.target.value); // For validation when ordersheet next is clicked
     setCurrentPovider('')
-    localStorage.setItem('current_provider', '');
+    if (typeof window !== 'undefined')
+      localStorage.setItem('current_provider', '');
     if (event.target.value === 'YES') {
       setCurrentProviderFormViewable(true);
       setISPDropFormViewble(false);
       setDropType('');
-      localStorage.setItem("existing_drop", '');
+      if (typeof window !== 'undefined')
+        localStorage.setItem("existing_drop", '');
     } else {
       setCurrentProviderFormViewable(false);
       setISPDropFormViewble(true);
     }
   };
 
-  const [current_provider, setCurrentPovider] = React.useState(localStorage.getItem('current_provider') || '');
+  const [current_provider, setCurrentPovider] = React.useState((typeof window !== 'undefined') ? (localStorage.getItem('current_provider') || '') : '');
   const handleCurrentProviderChange = (event) => {
     setCurrentPovider(event.target.value);
-    localStorage.setItem('current_provider', event.target.value);
+    if (typeof window !== 'undefined')
+      localStorage.setItem('current_provider', event.target.value);
   }
 
-  const [drop_type, setDropType] = React.useState(localStorage.getItem('existing_drop') || '');
+  const [drop_type, setDropType] = React.useState((typeof window !== 'undefined') ? (localStorage.getItem('existing_drop') || '') : '');
   const handleDropTypeChange = (event) => {
     setDropType(event.target.value);
-    localStorage.setItem("existing_drop", event.target.value);
+    if (typeof window !== 'undefined')
+      localStorage.setItem("existing_drop", event.target.value);
   }
 
   // const [age, setAge] = React.useState('');

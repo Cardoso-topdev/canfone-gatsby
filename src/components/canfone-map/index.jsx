@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faMapMarker
 } from '@fortawesome/free-solid-svg-icons'
+import ShopComponent from "components/shop"
 
 export default function CanMap() {
   return <>
@@ -31,7 +32,9 @@ export default function CanMap() {
         </div>
       </div>
     </div>
-
+    <div id="shop_component" className="hidden">
+      <ShopComponent />
+    </div>
     <div id="shop">
       <div className="spinner">
         <div className="cube1"></div>

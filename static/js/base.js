@@ -72,17 +72,17 @@ function resizeNav() {
 }
 
 // Set up the modal triggers
-$(document).ready(function () {
+// $(document).ready(function () {
+window.onload = function() {
   console.log("base passed!")
   const modalTriggers = document.querySelectorAll('.modal-popup-trigger');
-  const bodyBlackout = document.querySelector('.body-blackout');
+  // const bodyBlackout = document.querySelector('.body-blackout');
 
   // Add Order_ID
   if (localStorage.getItem('order_id') == null)
     localStorage.setItem('order_id', getOrderID());
 
   (function () {
-    console.log("10");
     window.updateServiceAddress = function () {
       console.log('Outside function window.test called from within the react component.');
       const popupModal = document.querySelector("[data-popup-modal='availability_check']")
@@ -96,7 +96,6 @@ $(document).ready(function () {
       return false;
     };
   }());
-  console.log("1");
 
   modalTriggers.forEach(trigger => {
     trigger.addEventListener('click', (e) => {
@@ -115,7 +114,6 @@ $(document).ready(function () {
       })
     })
   })
-  console.log("2");
 
   // Add listeners for "Check Address" clicks
   document.getElementById("SetServiceAddress").addEventListener("click", function (event) {
@@ -149,26 +147,22 @@ $(document).ready(function () {
     const ttl = 6 * 3600 * 1000;
     localStorage.setItem('expiry', now.getTime() + ttl);
   });
-  console.log("3");
 
   document.getElementById("AddressForm").addEventListener("submit", function (event) {
     event.preventDefault();
   }, true);
-  console.log("4");
 
   document.getElementById("AddressForm").addEventListener("onsubmit", function (event) {
     event.preventDefault();
   }, true);
 
-  console.log("5");
 
   const fields = [
-    { element: "city", field: "City", mode: pca.fieldMode.POPULATE },
-    { element: "province", field: "Province", mode: pca.fieldMode.POPULATE },
-    { element: "postal_code", field: "PostalCode", mode: pca.fieldMode.POPULATE },
-    { element: "service_address", field: "{Line1}{, {Line2}}, {City}, {Province}, {PostalCode}", mode: pca.fieldMode.DEFAULT },
+    { element: "city", field: "City", mode: pca? pca.fieldMode.POPULATE : "" },
+    { element: "province", field: "Province", mode: pca? pca.fieldMode.POPULATE : "" },
+    { element: "postal_code", field: "PostalCode", mode: pca? pca.fieldMode.POPULATE : "" },
+    { element: "service_address", field: "{Line1}{, {Line2}}, {City}, {Province}, {PostalCode}", mode: pca? pca.fieldMode.DEFAULT : "" },
   ];
-  console.log("6");
 
   let options = {
     key: "WF19-AY25-TD96-YT85",
@@ -179,8 +173,7 @@ $(document).ready(function () {
     }
   }
 
-  let addressControl = new pca.Address(fields, options);
-  console.log("7");
+  let addressControl = pca? new pca.Address(fields, options) : null;
 
   /*
    * Start a New Order
@@ -189,7 +182,6 @@ $(document).ready(function () {
   let order_started = localStorage.getItem('order_started') || new Date().getTime();
   order_started = parseInt(order_started);
   localStorage.setItem('order_started', order_started);
-  console.log("8");
 
   /*
    * If last order update is over 1 hr old, clear order, save address 
@@ -203,7 +195,6 @@ $(document).ready(function () {
   let province = localStorage.getItem('province') || '';
   let postal_code = localStorage.getItem('postal_code') || '';
   let service_address = localStorage.getItem('service_address') || '';
-  console.log("9");
 
   if ((now.getTime() > order_started + ttl)) {
     localStorage.clear();
@@ -213,7 +204,6 @@ $(document).ready(function () {
     localStorage.setItem('service_address', service_address);
     localStorage.setItem('order_id', getOrderID())
   }
-  console.log("20");
 
   // Check if customer_type has been set
   let customer_type = localStorage.getItem('customer_type') || '';
@@ -222,7 +212,6 @@ $(document).ready(function () {
     customer_type = 'RESIDENTIAL'
     localStorage.setItem('customer_type', customer_type);
   }
-  console.log("21");
 
   updateCustomerTypeInNav(customer_type);
   // Set event handlers to update local state if either Business or Residentail nav links are clicked
@@ -245,7 +234,6 @@ $(document).ready(function () {
       window.location = 'index';
     }
   });
-  console.log("22");
 
   document.getElementById('ResidentialLink').addEventListener("click", function (event) {
     // If customer_type = BUSINESS then set Business Nav Link active, clear localStorage, 
@@ -266,12 +254,10 @@ $(document).ready(function () {
       window.location = 'index';
     }
   });
-  console.log("23");
 
   window.addEventListener('scroll', function (e) {
     requestAnimationFrame(resizeNav);
   });
-  console.log("24");
 
   document.getElementById("MobileMenuBtn").addEventListener("click", function (event) {
     // Detect all clicks on the mobile_menu
@@ -280,10 +266,8 @@ $(document).ready(function () {
     const mobile_menu = document.getElementById('MobileMenu');
     mobile_menu.classList.toggle("hidden");
   });
-  console.log("25");
 
   // Allow keyboard ESC to close modal
   document.addEventListener('keydown', logKey);
-  console.log("26 END");
-
-})
+}
+// })

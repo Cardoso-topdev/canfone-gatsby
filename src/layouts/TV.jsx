@@ -9,6 +9,7 @@ import {
 } from "../utils/imgloader"
 import FAChat from "../components/fa-chat"
 import PageHeader from "../components/page-header"
+import ShopComponent from "components/shop"
 
 export default function Internet() {
   return <>
@@ -51,6 +52,10 @@ export default function Internet() {
           </button>
         </div>
       </div>
+    </div>
+
+    <div id="shop_component" className="hidden">
+      <ShopComponent />
     </div>
 
     <div id="shop">

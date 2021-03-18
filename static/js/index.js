@@ -41,12 +41,12 @@ nextPageLinks.forEach(function (link) {
     console.log("LinkBB")
     localStorage.setItem('next_page', next_page);
     // Check for customer address in localstorage 
-    let service_address = localStorage.getItem('service_address') || '';
+    let service_addr = localStorage.getItem('service_address') || '';
     // Show address modal if address is missing, otherwise load 'next_page'
     // Clicking Check in modal will set window.location to 'next_page'
     const popupModal = document.getElementById('availability-check-modal');
-    const bodyBlackout = document.querySelector('.body-blackout');
-    if (service_address === '') {
+    // const bodyBlackout = document.querySelector('.body-blackout');
+    if (service_addr === '') {
       popupModal.classList.add('is-visible');
       bodyBlackout.classList.add('is-blacked-out');
     } else {
@@ -68,7 +68,7 @@ nextPageButtons.forEach(function (btn) {
     // Show address modal if address is missing, otherwise load 'next_page'
     // Clicking Check in modal will set window.location to 'next_page'
     const popupModal = document.getElementById('availability-check-modal');
-    const bodyBlackout = document.querySelector('.body-blackout');
+    // const bodyBlackout = document.querySelector('.body-blackout');
     if (service_address === '') {
       popupModal.classList.add('is-visible');
       bodyBlackout.classList.add('is-blacked-out');

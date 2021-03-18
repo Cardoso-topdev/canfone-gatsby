@@ -25,66 +25,114 @@ import TV from '../components/tv_products';
 class Shop extends Component {
   constructor(props) {
     super(props);
-    // window.Shop = this;
+    // let date = new Date()
+    // const earliestInstallDate = date.setDate(date.getDate() + 7);
 
-    let date = new Date()
-    const earliestInstallDate = date.setDate(date.getDate() + 7);
+    if (typeof window !== 'undefined') {
+      this.state = {
+        city: localStorage.getItem('city') || '',
+        province: localStorage.getItem('province') || '',
+        postal_code: localStorage.getItem('postal_code') || '',      
+        service_address: localStorage.getItem('service_address') || '',
+        customer_type: localStorage.getItem('customer_type') || 'RESIDENTIAL',
+        OBD_hexuid: localStorage.getItem('OBD_hexuid') || '',
 
-    this.state = {
-      city: localStorage.getItem('city') || '',
-      province: localStorage.getItem('province') || '',
-      postal_code: localStorage.getItem('postal_code') || '',      
-      service_address: localStorage.getItem('service_address') || '',
-      customer_type: localStorage.getItem('customer_type') || 'RESIDENTIAL',
-      OBD_hexuid: localStorage.getItem('OBD_hexuid') || '',
+        internet_package_id: localStorage.getItem('internet_package_id') || '',
+        internet_package_name: localStorage.getItem('internet_package_name') || '',
+        internet_package_fee: parseInt(localStorage.getItem('internet_package_fee')) || 0,
+        internet_package_speed: parseInt(localStorage.getItem('internet_package_speed')) || 0,
+        service_contract: localStorage.getItem('service_contract') || '2YR',
 
-      internet_package_id: localStorage.getItem('internet_package_id') || '',
-      internet_package_name: localStorage.getItem('internet_package_name') || '',
-      internet_package_fee: parseInt(localStorage.getItem('internet_package_fee')) || 0,
-      internet_package_speed: parseInt(localStorage.getItem('internet_package_speed')) || 0,
-      service_contract: localStorage.getItem('service_contract') || '2YR',
+        internet_hardware_id: parseInt(localStorage.getItem('internet_hardware_id')) || 0,
+        internet_hardware_description: localStorage.getItem('internet_hardware_description') || '',
+        internet_hardware_monthly_fee: parseFloat(localStorage.getItem('internet_hardware_monthly_fee')) || 0,
+        internet_hardware_one_time_fee: parseFloat(localStorage.getItem('internet_hardware_one_time_fee')) || 0,
 
-      internet_hardware_id: parseInt(localStorage.getItem('internet_hardware_id')) || 0,
-      internet_hardware_description: localStorage.getItem('internet_hardware_description') || '',
-      internet_hardware_monthly_fee: parseFloat(localStorage.getItem('internet_hardware_monthly_fee')) || 0,
-      internet_hardware_one_time_fee: parseFloat(localStorage.getItem('internet_hardware_one_time_fee')) || 0,
+        tv_package_id: localStorage.getItem('tv_package_id') || 0,
+        tv_package_name: localStorage.getItem('tv_package_name') || '',
+        tv_package_fee: parseInt(localStorage.getItem('tv_package_fee')) || 0,
+        tv_hardware_id:  parseInt(localStorage.getItem('tv_hardware_id')) || 0,
+        tv_hardware_name: localStorage.getItem('tv_hardware_name') || '',
+        tv_hardware_one_time_fee: parseFloat(localStorage.getItem('tv_hardware_one_time_fee')) || 0,
 
-      tv_package_id: localStorage.getItem('tv_package_id') || 0,
-      tv_package_name: localStorage.getItem('tv_package_name') || '',
-      tv_package_fee: parseInt(localStorage.getItem('tv_package_fee')) || 0,
-      tv_hardware_id:  parseInt(localStorage.getItem('tv_hardware_id')) || 0,
-      tv_hardware_name: localStorage.getItem('tv_hardware_name') || '',
-      tv_hardware_one_time_fee: parseFloat(localStorage.getItem('tv_hardware_one_time_fee')) || 0,
+        phone_package_id: parseInt(localStorage.getItem('phone_package_id')) || 0,
+        phone_package_name: localStorage.getItem('phone_package_name') || '',
+        phone_package_fee: parseInt(localStorage.getItem('phone_package_fee')) || 0,
+        phone_hardware_id:  parseInt(localStorage.getItem('phone_hardware_id')) || 0,
+        phone_hardware_name: localStorage.getItem('phone_hardware_name') || '',
+        phone_hardware_one_time_fee: parseFloat(localStorage.getItem('phone_hardware_one_time_fee')) || 0,
 
-      phone_package_id: parseInt(localStorage.getItem('phone_package_id')) || 0,
-      phone_package_name: localStorage.getItem('phone_package_name') || '',
-      phone_package_fee: parseInt(localStorage.getItem('phone_package_fee')) || 0,
-      phone_hardware_id:  parseInt(localStorage.getItem('phone_hardware_id')) || 0,
-      phone_hardware_name: localStorage.getItem('phone_hardware_name') || '',
-      phone_hardware_one_time_fee: parseFloat(localStorage.getItem('phone_hardware_one_time_fee')) || 0,
+        modem: localStorage.getItem('modem') || '',
+        modem_fee: localStorage.getItem('modem_fee') || '',
+        has_active_service: localStorage.getItem('has_active_service') || '',
+        phone_port: localStorage.getItem('phone_port') || '',
+        phone_port_authorization: localStorage.getItem('phone_port_authorization') || '',
+        selected_installation_date: localStorage.getItem('selected_installation_date') || 'ASAP',
+        selected_installation_time: localStorage.getItem('selected_installation_time') || 'Any Time',
+        promo_code_name: '',
+        promo_code_message: '',
+        promo_code_type: '',
+        promo_code_value: 0,
 
-      modem: localStorage.getItem('modem') || '',
-      modem_fee: localStorage.getItem('modem_fee') || '',
-      has_active_service: localStorage.getItem('has_active_service') || '',
-      phone_port: localStorage.getItem('phone_port') || '',
-      phone_port_authorization: localStorage.getItem('phone_port_authorization') || '',
-      selected_installation_date: localStorage.getItem('selected_installation_date') || 'ASAP',
-      selected_installation_time: localStorage.getItem('selected_installation_time') || 'Any Time',
-      promo_code_name: '',
-      promo_code_message: '',
-      promo_code_type: '',
-      promo_code_value: 0,
+        validation_pass_internet_hardware_option: true,
+        validation_pass_port_number_option: true,
+        validation_pass_authorized_to_port_number: true,
+        verification_passed_service_status: true,
+        _verification_passed_phone_port: true,
+      };
+    } else {
+      this.state = {
+        city: '',
+        province: '',
+        postal_code: '',      
+        service_address: '',
+        customer_type: 'RESIDENTIAL',
+        OBD_hexuid: '',
 
-      validation_pass_internet_hardware_option: true,
-      validation_pass_port_number_option: true,
-      validation_pass_authorized_to_port_number: true,
-      verification_passed_service_status: true,
-      _verification_passed_phone_port: true,
+        internet_package_id: '',
+        internet_package_name: '',
+        internet_package_fee: 0,
+        internet_package_speed: 0,
+        service_contract: '2YR',
 
-      //customer_info_modal_open: false,
-      //customer_info_name: localStorage.getItem('customer_info_name') || '',
-      //customer_info_phone: localStorage.getItem('customer_info_phone') || '',
-    };
+        internet_hardware_id: 0,
+        internet_hardware_description: '',
+        internet_hardware_monthly_fee: 0,
+        internet_hardware_one_time_fee: 0,
+
+        tv_package_id:  0,
+        tv_package_name:  '',
+        tv_package_fee: 0,
+        tv_hardware_id: 0,
+        tv_hardware_name:  '',
+        tv_hardware_one_time_fee: 0,
+
+        phone_package_id: 0,
+        phone_package_name: '',
+        phone_package_fee: 0,
+        phone_hardware_id: 0,
+        phone_hardware_name: '',
+        phone_hardware_one_time_fee: 0,
+
+        modem: '',
+        modem_fee: '',
+        has_active_service: '',
+        phone_port: '',
+        phone_port_authorization: '',
+        selected_installation_date: 'ASAP',
+        selected_installation_time: 'Any Time',
+        promo_code_name: '',
+        promo_code_message: '',
+        promo_code_type: '',
+        promo_code_value: 0,
+
+        validation_pass_internet_hardware_option: true,
+        validation_pass_port_number_option: true,
+        validation_pass_authorized_to_port_number: true,
+        verification_passed_service_status: true,
+        _verification_passed_phone_port: true,
+      };
+    }
 
     this.updateServiceStatus = this.updateServiceStatus.bind(this);
     this.updatePhonePortOption = this.updatePhonePortOption.bind(this);
@@ -206,7 +254,10 @@ class Shop extends Component {
     console.log("Next step, y'all");
     // Determine the current path
     let re = /\/\w\w\/\w/;
-    let pathArray = re.exec(window.location.href)
+    let pathArray = []
+    if (typeof window !== 'undefined') {
+      pathArray = re.exec(window.location.href)
+    } 
     let current_path = null
     if (pathArray != null) {
       current_path = pathArray[0].replace('#modify','');
@@ -272,7 +323,7 @@ class Shop extends Component {
     }
 
     // Next Step Decision Tree
-    if (!validation_error) {
+    if (!validation_error && window) {
       if (current_path === 'internet') {
         window.location = "tv"
       } else if (current_path === 'tv') {
@@ -579,18 +630,14 @@ class Shop extends Component {
       fee = internet_package.residential_no_contract;
       if (this.state.customer_type === 'RESIDENTIAL') {
         if (e.currentTarget.value === '2YR') {
-          console.log("1")
           fee = internet_package.residential_two_year;
         } else {
-          console.log("2")
           fee = internet_package.residential_no_contract
         }
       } else {
         if (e.currentTarget.value === 'NONE') {
-          console.log("3")
           fee = internet_package.business_no_contract;
         } else {
-          console.log("4")
           fee = internet_package.business_two_year;
         }
       }

@@ -120,3 +120,7 @@ GET         v1/promo/                   # Returns promo code data, if applicable
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+<h1 align="center">
+  Project handled by [Oscar](https://github.com/Cardoso-topdev)
+</h1>

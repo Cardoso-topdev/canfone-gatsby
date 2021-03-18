@@ -21,10 +21,10 @@ import Phone from '../components/phone_products';
 import ServiceDetails from '../components/service_details';
 import TV from '../components/tv_products';
 
-
 class Shop extends Component {
   constructor(props) {
     super(props);
+    console.log("PROPS: ", props)
     // let date = new Date()
     // const earliestInstallDate = date.setDate(date.getDate() + 7);
 
@@ -253,30 +253,33 @@ class Shop extends Component {
   nextStep() {
     console.log("Next step, y'all");
     // Determine the current path
-    let re = /\/\w\w\/\w/;
-    let pathArray = []
-    if (typeof window !== 'undefined') {
-      pathArray = re.exec(window.location.href)
-    } 
+    // let re = /\/\w\w\/\w/;
+    // let pathArray = []
+    // if (typeof window !== 'undefined') {
+    //   pathArray = re.exec(window.location.href)
+    // } 
     let current_path = null
-    if (pathArray != null) {
-      current_path = pathArray[0].replace('#modify','');
+    if (typeof window !== 'undefined') {
+      current_path = window.location.pathname;
     }
 
     // Run input validaton
     let validation_error = false;
     switch (current_path) {
-      case 'internet':
+      case '/internet':
+      case '/internet/':
         console.log('Validating interent');
         break;
-      case 'tv':
+      case '/tv':
+      case '/tv/':
         console.log('Validating tv');
         // Set localStorage 'tv_package_id' to 0 if no selection made
         if (localStorage.getItem('tv_package_id') === null) {
           localStorage.setItem('tv_package_id', 0);
         }
         break;
-      case 'phone':
+      case '/phone':
+      case '/phone/':
         if (this.state.phone_package_id > 0 && this.state.phone_port === '') {
           this.setState({
             validation_pass_port_number_option: false
@@ -300,7 +303,8 @@ class Shop extends Component {
           localStorage.setItem('phone_port', 'NO');
         }
         break;
-      case 'hardware':
+      case '/hardware':
+      case '/hardware/':
         if (this.state.internet_hardware_id === 0) {
           this.setState({
             validation_pass_internet_hardware_option: false
@@ -308,7 +312,8 @@ class Shop extends Component {
           validation_error = true;
         }
         break;
-      case 'service_details':     
+      case '/service_details':     
+      case '/service_details/':     
         if (this.state.has_active_service === '') {
           this.setState({
             verification_passed_service_status: false
@@ -324,20 +329,22 @@ class Shop extends Component {
 
     // Next Step Decision Tree
     if (!validation_error && window) {
-      if (current_path === 'internet') {
-        window.location = "tv"
-      } else if (current_path === 'tv') {
-        window.location = "phone"
-      } else if (current_path === 'phone') {
-        window.location = "hardware"
-      } else if (current_path === 'hardware') {
-        window.location = "service_details"
-      } else if (current_path === 'service_details') {
-        window.location = "order_review"    
-      } else if (current_path === 'order_review') {
-        window.location = "thanks"
+      if (current_path.indexOf('internet') === 1) {
+        console.log("AAA", current_path)
+        window.location.href = "../tv"
+      } else if (current_path.indexOf('tv') === 1) {
+        window.location.href = "../phone"
+      } else if (current_path.indexOf('phone') === 1) {
+        window.location.href = "../hardware"
+      } else if (current_path.indexOf('hardware') === 1) {
+        window.location.href = "../service_details"
+      } else if (current_path.indexOf('service_details') === 1) {
+        window.location.href = "../order_review"    
+      } else if (current_path.indexOf('order_review') === 1) {
+        window.location.href = "../thanks"
       } else {
-        window.location = "index"
+        console.log("current_path: ", current_path)
+        // window.location = "/"
       }
     }
   }

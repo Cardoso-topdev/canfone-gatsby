@@ -2,6 +2,11 @@ import React, { Fragment } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faCheckCircle,
+  faArrowAltCircleRight
+} from '@fortawesome/free-solid-svg-icons'
 
 const useStyles = makeStyles(theme => ({
   next_btn: {
@@ -98,9 +103,8 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
     <div className="mx-auto lg:mx-0 max-w-xs rounded-lg bg-white overflow-hidden border border-gray-600 order-sheet mb-6">
       <div className="flex px-4 bg-canfone-teal">
         <div className=" flex-1 text-white text-2xl py-2 uppercase">Your Order</div>
-        {/*<div className="text-white text-2xl my-2 mr-3 cursor-pointer" onClick={resetOrder}><i className="fas fa-trash-alt"></i></div>*/}
         <div className={clsx("mt-4", (current_path === 'order_review') && 'hidden')} role="button" onKeyDown={() => console.log("Key pressed!")} onClick={nextStep}>
-          <i className="far fa-arrow-alt-circle-right text-2xl text-white cursor-pointer"></i>
+          <FontAwesomeIcon icon={faArrowAltCircleRight} className="text-2xl text-white cursor-pointer" />
         </div>
       </div>
 
@@ -109,9 +113,9 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
           <div className="my-1 px-3 border-l-4 border-teal-400">
             <div className="flex items-end">
               <div className="flex-1">
-                <a href="internet#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">Internet Package</a>
+                <a href="../internet" className="text-sm grey-600 font-semibold uppercase hover:underline">Internet Package</a>
               </div>
-              <a href="internet#modify" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
+              <a href="../internet" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
             </div>
             {(order_data.internet_package_name.length > 0) ?
               <div>
@@ -142,7 +146,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
           <div className="my-1 px-3 py-1 border-l-4 border-teal-400">
             <div className="flex items-end">
               <div className="flex-1">
-                <a href="tv#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">TV Package</a>
+                <a href="../tv" className="text-sm grey-600 font-semibold uppercase hover:underline">TV Package</a>
               </div>
               { (order_data.tv_package_id > 0) ?
                 <button 
@@ -153,7 +157,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
                 :
                 <button 
                   className={clsx("text-sm text-canfone-teal underline text-right", (current_path === 'tv') && 'invisible')}
-                  onClick={() => {window.location = "tv#modify"}}>
+                  onClick={() => {window.location = "../tv"}}>
                   Add
                 </button>
               }
@@ -182,7 +186,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
           <div className="my-1 px-3 py-1 border-l-4 border-teal-400">
             <div className="flex items-end">
               <div className="flex-1">
-                <a href="phone#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">Phone Package</a>
+                <a href="../phone" className="text-sm grey-600 font-semibold uppercase hover:underline">Phone Package</a>
               </div>
               { (order_data.phone_package_id > 0) ?
                 <button 
@@ -193,7 +197,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
                 :
                 <button 
                   className={clsx("text-sm text-canfone-teal underline text-right", (current_path === 'phone') && 'invisible')}
-                  onClick={() => {window.location = "phone#modify"}}>
+                  onClick={() => {window.location = "../phone"}}>
                   Add
                 </button>
               }
@@ -222,23 +226,32 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
           <div className="my-1 px-3 py-1 border-l-4 border-teal-400">
             <div className="flex pb-2">
               <div className="flex-1">
-                <a href="hardware#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">Hardware</a>
+                <a href="../hardware" className="text-sm grey-600 font-semibold uppercase hover:underline">Hardware</a>
               </div>
               <div>
-                <a href="hardware#modify" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
+                <a href="../hardware" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
               </div>
             </div>
             <Fragment>
               {order_data.internet_hardware_description &&
-                <p className="text-xs grey-500"><i className="fas fa-check-circle text-canfone-teal px-1"></i>{order_data.internet_hardware_description}</p>
+                <p className="text-xs grey-500">
+                  <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px-1" />
+                  {order_data.internet_hardware_description}
+                </p>
               }
               {order_data.tv_hardware_name ?
-                  <p className="text-xs grey-500"><i className="fas fa-check-circle text-canfone-teal px-1"></i>{order_data.tv_hardware_name}</p>
+                  <p className="text-xs grey-500">
+                  <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px" />
+                    {order_data.tv_hardware_name}
+                  </p>
                 :
                   null
               }
               {order_data.phone_hardware_name &&
-                <p className="text-xs grey-500"><i className="fas fa-check-circle text-canfone-teal px-1"></i>{order_data.phone_hardware_name}</p>
+                <p className="text-xs grey-500">
+                  <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px-1" />
+                  {order_data.phone_hardware_name}
+                </p>
               }
               {(order_data.internet_hardware_description.length === 0 && order_data.tv_hardware_name.length === 0 && order_data.phone_hardware_name.length === 0) &&
                 <p className="text-sm grey-400">
@@ -281,30 +294,48 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
           <div className="my-1 px-2 py-1 border-l-4 border-teal-400">
             <div className="flex pb-2">
               <div className="flex-1">
-                <a href="service_details#modify" className="text-sm grey-600 font-semibold uppercase hover:underline">Service Details</a>
+                <a href="../service_details" className="text-sm grey-600 font-semibold uppercase hover:underline">Service Details</a>
               </div>
               <div>
-                <a href="service_details#modify" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
+                <a href="../service_details" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
               </div>
             </div>
             <Fragment>
               {(order_data.service_address_confirmed === 'YES') &&
-                <p className="text-xs grey-500"><i className="fas fa-check-circle text-canfone-teal px-1"></i>Address Confirmed</p>
+                <p className="text-xs grey-500">
+                  <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px-1" />
+                  Address Confirmed
+                </p>
               }
               {(order_data.has_active_service === 'YES') &&
-                <p className="text-xs grey-500"><i className="fas fa-check-circle text-canfone-teal px-1"></i>Existing Service</p>
+                <p className="text-xs grey-500">
+                  <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px-1" />
+                  Existing Service
+                </p>
               }
               {(order_data.has_active_service === 'NO') &&
-                <p className="text-xs grey-500"><i className="fas fa-check-circle text-canfone-teal px-1"></i>New Service</p>
+                <p className="text-xs grey-500">
+                  <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px-1" />
+                  New Service
+                </p>
               }
               {(order_data.phone_port === 'NO') &&
-                <p className="text-xs grey-500"><i className="fas fa-check-circle text-canfone-teal px-1"></i>New Phone Number</p>
+                <p className="text-xs grey-500">
+                  <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px-1" />
+                  New Phone Number
+                </p>
               }
               {(order_data.phone_port === 'YES') &&
-                <p className="text-xs grey-500"><i className="fas fa-check-circle text-canfone-teal px-1"></i>Keep Existing Phone Number</p>
+                <p className="text-xs grey-500">
+                  <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px-1" />
+                  Keep Existing Phone Number
+                </p>
               }
               {(order_data.installation_dates_accepted === 'YES') &&
-                <p className="text-xs grey-500"><i className="fas fa-check-circle text-canfone-teal px-1"></i>Installation Dates Selected</p>
+                <p className="text-xs grey-500">
+                  <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px-1" />
+                  Installation Dates Selected
+                </p>
               }
               {(!order_data.service_address_confirmed && (order_data.has_active_service === null) && (!order_data.installation_dates_accepted)) &&
                 <p className="text-sm grey-400">
@@ -314,14 +345,6 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
             </Fragment>
           </div>
         </div>
-
-        {/*<div className="inline-flex mt-2 pt-1 px-3 w-full bg-orange-200">
-          <h2 className="flex-1 text-base grey-800">Promo Code:</h2>
-          <h2 className="text-base text-right grey-800">JoseCuervo</h2>
-        </div>
-        <div className="mb-2 pb-1 px-3 w-full bg-orange-200">
-          <h2 className="text-sm grey-800">Save $5 per month<span className="pl-3 text-green-600"><i className="fas fa-check-circle"></i></span></h2>
-        </div>*/}
 
         {(order_data.promo_code_name !== '') &&
           <div className="border-2 border-red-500 mt-2 p-2 text-center">
@@ -355,7 +378,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
           size="small" 
           className={classes.next_btn}
           onClick={nextStep}>
-          {link_text} <i className="far fa-arrow-alt-circle-right ml-3 text-2xl"></i>
+          {link_text} <FontAwesomeIcon icon={faArrowAltCircleRight} className="ml-3 text-2xl" />
         </Button>
       </div>
     </div>

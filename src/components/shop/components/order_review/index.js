@@ -56,6 +56,10 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
       console.log("NO MODEM SELECTED");
       setDefaultInternetHardware();
     }
+
+    const shop_component = document.getElementById('shop_component');
+    shop_component.classList.add("order-review");
+    shop_component.classList.add("my-8");
   });
 
 

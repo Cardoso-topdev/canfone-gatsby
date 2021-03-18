@@ -12,11 +12,19 @@ module.exports = {
     description: "Canfone for Gatsby version.",
   },
   plugins: [
+    `gatsby-plugin-postcss`,
     `gatsby-transformer-sharp`, 
     `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-resolve-src`,
+      oprions: {
+        src: path.resolve(__dirname, 'src'),
+        utils: path.resolve(__dirname, 'utils'),
+      }
+    },
     // {
     //   resolve: `gatsby-source-filesystem`,
     //   options: {
@@ -47,7 +55,9 @@ module.exports = {
     // {
     //   resolve: 'gatsby-plugin-load-script',
     //   options: {
-    //     src: '/js/index.js',
+    //     src: 'https://code.jquery.com/jquery-3.3.1.min.js',
+    //     integrity: "sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=",
+    //     crossOrigin: "anonymous"
     //   },
     // },
     // {

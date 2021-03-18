@@ -1,11 +1,6 @@
 
 exports.onRouteUpdate = props => {
-  const { location, prevLocation } = props
-  console.log("onRouteUpdate props: ", props)
-
-  console.log("new pathname", location.pathname)
-  console.log("old pathname", prevLocation ? prevLocation.pathname : null)
-
+  const { location } = props
   let clsName = "";
   
   switch (location.pathname) {
@@ -21,8 +16,6 @@ exports.onRouteUpdate = props => {
   }
 
   window.addEventListener('load', () => {
-    console.log("load: ", document.body.className);
-
     document.body.className = clsName; //document.body.className.replace(/\bno-js\b/, '');
   });
 

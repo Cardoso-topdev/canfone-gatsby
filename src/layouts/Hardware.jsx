@@ -3,7 +3,6 @@ import CanMap from "../components/canfone-map"
 import FAChat from "../components/fa-chat"
 import PageHeader from "../components/page-header"
 
-
 export default function Hardware() {
   return <>
     <div className="header-hardware">

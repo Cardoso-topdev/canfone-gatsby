@@ -9,6 +9,7 @@ import {
  } from "../utils/imgloader"
  import FAChat from "../components/fa-chat"
 import PageHeader from "../components/page-header"
+import ShopComponent from "components/shop"
 
 export default function Internet() {
   return <>
@@ -53,12 +54,16 @@ export default function Internet() {
       </div>
     </div>
 
+    <div id="shop_component" className="hidden">
+      <ShopComponent />
+    </div>
+
     <div id="shop">
       <div className="spinner">
         <div className="cube1"></div>
         <div className="cube2"></div>
       </div>
-    </div>
+    </div> 
 
     <div className="px-8 pt-16 pb-24">
       <h1 className="text-3xl font-semibold text-steel-blue-600 text-center leading-tight">The Best Gear</h1>

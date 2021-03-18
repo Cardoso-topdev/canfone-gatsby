@@ -9,12 +9,12 @@ import PageHeader from "../components/page-header"
 export default function Internet() {
   return <>
     <div className="header-phone">
-      <PageHeader 
+      <PageHeader
         title1="Canfone Phone Packages"
         title2="Crystal Clear, Unlimited Calling"
         serviceType="Monthly plans starting from"
         price="$10"
-        />
+      />
     </div>
 
     <FAChat />
@@ -36,3 +36,4 @@ export default function Internet() {
     </div>
   </>
 }
+

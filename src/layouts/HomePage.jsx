@@ -24,7 +24,7 @@ export default function HomePage() {
         <h2 className="text-lg lg:text-xl text-white uppercase pr-2 pt-4 md:pt-6 pb-2 md:pb-16">Starting at<span className="text-canfone-teal-200 text-3xl md:text-5xl lg:text-6xl font-bold pl-2 md:pl-4">$40</span><span className="text-base gray-300 normal-case">/month</span></h2>
         <div className="pl-2 hidden md:block">
           <button
-            data-next-page="internet.html"
+            data-next-page="internet"
             className="shop-internet-btn next-page-btn text-white text-xl font-semi-bold py-3 px-5 rounded-full"
           >
             Shop Internet
@@ -104,7 +104,7 @@ export default function HomePage() {
             <button
               type="button"
               className="shop-internet-btn next-page-btn text-white text-lg font-semi-bold py-2 px-5 rounded-full"
-              data-next-page="internet.html"
+              data-next-page="internet"
             >
               Shop Basic
             </button>
@@ -168,7 +168,7 @@ export default function HomePage() {
             <button
               type="button"
               className="shop-internet-btn next-page-btn text-white text-lg font-semi-bold py-2 px-5 rounded-full"
-              data-next-page="internet.html"
+              data-next-page="internet"
             >
               Shop Standard
             </button>
@@ -229,7 +229,7 @@ export default function HomePage() {
             <button
               type="button"
               className="shop-internet-btn next-page-btn text-white text-lg font-semi-bold py-2 px-5 rounded-full"
-              data-next-page="internet.html"
+              data-next-page="internet"
             >
               Shop Pro
             </button>
@@ -255,7 +255,7 @@ export default function HomePage() {
         <button
           type="button"
           className="shop-tv-btn next-page-btn text-white text-lg font-semi-bold py-2 px-5 rounded-full"
-          data-next-page="tv.html"
+          data-next-page="tv"
         >
           Shop TV
         </button>
@@ -398,7 +398,7 @@ export default function HomePage() {
         <button
           type="button"
           className="shop-phone-btn next-page-btn text-white text-lg font-semi-bold py-2 px-5 rounded-full"
-          data-next-page="phone.html"
+          data-next-page="phone"
         >
           Shop Phone
         </button>

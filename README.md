@@ -1,7 +1,7 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+    <img alt="Gatsby" src={withPrefix("https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
   </a>
 </p>
 <h1 align="center">
@@ -96,4 +96,31 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
 Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
 
+## API info
+
+### config.js
+```
+const DEVELOPMENT_URL = 'http://0.0.0.0:8000';
+const PRODUCTION_URL = 'https://redloco.ca';
+// Development Settings
+// export const ROOT_URL = DEVELOPMENT_URL;
+// Production Settings
+export const ROOT_URL = PRODUCTION_URL;
+```
+
+### APIs documentation
+```
+GET         v1/pricing/                 # Returns internet, tv, phone, and hardware pricing for a provided address
+GET         v1/pricing/internet/        # Returns internet pricing for a provided province
+GET         v1/pricing/tv/              # Returns tv pricing for a provided province
+GET         v1/pricing/phone/           # Returns phone pricing for a provided province
+GET         v1/pricing/hardware/        # Returns hardware pricing for a provided province
+POST        v1/order/                   # Accepts a new order for addition to the customer database
+GET         v1/promo/                   # Returns promo code data, if applicable
+```
+
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+<h1 align="center">
+  Project handled by [Oscar](https://github.com/Cardoso-topdev)
+</h1>

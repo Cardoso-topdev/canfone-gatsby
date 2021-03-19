@@ -20,14 +20,14 @@ export default function OrderReviewPage({ data }) {
       <script type="text/javascript" src={withPrefix("https://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js")}></script>
       <script type="text/javascript" src={withPrefix("js/base.js")}></script>
     </Helmet>
-    <Layout title={data.site.siteMetadata.title} lang="en">
-      <OrderReview lang="en" />
+    <Layout title={data.site.siteMetadata.title} lang="fr">
+      <OrderReview lang="fr"/>
     </Layout>
   </>
 }
 
 export const query = graphql`
-  query OrderReviewPageQuery {
+  query OrderReviewFRPageQuery {
     site {
       siteMetadata {
         title,

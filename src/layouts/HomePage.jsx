@@ -11,7 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import LandingSection from "components/landing-section"
 
-export default function HomePage({intro, section}) {
+export default function HomePage({intro, section, lang}) {
   console.log("Homepage, Prismic Data: ", intro, section[1].section_content)
   return <>
     <div className="header-landing">

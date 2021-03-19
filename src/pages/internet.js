@@ -9,19 +9,15 @@ export default function Home({data}) {
   return <>
   <Helmet>
     <link rel="stylesheet" type="text/css" href="https://ws1.postescanada-canadapost.ca/css/addresscomplete-2.30.min.css?key=JH73-CY14-ZK13-GG77" />
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossOrigin="anonymous"
-    />
+     
     <script type="text/javascript" src={withPrefix("js/common/page_init.js")}></script>
     <script type="text/javascript" src={withPrefix("js/common/modal_init.js")}></script>
 
     <script type="text/javascript" src={withPrefix("https://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js")}></script>
     <script type="text/javascript" src={withPrefix("js/base.js")}></script>
   </Helmet>
-  <Layout title={data.site.siteMetadata.title}>
-    <Internet intro={data.allPrismicHomeP.edges[0].node.data.intro_content[0]} section={data.allPrismicHomeP.edges[0].node.data.section} />
+  <Layout title={data.site.siteMetadata.title} lang="en">
+    <Internet intro={data.allPrismicHomeP.edges[0].node.data.intro_content[0]} section={data.allPrismicHomeP.edges[0].node.data.section} lang="en" />
   </Layout>
   </>
 }
@@ -34,7 +30,7 @@ export const query = graphql`
         description
       }
     }
-    allPrismicHomeP(filter: {tags: {in: "internet"}}) {
+    allPrismicHomeP(filter: {lang: {eq: "en-us"}, tags: {in: "internet"}}) {
       edges {
         node {
           data {

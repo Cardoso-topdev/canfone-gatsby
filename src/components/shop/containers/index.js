@@ -153,9 +153,6 @@ class Shop extends Component {
   }
 
   componentDidMount() {
-    const order_started = localStorage.getItem('order_started')
-    const now = new Date()
-
     // Set some initial localStorage
     localStorage.setItem('promo_code', '');
 
@@ -223,10 +220,14 @@ class Shop extends Component {
     switch (current_path) {
       case '/internet':
       case '/internet/':
+      case '/fr/internet':
+      case '/fr/internet/':
         console.log('Validating interent');
         break;
       case '/tv':
       case '/tv/':
+      case '/fr/tv':
+      case '/fr/tv/':
         console.log('Validating tv');
         // Set localStorage 'tv_package_id' to 0 if no selection made
         if (localStorage.getItem('tv_package_id') === null) {
@@ -235,6 +236,8 @@ class Shop extends Component {
         break;
       case '/phone':
       case '/phone/':
+      case '/fr/phone':
+      case '/fr/phone/':
         if (this.state.phone_package_id > 0 && this.state.phone_port === '') {
           this.setState({
             validation_pass_port_number_option: false
@@ -260,6 +263,8 @@ class Shop extends Component {
         break;
       case '/hardware':
       case '/hardware/':
+      case '/fr/hardware':
+      case '/fr/hardware/':
         if (this.state.internet_hardware_id === 0) {
           this.setState({
             validation_pass_internet_hardware_option: false
@@ -269,6 +274,8 @@ class Shop extends Component {
         break;
       case '/service_details':
       case '/service_details/':
+      case '/fr/service_details':
+      case '/fr/service_details/':
         if (this.state.has_active_service === '') {
           this.setState({
             verification_passed_service_status: false
@@ -284,18 +291,17 @@ class Shop extends Component {
 
     // Next Step Decision Tree
     if (!validation_error && window) {
-      if (current_path.indexOf('internet') === 1) {
-        console.log("AAA", current_path)
+      if (current_path.indexOf('internet') > 0) {
         window.location.href = "../tv"
-      } else if (current_path.indexOf('tv') === 1) {
+      } else if (current_path.indexOf('tv') > 0) {
         window.location.href = "../phone"
-      } else if (current_path.indexOf('phone') === 1) {
+      } else if (current_path.indexOf('phone') > 0) {
         window.location.href = "../hardware"
-      } else if (current_path.indexOf('hardware') === 1) {
+      } else if (current_path.indexOf('hardware') > 0) {
         window.location.href = "../service_details"
-      } else if (current_path.indexOf('service_details') === 1) {
+      } else if (current_path.indexOf('service_details') > 0) {
         window.location.href = "../order_review"
-      } else if (current_path.indexOf('order_review') === 1) {
+      } else if (current_path.indexOf('order_review') > 0) {
         window.location.href = "../thanks"
       } else {
         console.log("current_path: ", current_path)

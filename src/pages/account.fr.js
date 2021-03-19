@@ -3,5 +3,5 @@ import Account from "../layouts/Account"
 import "../styles/global.css"
 import "../styles/canfone.css"
 export default function AccountPage() {
-  return <Account lang="en"/>
+  return <Account lang="fr"/>
 }

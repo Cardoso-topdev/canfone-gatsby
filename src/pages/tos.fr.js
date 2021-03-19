@@ -9,14 +9,14 @@ export default function TosPage({data}) {
   <Helmet>
      
   </Helmet>
-  <Layout title={data.site.siteMetadata.title} lang="en">
-    <TOS lang="en" />
+  <Layout title={data.site.siteMetadata.title} lang="fr">
+    <TOS lang="fr"/>
   </Layout>
   </>
 }
 
 export const query = graphql`
-  query TosPageQuery {
+  query TosFRPageQuery {
     site {
       siteMetadata {
         title,

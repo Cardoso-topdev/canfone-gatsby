@@ -15,21 +15,21 @@ export default function Home({data}) {
     <script type="text/javascript" src={withPrefix('js/base.js')}></script>
     <script type="text/javascript" src={withPrefix('js/index.js')}></script>
   </Helmet>
-  <Layout title={data.site.siteMetadata.title} lang="en">
-    <HomePage intro={data.allPrismicHomeP.edges[0].node.data.intro_content[0]} section={data.allPrismicHomeP.edges[0].node.data.section} lang="en" />
+  <Layout title={data.site.siteMetadata.title} lang="fr">
+    <HomePage intro={data.allPrismicHomeP.edges[0].node.data.intro_content[0]} section={data.allPrismicHomeP.edges[0].node.data.section} lang="fr"/>
   </Layout>
   </>
 }
 
 export const query = graphql`
-query HomePageQuery {
+query HomeFRPageQuery {
   site {
     siteMetadata {
       title
       description
     }
   }
-  allPrismicHomeP(filter: {lang: {eq: "en-us"}, tags: {in: "homepage"}}) {
+  allPrismicHomeP(filter: {lang: {eq: "fr-fr"}, tags: {in: "homepage"}}) {
     edges {
       node {
         data {

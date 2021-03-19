@@ -19,6 +19,15 @@ module.exports = {
     `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-sass`,
     {
+      resolve: `gatsby-plugin-i18n`,
+      options: {
+        langKeyDefault: 'en',
+        langKeyForNull: 'en',
+        prefixDefault: false,
+        useLangKeyLayout: false,
+      },
+    },
+    {
       resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: 'canfone-gatsby',

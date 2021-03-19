@@ -8,13 +8,13 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 import Modals from "../components/modals"
 
-export default function Layout({ children, title }) {
+export default function Layout({ children, title, lang }) {
   return <>
   <div className={containerStyles.container}>
-    <Header title={title} />
-    <Modals />
+    <Header title={title} lang={lang}/>
+    <Modals lang={lang}/>
     {children}
-    <Footer />
+    <Footer lang={lang}/>
   </div>
   </>
 }

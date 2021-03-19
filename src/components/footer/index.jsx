@@ -6,50 +6,51 @@ import {
   faInstagram
 } from '@fortawesome/free-brands-svg-icons'
 
-export default function HomePage() {
+export default function Footer({lang}) {
+  let lang_route = (lang === "en") ? "" : "/fr"
   return <div className="pb-8 bg-steel-grey-800">
     <div className="md:flex pb-6 md:pb-20">
       <div className="md:w-1/3 pl-10 lg:pl-20 pt-6 md:pt-20">
-        <h1 className="text-2xl md:text-3xl text-4xl font-light text-white">Ready to</h1>
-        <h1 className="text-2xl md:text-3xl text-4xl font-semibold text-white">Get</h1>
-        <h1 className="text-2xl md:text-3xl text-4xl font-semibold text-white">Connected?</h1>
+        <h1 className="text-2xl md:text-3xl text-4xl font-light text-white">{ (lang === "en") ? "Ready to" : "Prêt à"}</h1>
+        <h1 className="text-2xl md:text-3xl text-4xl font-semibold text-white">{(lang === "en") ? "Get" : "Avoir"}</h1>
+        <h1 className="text-2xl md:text-3xl text-4xl font-semibold text-white">{(lang === "en") ? "Connected?" : "Lié?"}</h1>
       </div>
       <div className="text-xs md:w-2/3 pt-8 md:pt-20">
         <div className="inline-block align-top px-10 md:px-6">
-          <h2 className="text-teal-300 text-lg uppercase pb-2 md:pb-4">Shop</h2>
+          <h2 className="text-green-300 text-lg uppercase pb-2 md:pb-4">{(lang === "en") ? "Shop" : "Boutique"}</h2>
           <ul className="text-white font-normal">
-            <li className="font-light pb-2"><a href="/internet">Internet</a></li>
-            <li className="font-light pb-2"><a href="/tv">TV</a></li>
-            <li className="font-light pb-2"><a href="/phone">Phone</a></li>
+            <li className="font-light pb-2"><a href={ lang_route + "/internet"}>{(lang === "en") ? "Internet" : "L'Internet"}</a></li>
+            <li className="font-light pb-2"><a href={ lang_route + "/tv"}>{(lang === "en") ? "TV" : "Télé"}</a></li>
+            <li className="font-light pb-2"><a href={ lang_route + "/phone"}>{(lang === "en") ? "Phone" : "Téléphone"}</a></li>
           </ul>
         </div>
 
         <div className="inline-block align-top px-6">
-          <h2 className="text-teal-300 text-lg uppercase pb-2 md:pb-4">Support</h2>
+          <h2 className="text-green-300 text-lg uppercase pb-2 md:pb-4">{(lang === "en") ? "Support" : "Soutien"}</h2>
           <ul className="text-white font-normal">
-            <li className="font-light pb-2"><a href="/account">Self Service</a></li>
-            <li className="font-light pb-2">Chat</li>
+            <li className="font-light pb-2"><a href={ lang_route + "/account"}>{(lang === "en") ? "Self Service" : "En libre service"}</a></li>
+            <li className="font-light pb-2">{(lang === "en") ? "Chat" : "Bavarder"}</li>
             <li className="font-light pb-2">FAQ</li>
           </ul>
         </div>
 
         <div className="inline-block align-top px-10 md:px-6 pt-4 md:pt-0">
-          <h2 className="text-teal-300 text-lg uppercase pb-2 md:pb-4"><a href="/account">My Account</a></h2>
+          <h2 className="text-green-300 text-lg uppercase pb-2 md:pb-4"><a href={ lang_route + "/account"}>{(lang === "en") ? "My Account" : "Mon compte"}</a></h2>
           <ul className="text-white font-normal">
-            <li className="font-light pb-2"><a href="/account">My Dashboard</a></li>
-            <li className="font-light pb-2"><a href="/account">Setup/Change Banking</a></li>
-            <li className="font-light pb-2"><a href="/account">Setup/Change Credit Card</a></li>
-            <li className="font-light pb-2"><a href="/account">Make a Payment</a></li>
+            <li className="font-light pb-2"><a href={ lang_route + "/account"}>{(lang === "en") ? "My Dashboard" : "Mon tableau de bord"}</a></li>
+            <li className="font-light pb-2"><a href={ lang_route + "/account"}>{(lang === "en") ? "Setup/Change Banking" : "Configurer / Changer de banque"}</a></li>
+            <li className="font-light pb-2"><a href={ lang_route + "/account"}>{(lang === "en") ? "Setup/Change Credit Card" : "Configuration / Modification de la carte de crédit"}</a></li>
+            <li className="font-light pb-2"><a href={ lang_route + "/account"}>{(lang === "en") ? "Make a Payment" : "Effectuer un paiement"}</a></li>
           </ul>
         </div>
 
         <div className="inline-block align-top px-10 md:px-6 pt-4 md:pt-0">
-          <h2 className="text-teal-300 text-lg uppercase pb-2 md:pb-4">Get in Touch</h2>
+          <h2 className="text-green-300 text-lg uppercase pb-2 md:pb-4">{(lang === "en") ? "Get in Touch" : "Entrer en contact"}</h2>
           <ul className="text-white font-normal">
-            <li className="font-light pb-2">Phone: 1-866-857-3140</li>
-            <li className="font-light pb-2">Email: internet@canfone.com</li>
+            <li className="font-light pb-2">{(lang === "en") ? "Phone" : "Tél"}: 1-866-857-3140</li>
+            <li className="font-light pb-2">{(lang === "en") ? "Email" : "Courriel"}: internet@canfone.com</li>
             <li className="font-light pb-2">2209 Rue Saint-Catherine E<br />Montreal, QC H2K 2J3</li>
-            <li className="font-light pb-2">All Day, Every Day</li>
+            <li className="font-light pb-2">{(lang === "en") ? "All Day, Every Day" : "Toute la journée, tous les jours"}</li>
           </ul>
         </div>
       </div>

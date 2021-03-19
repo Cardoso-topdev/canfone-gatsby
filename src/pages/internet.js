@@ -21,7 +21,7 @@ export default function Home({data}) {
     <script type="text/javascript" src={withPrefix("js/base.js")}></script>
   </Helmet>
   <Layout title={data.site.siteMetadata.title}>
-    <Internet />
+    <Internet intro={data.allPrismicHomeP.edges[0].node.data.intro_content[0]} section={data.allPrismicHomeP.edges[0].node.data.section} />
   </Layout>
   </>
 }
@@ -30,8 +30,47 @@ export const query = graphql`
   query InternetPageQuery {
     site {
       siteMetadata {
-        title,
+        title
         description
+      }
+    }
+    allPrismicHomeP(filter: {tags: {in: "internet"}}) {
+      edges {
+        node {
+          data {
+            section {
+              title_desc
+              sub_title {
+                text
+              }
+              section_hero {
+                url
+              }
+              section_desc
+              section_content {
+                text
+              }
+              main_title {
+                text
+              }
+            }
+            intro_content {
+              start_price
+              intro_title {
+                text
+              }
+              intro_subtitle {
+                text
+              }
+              intro_desc_lists {
+                text
+              }
+              img_intro_hero {
+                url
+              }
+            }
+          }
+        }
       }
     }
   }

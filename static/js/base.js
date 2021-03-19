@@ -14,7 +14,6 @@ function updateCustomerTypeInNav(customer_type = 'RESIDENTIAL') {
     business_link.style.color = '#eb3f35';
     residential_link.style.color = '#ffffff';
   }
-  console.log("customer_type:", customer_type)
 }
 
 function logKey(e) {
@@ -89,11 +88,7 @@ function base() {
 
   modalTriggers.forEach(trigger => {
     trigger.addEventListener('click', (e) => {
-      //console.log("e::", e)
-      //console.log("e.target.dataset", e.target.dataset)
-      //console.log("e.target.dataset.targetContent", e.target.dataset.targetContent)
       const { popupTrigger } = trigger.dataset
-      //console.log("popupTrigger:", popupTrigger)
       const popupModal = document.querySelector(`[data-popup-modal="${popupTrigger}"]`)
       popupModal.classList.add('is-visible')
       bodyBlackout.classList.add('is-blacked-out')
@@ -120,16 +115,7 @@ function base() {
       localStorage.setItem('province', province);
       localStorage.setItem('postal_code', postal_code);
       localStorage.setItem('service_address', service_address);
-
-      // After address update, Index moves to the Internet page
-      // After address update, other pages also move to the Internet page
-      // if (window.location.href.indexOf("index") > -1) {
-      //   window.location = 'internet.html';
-      // } else {
-      //   window.location = 'internet.html';
-      // }
       window.location = '/internet';
-
     }
     // Set an expiry time of + 6 hrs and reset pricing string in localStorage to '', it will be 
     // retrieved in the Internet, TV or Phone component
@@ -145,7 +131,6 @@ function base() {
   document.getElementById("AddressForm").addEventListener("onsubmit", function (event) {
     event.preventDefault();
   }, true);
-
 
   const fields = [
     { element: "city", field: "City", mode: pca? pca.fieldMode.POPULATE : "" },

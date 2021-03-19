@@ -19,6 +19,18 @@ module.exports = {
     `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-sass`,
     {
+      resolve: 'gatsby-source-prismic',
+      options: {
+        repositoryName: 'canfone-gatsby',
+        lang: '*',
+        schemas: {
+           homepage: require("./custom_types/home_p.json"),
+           order_confirm: require("./custom_types/order_confirm.json"),
+           tos: require("./custom_types/tos.json"),
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-resolve-src`,
       oprions: {
         src: path.resolve(__dirname, 'src'),

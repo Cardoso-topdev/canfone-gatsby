@@ -83,6 +83,4 @@ nextPageButtons.forEach(function (btn) {
     }
   });
 });
-
-
 })

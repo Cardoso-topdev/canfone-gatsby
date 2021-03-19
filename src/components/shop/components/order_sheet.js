@@ -18,8 +18,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage}) {
-  //console.log("In the Order Sheet - order_data:", order_data)
-  // Determine Next btn text
   let link_text = 'Next';
   let pathArray = (typeof window !== 'undefined') ? window.location.href.split("/") : null;
 
@@ -28,11 +26,6 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
     link_text = 'Review & Pay'
   };
   const classes = useStyles();
-  // const [checked, setChecked] = React.useState(true);
-
-  // const handleChange = event => {
-  //   setChecked(event.target.checked);
-  // };
 
   const calculateTax = (amt) => {
     if (order_data.province === 'NL') {

@@ -4,22 +4,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faMapMarker
 } from '@fortawesome/free-solid-svg-icons'
-import {
-  Img__family_tv_8E6152AD1267
-} from "../utils/imgloader"
 import FAChat from "../components/fa-chat"
 import PageHeader from "../components/page-header"
 import ShopComponent from "components/shop"
+import LandingSection from "components/landing-section"
 
-export default function Internet() {
+export default function Internet({intro, section}) {
   return <>
     <div className="header-tv">
       <PageHeader
         title1="Unbeatable Digital TV"
-        title2="Digital TV at an Unbeatable Price"
-        title3="Great Selection, Locals Included"
+        title2={intro.intro_title[0].text}
+        title3={intro.intro_subtitle[0].text}
         serviceType="Monthly basic package"
-        price="$35"
+        price={"$" + intro.start_price}
       />
       <div className="ml-4 md:ml-20 pt-1">
         <Link className="text-orange-500 underline" to="/">Channel Lineup</Link>
@@ -66,18 +64,7 @@ export default function Internet() {
     </div>
 
     <div className="px-4 md:px-8 pt-6 md:pt-16 pb-10 md:pb-24">
-      <h1 className="text-2xl md:text-3xl font-semibold text-steel-blue-600 text-center leading-tight">Take it to the Next Level</h1>
-      <h2 className="text-xl md:text-2xl font-light text-steel-blue-400 pt-1 text-center">Build a customized TV experience that is unique to you</h2>
-      <div className="lg:flex mx-auto pt-2">
-        <div className="p-4 md:p-8 lg:w-1/2">
-          <img src={Img__family_tv_8E6152AD1267} className="border border-grey-400 shadow-2xl" alt="" />
-        </div>
-        <div className="lg:flex-1 px-4 md:px-8 pt-4 md:pt-10">
-          <h2 className="text-xl font-semibold uppercase text-steel-blue-600">Bespoke Television, Oh Yeah!</h2>
-          <p className="text-base font-normal titlecase text-steel-blue-400 line-height-300 pt-4">With Canfone TV you build upon a great selection of base channels by adding custom packages to acheive that perfect mix of streaming content.</p>
-          <p className="text-base font-normal titlecase text-steel-blue-400 line-height-300 pt-2">Canfone TV requires a minimum 15 Mbps Interent package, so choose your Canfone Internet option accordingly ;)</p>
-        </div>
-      </div>
+      <LandingSection type={true} section_data={section[0]} />
     </div>
   </>
 }

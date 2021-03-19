@@ -6,7 +6,6 @@ import { Helmet } from 'react-helmet'
 import "../components/shop"
 
 export default function ServiceDetailPage({data}) {
-  console.log(data)
   return <>
   <Helmet>
     <link rel="stylesheet" type="text/css" href="https://ws1.postescanada-canadapost.ca/css/addresscomplete-2.30.min.css?key=JH73-CY14-ZK13-GG77" />
@@ -30,8 +29,47 @@ export const query = graphql`
   query ServiceDetailPageQuery {
     site {
       siteMetadata {
-        title,
+        title
         description
+      }
+    }
+    allPrismicHomeP(filter: {tags: {in: "service_detail"}}) {
+      edges {
+        node {
+          data {
+            section {
+              title_desc
+              sub_title {
+                text
+              }
+              section_hero {
+                url
+              }
+              section_desc
+              section_content {
+                text
+              }
+              main_title {
+                text
+              }
+            }
+            intro_content {
+              start_price
+              intro_title {
+                text
+              }
+              intro_subtitle {
+                text
+              }
+              intro_desc_lists {
+                text
+              }
+              img_intro_hero {
+                url
+              }
+            }
+          }
+        }
       }
     }
   }

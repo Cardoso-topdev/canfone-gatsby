@@ -24,15 +24,12 @@ import TV from '../components/tv_products';
 class Shop extends Component {
   constructor(props) {
     super(props);
-    console.log("PROPS: ", props)
-    // let date = new Date()
-    // const earliestInstallDate = date.setDate(date.getDate() + 7);
 
     if (typeof window !== 'undefined') {
       this.state = {
         city: localStorage.getItem('city') || '',
         province: localStorage.getItem('province') || '',
-        postal_code: localStorage.getItem('postal_code') || '',      
+        postal_code: localStorage.getItem('postal_code') || '',
         service_address: localStorage.getItem('service_address') || '',
         customer_type: localStorage.getItem('customer_type') || 'RESIDENTIAL',
         OBD_hexuid: localStorage.getItem('OBD_hexuid') || '',
@@ -51,14 +48,14 @@ class Shop extends Component {
         tv_package_id: localStorage.getItem('tv_package_id') || 0,
         tv_package_name: localStorage.getItem('tv_package_name') || '',
         tv_package_fee: parseInt(localStorage.getItem('tv_package_fee')) || 0,
-        tv_hardware_id:  parseInt(localStorage.getItem('tv_hardware_id')) || 0,
+        tv_hardware_id: parseInt(localStorage.getItem('tv_hardware_id')) || 0,
         tv_hardware_name: localStorage.getItem('tv_hardware_name') || '',
         tv_hardware_one_time_fee: parseFloat(localStorage.getItem('tv_hardware_one_time_fee')) || 0,
 
         phone_package_id: parseInt(localStorage.getItem('phone_package_id')) || 0,
         phone_package_name: localStorage.getItem('phone_package_name') || '',
         phone_package_fee: parseInt(localStorage.getItem('phone_package_fee')) || 0,
-        phone_hardware_id:  parseInt(localStorage.getItem('phone_hardware_id')) || 0,
+        phone_hardware_id: parseInt(localStorage.getItem('phone_hardware_id')) || 0,
         phone_hardware_name: localStorage.getItem('phone_hardware_name') || '',
         phone_hardware_one_time_fee: parseFloat(localStorage.getItem('phone_hardware_one_time_fee')) || 0,
 
@@ -84,7 +81,7 @@ class Shop extends Component {
       this.state = {
         city: '',
         province: '',
-        postal_code: '',      
+        postal_code: '',
         service_address: '',
         customer_type: 'RESIDENTIAL',
         OBD_hexuid: '',
@@ -100,11 +97,11 @@ class Shop extends Component {
         internet_hardware_monthly_fee: 0,
         internet_hardware_one_time_fee: 0,
 
-        tv_package_id:  0,
-        tv_package_name:  '',
+        tv_package_id: 0,
+        tv_package_name: '',
         tv_package_fee: 0,
         tv_hardware_id: 0,
-        tv_hardware_name:  '',
+        tv_hardware_name: '',
         tv_hardware_one_time_fee: 0,
 
         phone_package_id: 0,
@@ -156,22 +153,8 @@ class Shop extends Component {
   }
 
   componentDidMount() {
-
     const order_started = localStorage.getItem('order_started')
     const now = new Date()
-
-    if (order_started) {
-      // Check if order_started is within TTL > 1HR?
-      if (now.getTime() > order_started + 3600) {
-
-      } else {
-        // Reset to initial values
-
-      }
-    } else {
-      // Set initial values
-
-    }
 
     // Set some initial localStorage
     localStorage.setItem('promo_code', '');
@@ -189,22 +172,6 @@ class Shop extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    // Pop up Customer Info modal if customer_info_name or customer_info_phone missing form localStorage
-    /*
-    {
-    console.log("componentDidUpdate")
-    
-    if (this.state.customer_info_modal_open === false) {
-      if (this.state.customer_info_name === '' || this.state.customer_info_phone === '') {
-        this.setState({
-          customer_info_modal_open: true
-        })
-      }
-    }
-    */
-
-    //console.log("In componentDidUpdate:", prevProps.packages.hexuid);
-    //console.log("In componentDidUpdate:", this.props.packages.hexuid);
     if (this.props.packages.hexuid !== prevProps.packages.hexuid) {
       if (this.props.packages.hexuid === null) {
         localStorage.setItem('OBD_hexuid', '');
@@ -243,21 +210,9 @@ class Shop extends Component {
     // API call to check promo code
     console.log(promocode)
     this.props.actions.getPromo(promocode);
-    // If code is valid
-    // Set promo_code_name
-    
-    // Set promo_value_one_time or promo_value_monthly
-
   }
 
   nextStep() {
-    console.log("Next step, y'all");
-    // Determine the current path
-    // let re = /\/\w\w\/\w/;
-    // let pathArray = []
-    // if (typeof window !== 'undefined') {
-    //   pathArray = re.exec(window.location.href)
-    // } 
     let current_path = null
     if (typeof window !== 'undefined') {
       current_path = window.location.pathname;
@@ -312,8 +267,8 @@ class Shop extends Component {
           validation_error = true;
         }
         break;
-      case '/service_details':     
-      case '/service_details/':     
+      case '/service_details':
+      case '/service_details/':
         if (this.state.has_active_service === '') {
           this.setState({
             verification_passed_service_status: false
@@ -339,12 +294,11 @@ class Shop extends Component {
       } else if (current_path.indexOf('hardware') === 1) {
         window.location.href = "../service_details"
       } else if (current_path.indexOf('service_details') === 1) {
-        window.location.href = "../order_review"    
+        window.location.href = "../order_review"
       } else if (current_path.indexOf('order_review') === 1) {
         window.location.href = "../thanks"
       } else {
         console.log("current_path: ", current_path)
-        // window.location = "/"
       }
     }
   }
@@ -399,7 +353,7 @@ class Shop extends Component {
         internet_hardware_monthly_fee: hardware.monthly_fee,
         internet_hardware_one_time_fee: hardware.initial_cost
       })
-  
+
       // Update localstorage & TTL
       localStorage.setItem('internet_hardware_id', hardware.id);
       localStorage.setItem('internet_hardware_description', hardware.description);
@@ -454,67 +408,6 @@ class Shop extends Component {
     localStorage.setItem('tv_hardware_one_time_fee', hardware.initial_cost);
   }
 
-  /*
-  setInstallationDate(date, preference) {
-    let moment_obj = moment(date);
-
-    switch (preference) {
-      case 'FIRST':
-        localStorage.setItem('selected_installation_date', moment_obj.format('YYYY-MM-DD'));
-        this.setState({
-          selected_installation_date: moment_obj.format('YYYY-MM-DD'),
-          installation_dates_accepted: false
-        });
-        break;
-      case 'SECOND':
-        localStorage.setItem('second_installation_date', moment_obj.format('YYYY-MM-DD'));
-        this.setState({
-          second_installation_date: moment_obj.format('YYYY-MM-DD'),
-          installation_dates_accepted: false
-        });
-        break;
-      case 'THIRD':
-        localStorage.setItem('third_installation_date', moment_obj.format('YYYY-MM-DD'));
-        this.setState({
-          third_installation_date: moment_obj.format('YYYY-MM-DD'),
-          installation_dates_accepted: false
-        });
-        break;
-    }
-  }
-  */
-
-  /*
-  setInstallationTime(time, preference) {
-    // Time change, reset
-    localStorage.setItem('installation_dates_accepted', 'NO');
-
-    switch (preference) {
-      case 'FIRST':
-        localStorage.setItem('selected_installation_time', time);
-        this.setState({
-          selected_installation_time: time,
-          installation_dates_accepted: false
-        });
-        break;
-      case 'SECOND':
-        localStorage.setItem('second_installation_time', time);
-        this.setState({
-          second_installation_time: time,
-          installation_dates_accepted: false
-        });
-        break;
-      case 'THIRD':
-        localStorage.setItem('third_installation_time', time);
-        this.setState({
-          third_installation_time: time,
-          installation_dates_accepted: false
-        });
-        break;
-    }
-  }
-  */
-
   addBaseInternetPackage(option) {
     // Triggered if the customer chooses a TV package without previousy selecting an Interent package
     // this.props.packages.internet has only those packages available to the customer based on their provided address
@@ -525,7 +418,7 @@ class Shop extends Component {
     } else {
       internet_package = this.props.packages.internet.find((item) => item.download_speed >= 10) || this.props.packages.internet[1];
     }
-    
+
     // Default fee is the No Contract fee
     let fee = internet_package.residential_no_contract;
     if (this.state.customer_type === 'RESIDENTIAL') {
@@ -546,7 +439,7 @@ class Shop extends Component {
       internet_package_fee: fee,
       internet_package_speed: internet_package.download_speed
     })
-    
+
     // Update localstorage & TTL
     localStorage.setItem("internet_package_id", internet_package.id);
     localStorage.setItem("internet_package_name", internet_package.title);
@@ -579,7 +472,7 @@ class Shop extends Component {
       internet_package_fee: fee,
       internet_package_speed: internet_package.download_speed
     })
-    
+
     // Update localstorage & TTL
     localStorage.setItem("internet_package_id", internet_package.id);
     localStorage.setItem("internet_package_name", internet_package.title);
@@ -632,7 +525,7 @@ class Shop extends Component {
     let internet_package = this.props.packages.internet.find((item) => item.id === parseInt(this.state.internet_package_id));
     let fee = 0;
     console.log("typeof internet_package:", typeof internet_package)
-    if(typeof internet_package !== "undefined") {
+    if (typeof internet_package !== "undefined") {
       console.log("internet_package:", internet_package)
       fee = internet_package.residential_no_contract;
       if (this.state.customer_type === 'RESIDENTIAL') {
@@ -678,16 +571,8 @@ class Shop extends Component {
   }
 
   updateAddress() {
-    //console.log("Update address called from within React");
     window.updateServiceAddress();
   }
-  
-  /*
-  updateCurrentServiceProvider(provider) {
-    // Set localStorage value for active service provider
-    localStorage.setItem("current_service_provider", provider);
-  }
-  */
 
   updateServiceStatus(val) {
     let has_active_service = 'NO';
@@ -734,7 +619,6 @@ class Shop extends Component {
     localStorage.setItem("phone_port_authorization", phone_port_authorization);
   }
 
-
   // This function is attached to the global scope so it can be triggered from an external address lookup click event
   innerfunc() {
     console.log("Running innerfunc()!")
@@ -773,7 +657,6 @@ class Shop extends Component {
 
     if (this.props.packages.hardware !== undefined) {
       hardware = this.props.packages.hardware
-      //console.log('hardware:', hardware)
     }
 
     const order_data = {
@@ -818,102 +701,48 @@ class Shop extends Component {
 
     return (
       <ThemeProvider theme={theme}>
-        {/*<Modal
-          aria-labelledby="transition-modal-title"
-          aria-describedby="transition-modal-description"
-          open={this.state.customer_info_modal_open}
-          onClose={this.customerInfoModalClose}
-          closeAfterTransition
-          BackdropComponent={Backdrop}
-          BackdropProps={{
-            timeout: 500,
-          }}
-        >
-          <Fade in={this.state.customer_info_modal_open}>
-            <div className=" w-10/12 md:w-1/2 shadow rounded-lg bg-white mx-auto pb-6 mt-24 md:mt-48">
-              <div className="bg-canfone-teal rounded-t-lg text-white">
-                <div className="p-3">
-                  <h2 className="text-2xl font-semibold pt-2 text-center">Great, let's get started on your order!</h2>
-                  <p className="py-3 px-6 lg:px-24 text-sm text-center">Please enter your name and phone number.</p>
-                </div>
-              </div>
-              <div className="mt-4">
-                <div className="bg-white px-4 pt-4">
-                  <form noValidate autoComplete="off">
-                    <div className="px-4">
-                      <TextField
-                        id="name"
-                        label="Name"
-                        variant="outlined"
-                        fullWidth
-                        color="secondary"
-                      />
-                    </div>
-                    <div className="py-2 px-4">
-                      <TextField
-                        id="phone"
-                        label="Phone Number"
-                        variant="outlined"
-                        fullWidth
-                        color="secondary"
-                      />
-                    </div>
-                  </form>
-                  <div className="text-right mr-4 mt-3">
-                    <button 
-                      className="bg-canfone-teal hover:bg-canfone-teal-dark text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
-                      type="button">
-                      Next
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Fade>
-        </Modal>*/}
-
         <div className="lg:flex">
           <div className="lg:flex-1 px-3">
             <Router>
-              <Internet 
+              <Internet
                 path="internet"
                 packages={internet_packages}
                 order_data={order_data}
                 setInternetPackage={this.setInternetPackage}
                 setServiceContract={this.setServiceContract}
               />
-              <TV 
-                path="tv" 
+              <TV
+                path="tv"
                 packages={tv_packages}
                 order_data={order_data}
                 setTVPackage={this.setTVPackage}
               />
-              <Phone 
-                path="phone" 
+              <Phone
+                path="phone"
                 packages={phone_packages}
                 order_data={order_data}
                 setPhonePackage={this.setPhonePackage}
                 updatePhonePortOption={this.updatePhonePortOption}
                 updatePhonePortAuthorization={this.updatePhonePortAuthorization}
               />
-              <Hardware 
-                path="hardware" 
+              <Hardware
+                path="hardware"
                 hardware_options={hardware}
                 order_data={order_data}
                 selectInternetHardware={this.selectInternetHardware}
                 selectTVHardware={this.selectTVHardware}
                 selectPhoneHardware={this.selectPhoneHardware}
               />
-              <ServiceDetails 
+              <ServiceDetails
                 path="service_details"
                 order_data={order_data}
                 //setInstallationDate={this.setInstallationDate}
                 //setInstallationTime={this.setInstallationTime}
                 updateAddress={this.updateAddress}
                 updateServiceStatus={this.updateServiceStatus}
-                //updatePhonePortOption={this.updatePhonePortOption}
+              //updatePhonePortOption={this.updatePhonePortOption}
               />
-              <OrderReview 
+              <OrderReview
                 path="order_review"
                 order_data={order_data}
                 checkPromoCode={this.checkPromoCode}
@@ -936,7 +765,7 @@ class Shop extends Component {
 }
 
 function mapStateToProps(state) {
-  return { 
+  return {
     packages: state.packages,
     promo: state.promo
   };

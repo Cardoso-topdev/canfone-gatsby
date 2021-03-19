@@ -4,24 +4,27 @@ import {
   Img__download_500,
   Img__download_800,
   Img__infinity_500,
-  Img__phone_8ey3,
-  Img__tv_3hg342ghv ,
   Img__devices_200 } from "../utils/imgloader"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faCheck
 } from '@fortawesome/free-solid-svg-icons'
+import LandingSection from "components/landing-section"
 
-export default function HomePage() {
+export default function HomePage({intro, section}) {
+  console.log("Homepage, Prismic Data: ", intro, section[1].section_content)
   return <>
     <div className="header-landing">
       <div className="py-64 pl-8 md:w-3/5 md:py-40 md:pl-24">
-        <h1 className="text-3xl lg:text-5xl text-white font-semibold">Fast, Friendly Internet</h1>
-        <h1 className="hidden md:block text-2xl lg:text-3xl text-white font-semibold">Plans for Every Budget</h1>
-        <h2 className="text-lg lg:text-xl text-white pt-6 pl-6"><span className="text-canfone-teal px-2">+</span>Internet, TV and Phone Packages</h2>
-        <h2 className="text-lg lg:text-xl text-white pl-6"><span className="text-canfone-teal px-2">+</span>Unlimited Data</h2>
-        <h2 className="text-lg lg:text-xl text-white pl-6"><span className="text-canfone-teal px-2">+</span>Available Across Canada</h2>
-        <h2 className="text-lg lg:text-xl text-white uppercase pr-2 pt-4 md:pt-6 pb-2 md:pb-16">Starting at<span className="text-canfone-teal-200 text-3xl md:text-5xl lg:text-6xl font-bold pl-2 md:pl-4">$40</span><span className="text-base gray-300 normal-case">/month</span></h2>
+        <h1 className="text-3xl lg:text-5xl text-white font-semibold">{intro.intro_title[0].text}</h1>
+        <h1 className="hidden md:block text-2xl lg:text-3xl text-white font-semibold">{intro.intro_subtitle[0].text}</h1>
+        {intro.intro_desc_lists.map(({text}, idx)=>{
+          if ( idx === 0)
+            return <h2 className="text-lg lg:text-xl text-white pt-6 pl-6" key={idx}><span className="text-canfone-teal px-2">+</span>{text}</h2>
+          else 
+            return <h2 className="text-lg lg:text-xl text-white pl-6" key={idx}><span className="text-canfone-teal px-2">+</span>{text}</h2>
+        } )}
+        <h2 className="text-lg lg:text-xl text-white uppercase pr-2 pt-4 md:pt-6 pb-2 md:pb-16">Starting at<span className="text-canfone-teal-200 text-3xl md:text-5xl lg:text-6xl font-bold pl-2 md:pl-4">${intro.start_price}</span><span className="text-base gray-300 normal-case">/month</span></h2>
         <div className="pl-2 hidden md:block">
           <button
             data-next-page="internet"
@@ -239,18 +242,7 @@ export default function HomePage() {
     </div>
 
     <div className="bg-white">
-      <h1 className="text-3xl font-semibold text-steel-blue-600 text-center leading-tight">Next Level TV</h1>
-      <h2 className="text-2xl font-light text-steel-blue-400 pt-1 text-center">Build a customized experience that is unique to you</h2>
-      <div className="lg:flex w-5/6 mx-auto pt-2">
-        <div className="p-3 lg:p-8 lg:w-1/2">
-          <img alt="" src={Img__tv_3hg342ghv} className="mx-auto lg:ml-0 border border-grey-400 shadow-2xl" />
-        </div>
-        <div className="lg:flex-1 px-4 lg:px-8 pt-4 lg:pt-10">
-          <h2 className="text-xl font-semibold uppercase text-steel-blue-600">Bespoke Television</h2>
-          <p className="text-sm md:text-base font-normal titlecase text-steel-blue-400 line-height-300 pt-2 lg:pt-4">With Canfone TV you build upon a great selection of base channels by adding custom packages to acheive that perfect mix of streaming content.</p>
-          <p className="text-sm md:text-base font-normal titlecase text-steel-blue-400 line-height-300 pt-2">Canfone TV requires a minimum 15 Mbps Interent package, so choose your Canfone Internet option accordingly ;)</p>
-        </div>
-      </div>
+      <LandingSection type={true} section_data={section[0]}/>
       <div className="text-center mr-4 pt-4 pb-10">
         <button
           type="button"
@@ -260,7 +252,6 @@ export default function HomePage() {
           Shop TV
         </button>
       </div>
-
       <div className="hidden md:block pb-16">
         <table className="border border-gray-500 mx-auto">
           <thead>
@@ -348,52 +339,7 @@ export default function HomePage() {
 
     <div className="bg-white">
       <h1 className="md:hidden text-3xl font-semibold text-steel-blue-600 text-center leading-tight">Phone Packages</h1>
-      <h1 className="hidden md:block text-3xl font-semibold text-steel-blue-600 text-center leading-tight">Ultimate Phone Packages</h1>
-      <h2 className="text-2xl font-light text-steel-blue-400 pt-1 text-center">We've got you covered when it comes to phones</h2>
-      <div className="lg:hidden p-3">
-        <img alt="" src={Img__phone_8ey3} className="mx-auto border border-grey-400 shadow-2xl" />
-      </div>
-      <div className="lg:flex w-5/6 mx-auto pt-2">
-        <div className="lg:flex-1 px-4 lg:px-8 pt-4 lg:pt-10">
-          <h2 className="text-xl font-semibold uppercase text-steel-blue-600">Stay Connected</h2>
-          <p className="text-base font-normal titlecase text-steel-blue-400 line-height-300 pt-2 lg:pt-4 pb-3">Make the move to Canfone for reliable, crystal clear phone service.</p>
-          <div className="flex content-start pb-1">
-            <div className="w-12">
-              <div className="text-canfone-teal px-3">
-                <FontAwesomeIcon icon={faCheck}/>
-              </div>
-            </div>
-            <h4 className="flex-1 text-sm text-steel-blue-400">Keep your current number</h4>
-          </div>
-          <div className="flex content-start pb-1">
-            <div className="w-12">
-              <div className="text-canfone-teal px-3">
-                <FontAwesomeIcon icon={faCheck}/>
-              </div>
-            </div>
-            <h4 className="flex-1 text-sm text-steel-blue-400">Modern, high-capacity network backbone</h4>
-          </div>
-          <div className="flex content-start pb-1">
-            <div className="w-12">
-              <div className="text-canfone-teal px-3">
-                <FontAwesomeIcon icon={faCheck}/>
-              </div>
-            </div>
-            <h4 className="flex-1 text-sm text-steel-blue-400">Add features like Voicemail, Call Display, Call Waiting and more</h4>
-          </div>
-          <div className="flex content-start pb-1">
-            <div className="w-12">
-              <div className="text-canfone-teal px-3">
-                <FontAwesomeIcon icon={faCheck}/>
-              </div>
-            </div>
-            <h4 className="flex-1 text-sm text-steel-blue-400">International call forwarding</h4>
-          </div>
-        </div>
-        <div className="hidden lg:block p-8 w-1/2">
-          <img alt="" src={Img__phone_8ey3} className="border border-grey-400 shadow-2xl" />
-        </div>
-      </div>
+      <LandingSection type={false} section_data={section[1]} />
       <div className="text-center mr-4 pt-4 pb-8">
         <button
           type="button"

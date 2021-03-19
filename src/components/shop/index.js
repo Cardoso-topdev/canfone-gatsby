@@ -16,33 +16,3 @@ export default function ShopComponent() {
           <Shop />
         </Provider>
 }
-
-
-// const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-
-// if (typeof window !== 'undefined') {
-//   const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
-//   console.log("ReactDom: ", renderMethod);
-
-//   renderMethod(
-//   <Provider store={store}>
-//     <Shop />
-//   </Provider>,
-//   document.getElementById('shop')
-// );
-// }
-
-  // ReactDOM.render(<Provider store={store}>
-  //   <Shop />
-  //   <div>Successfullly Injected!!!!</div>
-  // </Provider>
-  // , document.getElementById("shop"));
-
-// renderMethod(
-//   <Provider store={store}>
-//     <Shop />
-//     <div>Successfullly Injected!!!!</div>
-//   </Provider>,
-//   document.getElementById('shop')
-// );

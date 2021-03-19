@@ -5,7 +5,6 @@ import {  withPrefix, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
 export default function OrderConfirmationPage({data}) {
-  console.log(data)
   return <>
   <Helmet>
     <script

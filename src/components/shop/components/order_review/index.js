@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
+function OrderReview({ order_data, checkPromoCode, setDefaultInternetHardware }) {
 
   useEffect(() => {
     // If the modem selection was bypassed force a default selection
@@ -161,22 +161,18 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
   const titleCaseName = (input) => {
     input = input.toLowerCase().split(' ');
     let output = [];
-    for(let element of input){
+    for (let element of input) {
       output.push(element.charAt(0).toUpperCase() + element.slice(1));
     }
- 
+
     return output.join(' ')
   }
 
   const submitOrder = () => {
-    const URL = "http://0.0.0.0:8000/api/v1/order/";
-    // const URL = "https://redloco.ca/api/v1/order/";
+    // const URL = "http://0.0.0.0:8000/api/v1/order/";
+    const URL = "https://redloco.ca/api/v1/order/";
     // const URL = `${ROOT_URL}/api/v1/promo/${code}`;
-    // console.log("{ ...localStorage }:", { ...localStorage })
     let validates = true;
-
-    // Reset validation_error ?? Is this necessary?
-    //setValidationError(false)
 
     // Validate contact name
     if (contact_name.length < 5) {
@@ -244,7 +240,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
       // setValidationError(true);
     }
 
-    let data = JSON.stringify({ 
+    let data = JSON.stringify({
       ...localStorage,
       contact_name: contact_name,
       contact_phone: contact_phone,
@@ -300,9 +296,9 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
                 <p className="text-sm grey-600">{order_data.tv_package_name}</p>
                 <p className="text-sm grey-600">{order_data.tv_hardware_name}</p>
               </div>
-            </div>  
+            </div>
             :
-            null       
+            null
           }
 
           {(order_data.phone_package_name.length > 0) ?
@@ -312,9 +308,9 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
                 <p className="text-sm grey-600">{order_data.phone_package_name}</p>
                 <p className="text-sm grey-600">{order_data.phone_hardware_name}</p>
               </div>
-            </div>   
+            </div>
             :
-            null       
+            null
           }
 
           <div className="flex items-start py-2">
@@ -328,20 +324,20 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
           <div className="flex items-center w-10/12 mx-auto border-top border-gray-400 mt-6 py-4">
             <div className="flex-grow">
               <div className={classes.promo_input}>
-                <TextField 
-                  id="outlined-basic" 
-                  label="Promo Code" 
+                <TextField
+                  id="outlined-basic"
+                  label="Promo Code"
                   variant="outlined"
                   color="secondary"
-                  value={promocode} 
-                  onChange={handlePromoInputChange} 
+                  value={promocode}
+                  onChange={handlePromoInputChange}
                 />
               </div>
             </div>
             <div>
-              <Button 
-                variant="contained" 
-                color="secondary" 
+              <Button
+                variant="contained"
+                color="secondary"
                 onClick={submitPromoCode}>
                 Apply Code
               </Button>
@@ -393,7 +389,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
               expiry={`${card_expiry_month}/${card_expiry_year}`}
               cvc={card_cvc}
               focus={''}
-              placeholders={{name: 'YOUR NAME'}}
+              placeholders={{ name: 'YOUR NAME' }}
             />
           </div>
           <div className="px-4 pt-4 md:pl-6 md:pr-3 md:pt-0">
@@ -460,9 +456,9 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
 
         <div className="text-center py-8">
           <h3 className="grey-700 text-base font-semibold uppercase">All transactions are safe and secure</h3>
-          <img src={GATSBY_IMGS["img/credit-cards-872Y.png"]} className="py-3 mx-auto" alt=""/>
+          <img src={GATSBY_IMGS["img/credit-cards-872Y.png"]} className="py-3 mx-auto" alt="" />
           <h4 className="grey-700 text-sm font-semibold uppercase">Encrypted 128-bit SSL Payment</h4>
-        </div>        
+        </div>
 
         <div className="px-16">
           <div className={clsx("flex items-center justify-center mb-8", (tos_validated) ? null : 'border border-red-600')}>

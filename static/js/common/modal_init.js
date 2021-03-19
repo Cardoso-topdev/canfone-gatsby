@@ -4,7 +4,7 @@ let bodyBlackout = document.querySelector('.body-blackout');
 
 function func_modal_init() {
 
-  console.log("PASSED!!!!!");
+  console.log("func_modal_init function passed");
   // If there is no address in localStorage activate the availability-check modal
   popupModal = document.getElementById('availability-check-modal');
   bodyBlackout = document.querySelector('.body-blackout');

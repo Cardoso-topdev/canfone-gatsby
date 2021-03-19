@@ -6,7 +6,6 @@ import {Helmet} from 'react-helmet'
 import "../components/shop"
 
 export default function OrderReviewPage({data}) {
-  console.log(data)
   return <>
   <Helmet>
       <link rel="stylesheet" type="text/css" href="https://ws1.postescanada-canadapost.ca/css/addresscomplete-2.30.min.css?key=JH73-CY14-ZK13-GG77" />

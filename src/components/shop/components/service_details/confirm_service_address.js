@@ -23,13 +23,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function ConfirmServiceAddress({order_data, updateAddress}) {
+function ConfirmServiceAddress({order_data, updateAddress, lang}) {
   const classes = useStyles();
 
   return (
     <div className="mb-6 mx-6 pb-3 border border-gray-600 shadow-md">
       <div className="px-4">
-        <h2 className="text-xl md:text-2xl font-semibold pt-2 grey-750">Service Address</h2>
+        <h2 className="text-xl md:text-2xl font-semibold pt-2 grey-750">{ (lang === "en") ? "Service Address" : "Adresse de service"}</h2>
         <div className="px-0 md:px-3">
           <form className={classes.textfield_root} noValidate autoComplete="off">
             <TextField 
@@ -50,7 +50,7 @@ function ConfirmServiceAddress({order_data, updateAddress}) {
             size="small" 
             value={"5"}
             onClick={updateAddress}>
-            Update Address
+            { (lang === "en") ? "Update Address" : "Nouvelle adresse"}
           </Button>
         </div>
       </div>

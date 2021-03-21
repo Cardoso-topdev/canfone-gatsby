@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function OrderConfirmation() {
+export default function OrderConfirmation({lang}) {
   return <>
     <div className="pt-20 md:pt-32 px-8">
       <h1 className="text-4xl font-semibold grey-700 text-center pt-20 pb-12">Thanks for your order!</h1>

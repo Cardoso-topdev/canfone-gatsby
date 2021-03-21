@@ -11,8 +11,8 @@ const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(rootSaga)
 
-export default function ShopComponent() {
+export default function ShopComponent({lang}) {
   return <Provider store={store}>
-          <Shop />
+          <Shop lang = {lang}/>
         </Provider>
 }

@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function InstallationDates() {
+function InstallationDates({lang}) {
 
   useEffect(() => {
     // Set selected date option from localStorage if available, default = ASAP
@@ -87,7 +87,9 @@ function InstallationDates() {
   return (
     <div className="mb-6 mx-6 pb-6 border border-gray-600 shadow-md">
       <div className="px-6">
-        <h2 className="text-xl md:text-2xl font-semibold pt-2 mb-6 grey-750">Select an Installation Date</h2>
+        <h2 className="text-xl md:text-2xl font-semibold pt-2 mb-6 grey-750">
+          { (lang === "en") ? "Select an Installation Date" : "Sélectionnez une date d'installation"}
+        </h2>
 
         <div className="mt-6">
         <div className="block md:flex mr-2 mb-4">
@@ -108,7 +110,7 @@ function InstallationDates() {
                   color="secondary"
                   label="ASAP" 
                   variant="outlined" 
-                  defaultValue="ASAP (As Soon As Possible)"  
+                  defaultValue={ (lang === "en") ? "ASAP (As Soon As Possible)" : "Dès que possible"}
                   InputProps={{
                     readOnly: true,
                   }}
@@ -126,10 +128,10 @@ function InstallationDates() {
                     handleASAPTimeChange(e);
                   }}
                 >
-                  <MenuItem value={'Any Time'}>Any Time</MenuItem>
-                  <MenuItem value={'Morning (8AM - 12PM)'}>Morning (8AM - 12PM)</MenuItem>
-                  <MenuItem value={'Afternoon (12PM - 5PM)'}>Afternoon (12PM - 5PM)</MenuItem>
-                  <MenuItem value={'Evening (5PM - 9PM)'}>Evening (5PM - 9PM)</MenuItem>
+                  <MenuItem value={'Any Time'}>{(lang === "en") ? "Any Time" : "A tout moment"}</MenuItem>
+                  <MenuItem value={'Morning (8AM - 12PM)'}>{(lang === "en") ? "Morning (8AM - 12PM)" : "Matin (0800 - 1200)"}</MenuItem>
+                  <MenuItem value={'Afternoon (12PM - 5PM)'}>{(lang === "en") ? "Afternoon (12PM - 5PM)" : "Après-midi (1200 - 1700)"}</MenuItem>
+                  <MenuItem value={'Evening (5PM - 9PM)'}>{(lang === "en") ? "Evening (5PM - 9PM)":"Evening (1700 - 2100)"}</MenuItem>
                 </Select>
               </FormControl>
             </div>
@@ -173,10 +175,10 @@ function InstallationDates() {
                     handleScheduledTimeChange(e);
                   }}
                 >
-                  <MenuItem value={'Any Time'}>Any Time</MenuItem>
-                  <MenuItem value={'Morning (8AM - 12PM)'}>Morning (8AM - 12PM)</MenuItem>
-                  <MenuItem value={'Afternoon (12PM - 5PM)'}>Afternoon (12PM - 5PM)</MenuItem>
-                  <MenuItem value={'Evening (5PM - 9PM)'}>Evening (5PM - 9PM)</MenuItem>
+                  <MenuItem value={'Any Time'}>{(lang === "en") ? "Any Time" : "A tout moment"}</MenuItem>
+                  <MenuItem value={'Morning (8AM - 12PM)'}>{(lang === "en") ? "Morning (8AM - 12PM)" : "Matin (0800 - 1200)"}</MenuItem>
+                  <MenuItem value={'Afternoon (12PM - 5PM)'}>{(lang === "en") ? "Afternoon (12PM - 5PM)" : "Après-midi (1200 - 1700)"}</MenuItem>
+                  <MenuItem value={'Evening (5PM - 9PM)'}>{(lang === "en") ? "Evening (5PM - 9PM)":"Evening (1700 - 2100)"}</MenuItem>
                 </Select>
               </FormControl>
             </div>
@@ -185,12 +187,17 @@ function InstallationDates() {
 
         <div className="my-8 pt-4 pb-4 mx-0 px-4 border border-gray-300 bg-gray-200">
           <h2 className="text-xl grey-600 font-semibold pb-3">Please Note:</h2>
-          <p className="text-sm grey-600">
+          {(lang === "en") ? <p className="text-sm grey-600">
             It will take approximately 7 days for your Internet service to be installed. Choosing ASAP could potentially provide 
             you with a short notice booking in the event of client rescheduling. The earliest available date has been 
             automatically selected, however, you may change the date and time to those which suit you best. Someone of legal 
             age will need to be present at your home for technician to complete the installation.
-          </p>
+          </p> : <p className="text-sm grey-600">
+            Il faut compter environ 7 jours pour l'installation de votre service Internet. Choisir le plus rapidement possible pourrait vous permettre de 
+            vous avec une réservation à court terme en cas de changement de client. La première date disponible a été automatiquement sélectionnés, mais 
+            vous pouvez changer la date et l'heure pour celles qui vous conviennent le mieux. Une personne de confiance L'âge devra être présent à votre 
+            domicile pour que le technicien puisse procéder à l'installation.
+          </p>}
         </div>
       </div>
     </div>

@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_id, hardware_validated}) {
+function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_id, hardware_validated, lang}) {
   const classes = useStyles();
   const internet_package_speed = (typeof window !== 'undefined') ? (parseInt(localStorage.getItem('internet_package_speed')) || 0) : 0;
 
@@ -63,9 +63,16 @@ function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_i
     let hardware_option = hardware_options.find(option => option.id === selected_hardware_id);
     if (hardware_option) { // undefined if hardware_option_id (modem/router option) hasn't been selected
       if (hardware_option.monthly_fee > 0) {
-        return <h1 className="text-3xl text-canfone-teal font-semibold text-center md:text-right pb-2 md:pt-3">{`$${hardware_option.monthly_fee}`}<span className="text-sm grey-450 pl-2">per month for 12 months</span></h1>
+        return <h1 className="text-3xl text-canfone-teal font-semibold text-center md:text-right pb-2 md:pt-3">{`$${hardware_option.monthly_fee}`}<span className="text-sm grey-450 pl-2">
+          {(lang === "en") ? "per month for 12 months" : "par mois pendant 12 mois"}
+          
+          </span>
+        </h1>
       } else {
-        return <h1 className="text-3xl text-canfone-teal font-semibold text-center md:text-right pb-2 md:pt-3">{`$${hardware_option.initial_cost}`}<span className="text-sm grey-450 pl-2">One-time fee</span></h1>
+        return <h1 className="text-3xl text-canfone-teal font-semibold text-center md:text-right pb-2 md:pt-3">{`$${hardware_option.initial_cost}`}<span className="text-sm grey-450 pl-2">
+          {(lang === "en") ? "One-time fee" : "Frais Uniques"}
+          </span>
+        </h1>
       }
     } else {
       return ( // just a empty h1 for layout purposes
@@ -84,11 +91,11 @@ function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_i
             onChange={toggleHasModem}
           />
         </div>
-        <h2 className="flex-1 md:pl-2 text-sm md:text-base font-semibold">I already have a modem that I will use.</h2>
+        <h2 className="flex-1 md:pl-2 text-sm md:text-base font-semibold">{(lang === "en") ? "I already have a modem that I will use." : "J'ai déjà un modem que je vais utiliser."}</h2>
       </div>
       {(has_modem === true) ?
         <div className="px-4 py-2 my-2 border border-gray-400">
-          <h2 className="text-lg font-semibold grey-600">What model of modem do you have?</h2>
+          <h2 className="text-lg font-semibold grey-600">{(lang === "en") ? "What model of modem do you have?" : "Quel modèle de modem avez-vous ?"}</h2>
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
               value={modem}
@@ -98,7 +105,7 @@ function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_i
               inputProps={{ 'aria-label': 'Without label' }}
             >
               <MenuItem value="">
-                <em>Select One</em>
+                <em>{(lang === "en") ? "Select One" : "Sélectionnez une option"}</em>
               </MenuItem>
               <MenuItem value={'Cisco DPC3848'}>Cisco DPC3848</MenuItem>
               <MenuItem value={'Cisco DPC3848V'}>Cisco DPC3848V</MenuItem>
@@ -114,20 +121,22 @@ function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_i
             </Select>
           </FormControl>
           <div className="pt-2">
-            <h2 className="text-lg font-semibold grey-600">Modem Serial Number:</h2>
+            <h2 className="text-lg font-semibold grey-600">{(lang === "en") ? "Modem Serial Number:" : "Numéro de série du modem:"}</h2>
             <form className={classes.textFieldRoot} noValidate autoComplete="off">
               <TextField id="outlined-basic" label="Serial Number" variant="outlined" />
             </form>
           </div>
           <div className="pt-2">
-            <h2 className="text-lg font-semibold grey-600">Modem MAC Address:</h2>
+            <h2 className="text-lg font-semibold grey-600">{(lang === "en") ? "Modem MAC Address:" : "Adresse MAC du modem:"}</h2>
             <form className={classes.textFieldRoot} noValidate autoComplete="off">
               <TextField id="outlined-basic" label="MAC Address" variant="outlined" />
             </form>
           </div>
           <div className="flex px-3 py-3">
             <h2 className="text-canfone-red text-xl pr-2"><i className="fas fa-question-circle"></i></h2>
-            <p className="flex-1 text-base grey-600 pt-1">If you need help figuring out your details call us at 1-866-857-3140!</p>
+            <p className="flex-1 text-base grey-600 pt-1">
+              {(lang === "en") ? "If you need help figuring out your details call us at 1-866-857-3140!" : "Si vous avez besoin d'aide pour trouver vos coordonnées, appelez-nous au 1-866-857-3140!"}
+            </p>
           </div>
         </div>
       :
@@ -144,7 +153,7 @@ function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_i
               </div>
             }
             <div className="flex-1 py-2 px-3">
-              <h2 className="text-xl font-semibold pl-2 pb-4">Modem and Wireless Router</h2>
+              <h2 className="text-xl font-semibold pl-2 pb-4">{(lang === "en") ? "Modem and Wireless Router" : "Modem et routeur sans fil"}</h2>
               {(hardware_validated) ?
                 null
                 :
@@ -152,13 +161,13 @@ function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_i
                   <div className={classes.alert_root}>
                     <Alert severity="error" variant="filled">
                       <AlertTitle>Error</AlertTitle>
-                      You'll need to select an option here.
+                      {(lang === "en") ? "You'll need to select an option here." : "Vous devez sélectionner une option ici."}
                     </Alert>
                   </div>
                 </div>
               }
               <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel id="modem-selection-label" color="secondary">Select</InputLabel>
+                <InputLabel id="modem-selection-label" color="secondary">{(lang === "en") ? "Select" : "Sélectionnez"}</InputLabel>
                 <Select
                   labelId="modem-selection-label"
                   id="modem-selection"
@@ -168,7 +177,7 @@ function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_i
                   color="secondary"
                 >
                   <MenuItem value={0}>
-                    <em>Select Modem and Router</em>
+                    <em>{(lang === "en") ? "Select Modem and Router" : "Sélectionner le modem et le routeur"}</em>
                   </MenuItem>
                   {hardware_options.map((item) => {
                     return (
@@ -182,7 +191,7 @@ function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_i
           </div>
 
           <div className="md:hidden px-2 py-2 my-2 border border-gray-400">
-            <h2 className="text-base font-semibold px-2">Modem and Wireless Router</h2>
+            <h2 className="text-base font-semibold px-2">{(lang === "en") ? "Modem and Wireless Router" : "Modem et routeur sans fil"}</h2>
             <div className="pr-2 text-sm">
               <FormControl variant="outlined" className={classes.formControl}>
                 <Select
@@ -193,7 +202,7 @@ function ModemsAndRouters({hardware_options, selectHardware, selected_hardware_i
                   inputProps={{ 'aria-label': 'Without label' }}
                 >
                   <MenuItem value="" disabled>
-                    <em>Select Option</em>
+                    <em>{(lang === "en") ? "Select Option" : "Choisir une option"}</em>
                   </MenuItem>
                   {hardware_options.map((item) => {
                     return (

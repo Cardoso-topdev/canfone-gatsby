@@ -292,19 +292,37 @@ class Shop extends Component {
     // Next Step Decision Tree
     if (!validation_error && window) {
       if (current_path.indexOf('internet') > 0) {
-        window.location.href = "../tv"
+        if ( this.props.lang === "en")
+          window.location.href = "../tv"
+        else 
+          window.location.href = "../fr/tv"
       } else if (current_path.indexOf('tv') > 0) {
-        window.location.href = "../phone"
+        if ( this.props.lang === "en")
+          window.location.href = "../phone"
+        else 
+          window.location.href = "../fr/phone"
       } else if (current_path.indexOf('phone') > 0) {
-        window.location.href = "../hardware"
+        if ( this.props.lang === "en")
+          window.location.href = "../hardware"
+        else 
+          window.location.href = "../fr/hardware"
       } else if (current_path.indexOf('hardware') > 0) {
-        window.location.href = "../service_details"
+        if ( this.props.lang === "en")
+          window.location.href = "../service_details"
+        else 
+          window.location.href = "../fr/service_details"
       } else if (current_path.indexOf('service_details') > 0) {
-        window.location.href = "../order_review"
+        if ( this.props.lang === "en")
+          window.location.href = "../order_review"
+        else 
+          window.location.href = "../fr/order_review"
       } else if (current_path.indexOf('order_review') > 0) {
-        window.location.href = "../thanks"
+        if ( this.props.lang === "en")
+          window.location.href = "../thanks"
+        else 
+          window.location.href = "../fr/thanks"
       } else {
-        console.log("current_path: ", current_path)
+        console.log("NEXT ERROR current_path: ", current_path)
       }
     }
   }
@@ -711,20 +729,23 @@ class Shop extends Component {
           <div className="lg:flex-1 px-3">
             <Router>
               <Internet
-                path="internet"
+                path={this.props.lang === "en" ? "internet" : "fr/internet"}
+                lang = {this.props.lang}
                 packages={internet_packages}
                 order_data={order_data}
                 setInternetPackage={this.setInternetPackage}
                 setServiceContract={this.setServiceContract}
               />
               <TV
-                path="tv"
+                path={this.props.lang === "en" ? "tv" : "fr/tv"}
+                lang = {this.props.lang}
                 packages={tv_packages}
                 order_data={order_data}
                 setTVPackage={this.setTVPackage}
               />
               <Phone
-                path="phone"
+                path={this.props.lang === "en" ? "phone" : "fr/phone"}
+                lang = {this.props.lang}
                 packages={phone_packages}
                 order_data={order_data}
                 setPhonePackage={this.setPhonePackage}
@@ -732,7 +753,8 @@ class Shop extends Component {
                 updatePhonePortAuthorization={this.updatePhonePortAuthorization}
               />
               <Hardware
-                path="hardware"
+                path={this.props.lang === "en" ? "hardware" : "fr/hardware"}
+                lang = {this.props.lang}
                 hardware_options={hardware}
                 order_data={order_data}
                 selectInternetHardware={this.selectInternetHardware}
@@ -740,7 +762,8 @@ class Shop extends Component {
                 selectPhoneHardware={this.selectPhoneHardware}
               />
               <ServiceDetails
-                path="service_details"
+                path={this.props.lang === "en" ? "service_details" : "fr/service_details"}
+                lang = {this.props.lang}
                 order_data={order_data}
                 //setInstallationDate={this.setInstallationDate}
                 //setInstallationTime={this.setInstallationTime}
@@ -749,7 +772,8 @@ class Shop extends Component {
               //updatePhonePortOption={this.updatePhonePortOption}
               />
               <OrderReview
-                path="order_review"
+                path={this.props.lang === "en" ? "order_review" : "fr/order_review"}
+                lang = {this.props.lang}
                 order_data={order_data}
                 checkPromoCode={this.checkPromoCode}
                 setDefaultInternetHardware={this.setDefaultInternetHardware}
@@ -759,6 +783,7 @@ class Shop extends Component {
           <div className="md:ml-0 md:pr-3">
             <OrderSheet
               order_data={order_data}
+              lang={this.props.lang}
               removePhonePackage={this.removePhonePackage}
               removeTVPackage={this.removeTVPackage}
               nextStep={this.nextStep}

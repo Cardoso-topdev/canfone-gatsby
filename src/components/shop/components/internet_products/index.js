@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Internet({location, packages, order_data, setInternetPackage, setServiceContract}) {
+function Internet({location, packages, order_data, setInternetPackage, setServiceContract, lang}) {
   const classes = useStyles();
   const products = packages.map((item) =>
     <Item
@@ -35,6 +35,7 @@ function Internet({location, packages, order_data, setInternetPackage, setServic
       service_contract={order_data.service_contract}
       selected_internet_package_id={order_data.internet_package_id}
       setInternetPackage={setInternetPackage}
+      lang={lang}
     />
   );
 
@@ -48,13 +49,14 @@ function Internet({location, packages, order_data, setInternetPackage, setServic
               color="secondary"
               value='2YR'
               onClick={setServiceContract}>
-              2-YR Pricing
+              {(lang === "en")? "2-YR Pricing" : "Contrat de 2 ans"}
+              
             </Button>
             <Button 
               variant="outlined"
               value='NONE'
               onClick={setServiceContract}>
-              No Contract
+              {(lang === "en")? "No Contract" : "Pas de contrat"}
             </Button>
           </div>
         }
@@ -64,14 +66,14 @@ function Internet({location, packages, order_data, setInternetPackage, setServic
               variant="outlined" 
               value='2YR'
               onClick={setServiceContract}>
-              2-YR Pricing
+              {(lang === "en")? "2-YR Pricing" : "Contrat de 2 ans"}
             </Button>
             <Button 
               variant="contained"
               color="secondary"
               value='NONE'
               onClick={setServiceContract}>
-              No Contract
+              {(lang === "en")? "No Contract" : "Pas de contrat"}
             </Button>
           </div>
         }

@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     '& > *': {
       borderRadius: 0,
     },
-  },  
+  },
   formControl: {
     width: '75%',
   },
@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function PortPhoneNumber({order_data, updatePhonePortOption, updatePhonePortAuthorization}) {
+function PortPhoneNumber({ order_data, updatePhonePortOption, updatePhonePortAuthorization }) {
   const classes = useStyles();
 
   const [phone_port_option, setPhonePortOption] = useState(order_data.phone_port);
@@ -52,7 +52,6 @@ function PortPhoneNumber({order_data, updatePhonePortOption, updatePhonePortAuth
 
   const [phone_port_confirmed, setPhonePortConfirmed] = React.useState(false);
   const handlePhonePortConfirmationChange = (event) => {
-    console.log("local validation")
     let errors = false
     // Perform local validation
     if (phone_port_name.length > 5) {
@@ -101,29 +100,6 @@ function PortPhoneNumber({order_data, updatePhonePortOption, updatePhonePortAuth
     setImageFile(event.target.files[0]);
   };
 
-  /*
-  // On file upload (click the upload button) 
-  onFileUpload = () => { 
-  
-    // Create an object of formData 
-    const formData = new FormData(); 
-    
-    // Update the formData object 
-    formData.append( 
-      "myFile", 
-      this.state.selectedFile, 
-      this.state.selectedFile.name 
-    ); 
-    
-    // Details of the uploaded file 
-    console.log(this.state.selectedFile); 
-    
-    // Request made to the backend api 
-    // Send formData object 
-    axios.post("api/uploadfile", formData); 
-  }; 
-  */
-
   const [phone_port_address, setPhonePortAddress] = React.useState(localStorage.getItem("phone_port_address") || '');
   const handlePhonePortAddressChange = (event) => {
     setPhonePortAddress(event.target.value);
@@ -135,7 +111,6 @@ function PortPhoneNumber({order_data, updatePhonePortOption, updatePhonePortAuth
     setPhonePortNumber(event.target.value);
     setPhonePortConfirmed(false);
   };
-
 
   const setPhonePort = (event) => {
     setPhonePortOption(event.target.value);
@@ -180,23 +155,23 @@ function PortPhoneNumber({order_data, updatePhonePortOption, updatePhonePortAuth
             <div className="pt-2 px-2 md:px-6 border-t border-gray-400">
               <div className="py-3 md:px-5">
                 <h1 className="text-lg md:text-xl grey-700 uppercase">Porting your number is easy, here's how:</h1>
-                <p className="text-sm md:text-base pt-4 grey-700">When transferring your number it is important to <span className="font-semibold grey-800">not cancel your current phone provider before the transfer 
+                <p className="text-sm md:text-base pt-4 grey-700">When transferring your number it is important to <span className="font-semibold grey-800">not cancel your current phone provider before the transfer
                   is 100% complete</span>.</p>
-                <p className="text-sm md:text-base pt-2 grey-700">If you cancel your existing phone service before the porting process has completed the transfer will fail and your number may be lost. 
-                  An incorrect name or address will also cause the transfer to fail so please double-check that all information is correct.
+                <p className="text-sm md:text-base pt-2 grey-700">If you cancel your existing phone service before the porting process has completed the transfer will fail and your number may be lost.
+                An incorrect name or address will also cause the transfer to fail so please double-check that all information is correct.
                 </p>
                 <div className="pt-4">
                   <form className={classes.form_port_phone} noValidate autoComplete="off">
                     <h2 className="text-lg md:text-xl grey-700 font-semibold uppercase">Step 1:</h2>
                     <h3 className="text-sm md:text-base px-2 md:px-6 pt-2">Enter the account details exactly as stated on your most recent phone bill:</h3>
                     <div className="px-2 md:px-6 pt-3">
-                      <TextField 
-                        id="phone_port_name" 
-                        label="Name" 
+                      <TextField
+                        id="phone_port_name"
+                        label="Name"
                         value={phone_port_name}
                         color="secondary"
                         error={phone_port_name_error}
-                        variant="outlined" 
+                        variant="outlined"
                         onChange={handlePhonePortNameChange}
                       />
                       <TextField
@@ -205,7 +180,7 @@ function PortPhoneNumber({order_data, updatePhonePortOption, updatePhonePortAuth
                         value={phone_port_address}
                         color="secondary"
                         error={phone_port_address_error}
-                        variant="outlined" 
+                        variant="outlined"
                         onChange={handlePhonePortAddressChange}
                       />
                       <TextField
@@ -219,7 +194,6 @@ function PortPhoneNumber({order_data, updatePhonePortOption, updatePhonePortAuth
                       />
                     </div>
                   </form>
-
 
                   <h2 className="text-lg md:text-xl grey-700 font-semibold uppercase pt-4">Step 2:</h2>
                   <h3 className="text-sm md:text-base px-2 md:px-6 pt-2">Upload an image of your current phone bill with your account details clearly visible:</h3>
@@ -238,11 +212,11 @@ function PortPhoneNumber({order_data, updatePhonePortOption, updatePhonePortAuth
                     </label>
                   </div>
                   {(image_file == null) ?
-                      null
+                    null
                     :
-                      <div className="text-center">
-                        <i className="far fa-check-circle text-4xl" style={{color: '#0b9b4a'}}></i>
-                      </div>
+                    <div className="text-center">
+                      <i className="far fa-check-circle text-4xl" style={{ color: '#0b9b4a' }}></i>
+                    </div>
                   }
 
                   {(order_data.validation_pass_authorized_to_port_number) ?
@@ -255,7 +229,7 @@ function PortPhoneNumber({order_data, updatePhonePortOption, updatePhonePortAuth
                       </Alert>
                     </div>
                   }
-  
+
                   <h2 className="text-lg md:text-xl grey-700 font-semibold uppercase pt-4">Step 3:</h2>
                   <h3 className="text-sm md:text-base px-2 md:px-6 pt-2">And finally, confirm that the phone number is yours:</h3>
                   <div className="flex items-start ml-2 md:ml-4 mb-6 px-6 pt-2">
@@ -270,10 +244,8 @@ function PortPhoneNumber({order_data, updatePhonePortOption, updatePhonePortAuth
                       I confirm that I am the authorized account holder and approve the transfer of this number.
                     </div>
                   </div>
-
                   <h3 className="text-lg md:text-xl pt-6 text-canfone-red font-bold uppercase">Important</h3>
                   <h3 className="text-sm md:text-base px-2 md:px-6 pt-0">Do not cancel with your current phone provider until the transfer is 100% complete. We'll notify you when it is time to cancel with your phone provider.</h3>
-
                 </div>
               </div>
             </div>

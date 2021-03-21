@@ -71,7 +71,6 @@ import Img_network_drop_none from "../img/network-drop-none.png"
 import Img_network_drop_unknown from "../img/network-drop-unknown.png"
 import Img_office from "../img/office.jpg"
 import Img_phone_booths from "../img/phone_booths.jpg"
-import Img_phone_8ey3 from "../img/phone-8ey3.jpg"
 import Img_phone_72gtg from "../img/phone-72gtg.jpg"
 import Img_phone_canada_us_btn from "../img/phone-canada_us-btn.png"
 import Img_phone_canada_btn from "../img/phone-canada-btn.png"
@@ -118,7 +117,6 @@ import Img_tach_level_05 from "../img/tach-level-05.png"
 import Img_tach_level_06 from "../img/tach-level-06.png"
 import Img_tc4300_hapAC from "../img/tc4300_hapAC.jpg"
 import Img_tv_display from "../img/tv_display.jpg"
-import Img_tv_3hg342ghv from "../img/tv-3hg342ghv.jpg"
 import Img_tv_landing from "../img/tv-landing.jpg"
 import Img_unlimited_usage from "../img/unlimited-usage.jpg"
 import Img_usage_unlimited from "../img/usage-unlimited.png"
@@ -198,7 +196,6 @@ export const GATSBY_IMGS = {
   "img/network-drop-unknown.png" : Img_network_drop_unknown,
   "img/office.jpg" : Img_office,
   "img/phone_booths.jpg" : Img_phone_booths,
-  "img/phone-8ey3.jpg" : Img_phone_8ey3,
   "img/phone-72gtg.jpg" : Img_phone_72gtg,
   "img/phone-canada_us-btn.png" : Img_phone_canada_us_btn,
   "img/phone-canada-btn.png" : Img_phone_canada_btn,
@@ -245,20 +242,17 @@ export const GATSBY_IMGS = {
   "img/tach-level-06.png" : Img_tach_level_06,
   "img/tc4300_hapAC.jpg" : Img_tc4300_hapAC,
   "img/tv_display.jpg" : Img_tv_display,
-  "img/tv-3hg342ghv.jpg" : Img_tv_3hg342ghv,
   "img/tv-landing.jpg" : Img_tv_landing,
   "img/unlimited-usage.jpg" : Img_unlimited_usage,
   "img/usage-unlimited.png" : Img_usage_unlimited,
   "img/wicked-fast.jpg" : Img_wicked_fast,
-}
+} 
 
 export const Img__download_200              = Img_download_200;
 export const Img__download_500              = Img_download_500;
 export const Img__download_800              = Img_download_800;
 export const Img__infinity_500              = Img_infinity_500;
 export const Img__devices_200               = Img_devices_200;
-export const Img__phone_8ey3                = Img_phone_8ey3;
-export const Img__tv_3hg342ghv              = Img_tv_3hg342ghv;
 export const Img__mikrotik_hap_724tt        = Img_mikrotik_hap_724tt;
 export const Img__family_tv_8E6152AD1267    = Img_family_tv_8E6152AD1267;
 export const Img__phone_72gtg               = Img_phone_72gtg;

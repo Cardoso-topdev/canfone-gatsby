@@ -1,10 +1,11 @@
 import React from 'react';
 import Item from './item';
 
-function ProductList({hardware, selectHardware, selected_hardware_id}) {
+function ProductList({hardware, selectHardware, selected_hardware_id, lang}) {
 
   const items = hardware.map((item) =>
     <Item
+      lang={lang}
       key={item.id}
       item={item}
       selectHardware={selectHardware}

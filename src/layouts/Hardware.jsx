@@ -3,18 +3,18 @@ import CanMap from "../components/canfone-map"
 import FAChat from "../components/fa-chat"
 import PageHeader from "../components/page-header"
 
-export default function Hardware() {
+export default function Hardware({intro, lang}) {
   return <>
     <div className="header-hardware">
       <PageHeader 
-        title1="Hardware Options"
-        title2="It's time to select your gear"
-        serviceType="Monthly plans starting from"
-        price="$10"
+        title2={intro.intro_title[0].text}
+        title3={intro.intro_subtitle[0].text}
+        serviceType={ (lang === "en") ? "Monthly plans starting from" : "Plans mensuels à partir de"}
+        price={"$" + intro.start_price}
         />
     </div>
     
-    <FAChat />
-    <CanMap />
+    <FAChat lang={lang}/>
+    <CanMap lang={lang}/>
   </>
 }

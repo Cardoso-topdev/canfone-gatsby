@@ -17,9 +17,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage}) {
-  //console.log("In the Order Sheet - order_data:", order_data)
-  // Determine Next btn text
+function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage, lang}) {
   let link_text = 'Next';
   let pathArray = (typeof window !== 'undefined') ? window.location.href.split("/") : null;
 
@@ -28,11 +26,6 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
     link_text = 'Review & Pay'
   };
   const classes = useStyles();
-  // const [checked, setChecked] = React.useState(true);
-
-  // const handleChange = event => {
-  //   setChecked(event.target.checked);
-  // };
 
   const calculateTax = (amt) => {
     if (order_data.province === 'NL') {
@@ -66,20 +59,6 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
     }
   }
 
-  // const resetOrder = () => {
-  //   let city = localStorage.getItem('city') || '';
-  //   let province = localStorage.getItem('province') || '';
-  //   let postal_code = localStorage.getItem('postal_code') || '';
-  //   let service_address = localStorage.getItem('service_address') || '';
-  //   let order_id = Math.random().toString(36).substr(2, 9).toUpperCase();
-  //   localStorage.clear();
-  //   localStorage.setItem('city', city)
-  //   localStorage.setItem('province', province)
-  //   localStorage.setItem('postal_code', postal_code)
-  //   localStorage.setItem('service_address', service_address)
-  //   localStorage.setItem('order_id', order_id)
-  // }
-
   let total_one_time_costs = order_data.internet_hardware_one_time_fee + order_data.tv_hardware_one_time_fee + 
     order_data.phone_hardware_one_time_fee;
   let total_monthly_fees = order_data.internet_hardware_monthly_fee + order_data.internet_package_fee +
@@ -102,7 +81,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
   return (
     <div className="mx-auto lg:mx-0 max-w-xs rounded-lg bg-white overflow-hidden border border-gray-600 order-sheet mb-6">
       <div className="flex px-4 bg-canfone-teal">
-        <div className=" flex-1 text-white text-2xl py-2 uppercase">Your Order</div>
+        <div className=" flex-1 text-white text-2xl py-2 uppercase">{(lang === "en") ? "Your Order" : "Votre commande"}</div>
         <div className={clsx("mt-4", (current_path === 'order_review') && 'hidden')} role="button" onKeyDown={() => console.log("Key pressed!")} onClick={nextStep}>
           <FontAwesomeIcon icon={faArrowAltCircleRight} className="text-2xl text-white cursor-pointer" />
         </div>
@@ -113,9 +92,9 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
           <div className="my-1 px-3 border-l-4 border-teal-400">
             <div className="flex items-end">
               <div className="flex-1">
-                <a href="../internet" className="text-sm grey-600 font-semibold uppercase hover:underline">Internet Package</a>
+                <a href="../internet" className="text-sm grey-600 font-semibold uppercase hover:underline">{(lang === "en") ? "Internet Package" : "Paquet Internet"}</a>
               </div>
-              <a href="../internet" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
+              <a href="../internet" className="text-sm text-canfone-teal underline text-right pt-1">{(lang === "en") ? "Modify" : "Modifier"}</a>
             </div>
             {(order_data.internet_package_name.length > 0) ?
               <div>
@@ -124,20 +103,20 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
                 </p>
                 <div className="flex">
                   <h3 className="flex-1 grey-600 text-sm">
-                    Monthly Fee:
+                    {(lang === "en") ? 'Monthly Fee:' : "Frais mensuels:"}
                   </h3>
                   <div className="grey-600 text-sm">
                     {`$${order_data.internet_package_fee.toFixed(2)}`}
                   </div>
                 </div>
                 {(order_data.service_contract === '2YR') ?
-                  <p className="grey-600 text-xs">2-YR Contract</p>
+                  <p className="grey-600 text-xs">{(lang === "en") ? "2-YR Contract" : "Contrat de 2 ans"}</p>
                 :
-                  <p className="grey-600 text-xs">No Contract</p>
+                  <p className="grey-600 text-xs">{(lang === "en") ? "No Contract" : "Pas de contrat"}</p>
                 }
               </div>
               :
-              <h3 className="text-sm grey-400">None Selected</h3>
+              <h3 className="text-sm grey-400">{(lang === "en") ? "None Selected" : "Aucun sélectionné"}</h3>
             }
           </div>
         </div>
@@ -146,19 +125,19 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
           <div className="my-1 px-3 py-1 border-l-4 border-teal-400">
             <div className="flex items-end">
               <div className="flex-1">
-                <a href="../tv" className="text-sm grey-600 font-semibold uppercase hover:underline">TV Package</a>
+                <a href="../tv" className="text-sm grey-600 font-semibold uppercase hover:underline">{(lang === "en") ? "TV Package" : "Paquet TV"}</a>
               </div>
               { (order_data.tv_package_id > 0) ?
                 <button 
                   className="text-sm text-canfone-teal underline text-right" 
                   onClick={removeTVPackage}>
-                  Remove
+                  {(lang === "en") ? "Remove" : "Supprimer"}
                 </button>
                 :
                 <button 
                   className={clsx("text-sm text-canfone-teal underline text-right", (current_path === 'tv') && 'invisible')}
                   onClick={() => {window.location = "../tv"}}>
-                  Add
+                  {(lang === "en") ? "Add" : "Ajouter"}
                 </button>
               }
             </div>
@@ -169,7 +148,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
                 </p>
                 <div className="flex">
                   <h3 className="flex-1 grey-600 text-sm">
-                    Monthly Fee:
+                    {(lang === "en") ? 'Monthly Fee:' : "Frais mensuels:"}
                   </h3>
                   <p className="grey-600 text-sm">
                     {`$${order_data.tv_package_fee.toFixed(2)}`}
@@ -177,7 +156,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
                 </div>
               </Fragment>
               :
-              <h3 className="text-sm grey-400">None Selected</h3>
+              <h3 className="text-sm grey-400">{(lang === "en") ? "None Selected" : "Aucun sélectionné"}</h3>
             }
           </div>
         </div>
@@ -186,19 +165,19 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
           <div className="my-1 px-3 py-1 border-l-4 border-teal-400">
             <div className="flex items-end">
               <div className="flex-1">
-                <a href="../phone" className="text-sm grey-600 font-semibold uppercase hover:underline">Phone Package</a>
+                <a href="../phone" className="text-sm grey-600 font-semibold uppercase hover:underline">{(lang === "en") ? "Phone Package" : "Paquet téléphonique"}</a>
               </div>
               { (order_data.phone_package_id > 0) ?
                 <button 
                   className="text-sm text-canfone-teal underline text-right" 
                   onClick={removePhonePackage}>
-                  Remove
+                  {(lang === "en") ? "Remove" : "Supprimer"}
                 </button>
                 :
                 <button 
                   className={clsx("text-sm text-canfone-teal underline text-right", (current_path === 'phone') && 'invisible')}
                   onClick={() => {window.location = "../phone"}}>
-                  Add
+                  {(lang === "en") ? "Add" : "Ajouter"}
                 </button>
               }
             </div>
@@ -209,7 +188,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
                 </p>
                 <div className="flex">
                   <h3 className="flex-1 grey-600 text-sm">
-                    Monthly Fee:
+                    {(lang === "en") ? 'Monthly Fee:' : "Frais mensuels:"}
                   </h3>
                   <p className="grey-600 text-sm">
                     {`$${order_data.phone_package_fee.toFixed(2)}`}
@@ -217,7 +196,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
                 </div>
               </Fragment>
               :
-              <h3 className="text-sm grey-400">None Selected</h3>
+              <h3 className="text-sm grey-400">{(lang === "en") ? "None Selected" : "Aucun sélectionné"}</h3>
             }
           </div>
         </div>
@@ -229,7 +208,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
                 <a href="../hardware" className="text-sm grey-600 font-semibold uppercase hover:underline">Hardware</a>
               </div>
               <div>
-                <a href="../hardware" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
+                <a href="../hardware" className="text-sm text-canfone-teal underline text-right pt-1">{(lang === "en") ? "Modify" : "Modifier"}</a>
               </div>
             </div>
             <Fragment>
@@ -255,14 +234,14 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
               }
               {(order_data.internet_hardware_description.length === 0 && order_data.tv_hardware_name.length === 0 && order_data.phone_hardware_name.length === 0) &&
                 <p className="text-sm grey-400">
-                  None Selected
+                  {(lang === "en") ? "None Selected" : "Aucun sélectionné"}
                 </p>
               }
               {(order_data.internet_hardware_description.length > 0 || order_data.tv_hardware_name.length > 0 || order_data.phone_hardware_name.length > 0) &&
                 <Fragment>
                   <div className="flex pt-3">
                     <h3 className="flex-1 grey-600 text-sm">
-                      One-Time Cost:
+                      {(lang === "en") ? "One-Time Cost:" : "Coût unique:"}
                     </h3>
                     <p className="grey-600 text-sm">
                       { (total_one_time_costs) ?
@@ -274,7 +253,7 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
                   </div>
                   <div className="flex">
                     <h3 className="flex-1 grey-600 text-sm">
-                      Monthly Fee:
+                      {(lang === "en") ? 'Monthly Fee:' : "Frais mensuels:"}
                     </h3>
                     <p className="grey-600 text-sm">
                       { (total_monthly_fees) ?
@@ -294,52 +273,52 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
           <div className="my-1 px-2 py-1 border-l-4 border-teal-400">
             <div className="flex pb-2">
               <div className="flex-1">
-                <a href="../service_details" className="text-sm grey-600 font-semibold uppercase hover:underline">Service Details</a>
+                <a href="../service_details" className="text-sm grey-600 font-semibold uppercase hover:underline">{(lang === "en") ? "Service Details" : "Détails des services"}</a>
               </div>
               <div>
-                <a href="../service_details" className="text-sm text-canfone-teal underline text-right pt-1">Modify</a>
+                <a href="../service_details" className="text-sm text-canfone-teal underline text-right pt-1">{(lang === "en") ? "Modify" : "Modifier"}</a>
               </div>
             </div>
             <Fragment>
               {(order_data.service_address_confirmed === 'YES') &&
                 <p className="text-xs grey-500">
                   <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px-1" />
-                  Address Confirmed
+                  {(lang === "en") ? "Address Confirmed" : "Adresse confirmée"}
                 </p>
               }
               {(order_data.has_active_service === 'YES') &&
                 <p className="text-xs grey-500">
                   <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px-1" />
-                  Existing Service
+                  {(lang === "en") ? "Existing Service" : "Service existant"}
                 </p>
               }
               {(order_data.has_active_service === 'NO') &&
                 <p className="text-xs grey-500">
                   <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px-1" />
-                  New Service
+                  {(lang === "en") ? "New Service" : "Nouveu service"}
                 </p>
               }
               {(order_data.phone_port === 'NO') &&
                 <p className="text-xs grey-500">
                   <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px-1" />
-                  New Phone Number
+                  {(lang === "en") ? "New Phone Number" : "Nouveau numéro"}
                 </p>
               }
               {(order_data.phone_port === 'YES') &&
                 <p className="text-xs grey-500">
                   <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px-1" />
-                  Keep Existing Phone Number
+                  {(lang === "en") ? "Keep Existing Phone Number" : "Conserver le numéro"}
                 </p>
               }
               {(order_data.installation_dates_accepted === 'YES') &&
                 <p className="text-xs grey-500">
                   <FontAwesomeIcon icon={faCheckCircle} className="text-canfone-teal px-1" />
-                  Installation Dates Selected
+                  {(lang === "en") ? "Installation Dates Selected" : "Dates d'installation choisies"}
                 </p>
               }
               {(!order_data.service_address_confirmed && (order_data.has_active_service === null) && (!order_data.installation_dates_accepted)) &&
                 <p className="text-sm grey-400">
-                  Not Completed
+                  {(lang === "en") ? "Not Completed" : "Non terminé"}
                 </p>
               }
             </Fragment>
@@ -354,19 +333,19 @@ function OrderSheet({order_data, nextStep, removePhonePackage, removeTVPackage})
         }
 
         <div className="inline-flex pt-3 pb-0 px-3 w-full">
-          <h2 className="flex-1 text-sm grey-800">Monthly Fee:</h2>
+          <h2 className="flex-1 text-sm grey-800">{(lang === "en") ? 'Monthly Fee:' : "Frais mensuels:"}</h2>
           <h2 className="text-sm text-right grey-600">${total_monthly_fees.toFixed(2)}</h2>
         </div>
         <div className="inline-flex pb-0 px-3 w-full">
-          <h2 className="flex-1 text-sm grey-800">One-Time Cost:</h2>
+          <h2 className="flex-1 text-sm grey-800">{(lang === "en") ? "One-Time Cost:" : "Coût unique:"}</h2>
           <h2 className="text-sm text-right grey-600">${total_one_time_costs.toFixed(2)}</h2>
         </div>
         <div className="inline-flex pb-3 px-3 w-full">
-          <h2 className="flex-1 text-sm grey-800">Taxes:</h2>
+          <h2 className="flex-1 text-sm grey-800">{(lang === "en") ? "Taxes:" : "Tax:"}</h2>
             <h2 className="text-sm text-right grey-600">${calculateTax(total_monthly_fees + total_one_time_costs).toFixed(2)}</h2>
         </div>
         <div className="inline-flex pb-2 px-3 w-full">
-          <h2 className="flex-1 text-xl font-semibold grey-800">Today's Total:</h2>
+          <h2 className="flex-1 text-xl font-semibold grey-800">{(lang === "en") ? "Today's Total:" : "Le total:"}</h2>
           <h2 className="text-xl text-right text-canfone-teal font-semibold">${(total_monthly_fees + total_one_time_costs + calculateTax(total_monthly_fees + total_one_time_costs)).toFixed(2)}</h2>
         </div>
       </div>

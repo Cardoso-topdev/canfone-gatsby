@@ -1,10 +1,10 @@
 import ShopComponent from "components/shop"
 import React from "react"
 
-export default function OrderReview() {
+export default function OrderReview({lang}) {
   return <>
     <div id="shop_component" className="hidden">
-      <ShopComponent />
+      <ShopComponent lang={lang}/>
     </div>
     <div id="shop" className="order-review my-8">
       <div className="spinner">

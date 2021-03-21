@@ -20,19 +20,3 @@ exports.onRouteUpdate = props => {
   });
 
 }
-
-// exports.onClientEntry = props => {
-//   console.log("CLIENT props: ", props)
-
-//   window.addEventListener('load', () => {
-//     document.body.className = document.body.className.replace(/\bno-js\b/, '');
-//   });
-
-  
-//   if ( pathname == "account") {
-//     setBodyAttributes({
-//       className: "account-login font-open-sans",
-//     })
-//   }
-
-// }

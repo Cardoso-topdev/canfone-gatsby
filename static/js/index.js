@@ -5,7 +5,9 @@ let tvOpenTriggers = document.querySelectorAll('.tv-open')
 let phoneOpenTriggers = document.querySelectorAll('.phone-open')
 let nextPageButtons = document.querySelectorAll(".next-page-btn")
 let nextPageLinks = document.querySelectorAll(".next-page-link")
-$( document ).ready(function() {
+
+function funcHome() {
+
 tvOpenTriggers = document.querySelectorAll('.tv-open')
 phoneOpenTriggers = document.querySelectorAll('.phone-open')
 nextPageButtons = document.querySelectorAll(".next-page-btn")
@@ -83,6 +85,11 @@ nextPageButtons.forEach(function (btn) {
     }
   });
 });
+}
 
 
-})
+if(window.addEventListener){
+  window.addEventListener('load',funcHome,false);
+}else{
+  window.attachEvent('onload',funcHome);
+}

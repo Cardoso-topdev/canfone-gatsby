@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
+function OrderReview({ order_data, checkPromoCode, setDefaultInternetHardware, lang }) {
 
   useEffect(() => {
     // If the modem selection was bypassed force a default selection
@@ -161,22 +161,18 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
   const titleCaseName = (input) => {
     input = input.toLowerCase().split(' ');
     let output = [];
-    for(let element of input){
+    for (let element of input) {
       output.push(element.charAt(0).toUpperCase() + element.slice(1));
     }
- 
+
     return output.join(' ')
   }
 
   const submitOrder = () => {
-    const URL = "http://0.0.0.0:8000/api/v1/order/";
-    // const URL = "https://redloco.ca/api/v1/order/";
+    // const URL = "http://0.0.0.0:8000/api/v1/order/";
+    const URL = "https://redloco.ca/api/v1/order/";
     // const URL = `${ROOT_URL}/api/v1/promo/${code}`;
-    // console.log("{ ...localStorage }:", { ...localStorage })
     let validates = true;
-
-    // Reset validation_error ?? Is this necessary?
-    //setValidationError(false)
 
     // Validate contact name
     if (contact_name.length < 5) {
@@ -244,7 +240,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
       // setValidationError(true);
     }
 
-    let data = JSON.stringify({ 
+    let data = JSON.stringify({
       ...localStorage,
       contact_name: contact_name,
       contact_phone: contact_phone,
@@ -273,52 +269,53 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
   return (
     <Fragment>
       <div className="w-11/12 mx-auto border border-dashed border-gray-600 pb-6">
-        <h2 className="text-2xl font-semibold grey-800 text-center pt-2">Your Order</h2>
+        <h2 className="text-2xl font-semibold grey-800 text-center pt-2">{(lang === "en") ? "Your Order" : "Réviser votre commande"}</h2>
+        {(lang === "fr") && <h2 className="text-base grey-700 text-center pb-3 px-4">Veuillez vérifier l'exactitude des informations relatives à votre commande</h2>}
         <div className="md:w-10/12 md:mt-3 mx-auto px-4">
           <div className="flex items-start py-2">
-            <h2 className="w-4/12 text-sm font-semibold grey-800">Service Address:</h2>
+            <h2 className="w-4/12 text-sm font-semibold grey-800">{(lang === "en") ? "Service Address:" : "Adresse de service:"}</h2>
             <p className="w-8/12 text-sm grey-600">{order_data.service_address}</p>
           </div>
 
           <div className="flex items-start py-2">
-            <h2 className="w-4/12 text-sm font-semibold grey-800">Internet Package:</h2>
+            <h2 className="w-4/12 text-sm font-semibold grey-800">{(lang === "en") ? "Internet Package:" : "Paquet Internet:"}</h2>
             <div className="w-8/12">
               <p className="text-sm grey-600">{order_data.internet_package_name}</p>
               <p className="text-sm grey-600">{order_data.internet_hardware_description}</p>
               {(order_data.has_active_service === 'NO') ?
-                <p className="text-sm grey-600">New Service</p>
+                <p className="text-sm grey-600">{(lang === "en") ? "New Service" : "Nouvelle installation de service"}</p>
                 :
-                <p className="text-sm grey-600">Replacing an Existing Service</p>
+                <p className="text-sm grey-600">{(lang === "en") ? "Replacing an Existing Service" : "Remplacement d'un service existant"}</p>
               }
             </div>
           </div>
 
           {(order_data.tv_package_name.length > 0) ?
             <div className="flex items-start py-2">
-              <h2 className="w-4/12 text-sm font-semibold grey-800">TV Package:</h2>
+              <h2 className="w-4/12 text-sm font-semibold grey-800">{(lang === "en") ? "TV Package:" : "Paquet TV:"}</h2>
               <div className="w-8/12">
                 <p className="text-sm grey-600">{order_data.tv_package_name}</p>
                 <p className="text-sm grey-600">{order_data.tv_hardware_name}</p>
               </div>
-            </div>  
+            </div>
             :
-            null       
+            null
           }
 
           {(order_data.phone_package_name.length > 0) ?
             <div className="flex items-start py-2">
-              <h2 className="w-4/12 text-sm font-semibold grey-800">Phone Package:</h2>
+              <h2 className="w-4/12 text-sm font-semibold grey-800">{(lang === "en") ? "Phone Package:" : "Paquet téléphonique:"}</h2>
               <div className="w-8/12">
                 <p className="text-sm grey-600">{order_data.phone_package_name}</p>
                 <p className="text-sm grey-600">{order_data.phone_hardware_name}</p>
               </div>
-            </div>   
+            </div>
             :
-            null       
+            null
           }
 
           <div className="flex items-start py-2">
-            <h2 className="w-4/12 text-sm font-semibold grey-800">Installation Date:</h2>
+            <h2 className="w-4/12 text-sm font-semibold grey-800">{(lang === "en") ? "Installation Date:" : "Date d'installation choisie:"}</h2>
             <div className="w-8/12">
               <p className="text-sm grey-600">{`Date: ${order_data.selected_installation_date || 'ASAP'}`}</p>
               <p className="text-sm grey-600">{`Time of Day: ${order_data.selected_installation_time || 'A tout moment'}`}</p>
@@ -328,22 +325,22 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
           <div className="flex items-center w-10/12 mx-auto border-top border-gray-400 mt-6 py-4">
             <div className="flex-grow">
               <div className={classes.promo_input}>
-                <TextField 
-                  id="outlined-basic" 
-                  label="Promo Code" 
+                <TextField
+                  id="outlined-basic"
+                  label="Promo Code"
                   variant="outlined"
                   color="secondary"
-                  value={promocode} 
-                  onChange={handlePromoInputChange} 
+                  value={promocode}
+                  onChange={handlePromoInputChange}
                 />
               </div>
             </div>
             <div>
-              <Button 
-                variant="contained" 
-                color="secondary" 
+              <Button
+                variant="contained"
+                color="secondary"
                 onClick={submitPromoCode}>
-                Apply Code
+                {(lang === "en") ? "Apply Code" : "Appliquer le code"}
               </Button>
             </div>
           </div>
@@ -351,14 +348,14 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
       </div>
 
       <div className="w-4/5 mx-auto mt-6 pb-4">
-        <h2 className="text-2xl font-semibold grey-800 text-center pt-4 pb-4">Special Instructions</h2>
+        <h2 className="text-2xl font-semibold grey-800 text-center pt-4 pb-4">{(lang === "en") ? "Special Instructions" : "Instructions spéciales"}</h2>
         <div className={classes.special_instructions}>
           <TextField
             id="special-instructions"
             multiline
             rows={4}
             color="secondary"
-            placeholder="Let us know of anything we should be aware of as we work to fulfill your order"
+            placeholder={(lang === "en") ? "Let us know of anything we should be aware of as we work to fulfill your order" : "Faites-nous part de tout ce dont nous devons être conscients pendant que nous travaillons à l'exécution de votre commande"}
             value={special_instructions}
             onChange={handleSpecialInstructionsChange}
             variant="outlined"
@@ -367,7 +364,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
       </div>
 
       <div className="w-3/5 mx-auto mt-3 pb-4">
-        <h2 className="text-2xl font-semibold grey-800 text-center pt-4 pb-4">Contact Information</h2>
+        <h2 className="text-2xl font-semibold grey-800 text-center pt-4 pb-4">{(lang === "en") ? "Contact Information" : "Informations de contact"}</h2>
         <div id="ContactInformation" className="md:w-4/5 mx-auto">
           <div className="pt-2">
             <div className={classes.contact_info}>
@@ -384,7 +381,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
       </div>
 
       <div className="w-11/12 mx-auto mt-3 pb-8">
-        <h2 className="text-2xl font-semibold grey-800 text-center pt-2 pb-3">Payment Details</h2>
+        <h2 className="text-2xl font-semibold grey-800 text-center pt-2 pb-3">{(lang === "en") ? "Payment Details" : "Détails du paiement"}</h2>
         <div id="PaymentForm" className="md:flex md:w-4/5 mx-auto pt-3 pb-6">
           <div className="pt-4">
             <Cards
@@ -393,7 +390,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
               expiry={`${card_expiry_month}/${card_expiry_year}`}
               cvc={card_cvc}
               focus={''}
-              placeholders={{name: 'YOUR NAME'}}
+              placeholders={{ name: 'YOUR NAME' }}
             />
           </div>
           <div className="px-4 pt-4 md:pl-6 md:pr-3 md:pt-0">
@@ -403,7 +400,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
             </form>
             <div className="flex">
               <FormControl variant="outlined" className={classes.date_and_cvc}>
-                <InputLabel id="card-expiry-month-label" color="secondary">Month</InputLabel>
+                <InputLabel id="card-expiry-month-label" color="secondary">{(lang === "en") ? "Month" : "Mois"}</InputLabel>
                 <Select
                   labelId="card-expiry-month-label"
                   id="card-expiry-month-outlined"
@@ -428,7 +425,7 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
                 </Select>
               </FormControl>
               <FormControl variant="outlined" className={classes.date_and_cvc}>
-                <InputLabel id="card-expiry-year-label" color="secondary">Year</InputLabel>
+                <InputLabel id="card-expiry-year-label" color="secondary">{(lang === "en") ? "Year" : "Annee"}</InputLabel>
                 <Select
                   labelId="card-expiry-year-label"
                   id="card-expiry-year-outlined"
@@ -459,10 +456,10 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
         </div>
 
         <div className="text-center py-8">
-          <h3 className="grey-700 text-base font-semibold uppercase">All transactions are safe and secure</h3>
-          <img src={GATSBY_IMGS["img/credit-cards-872Y.png"]} className="py-3 mx-auto" alt=""/>
-          <h4 className="grey-700 text-sm font-semibold uppercase">Encrypted 128-bit SSL Payment</h4>
-        </div>        
+          <h3 className="grey-700 text-base font-semibold uppercase">{(lang === "en") ? "All transactions are safe and secure" : "Toutes les transactions sont sûres et sécurisées"}</h3>
+          <img src={GATSBY_IMGS["img/credit-cards-872Y.png"]} className="py-3 mx-auto" alt="" />
+          <h4 className="grey-700 text-sm font-semibold uppercase">{(lang === "en") ? "Encrypted 128-bit SSL Payment" : "Paiement crypté par SSL 128 bits"}</h4>
+        </div>
 
         <div className="px-16">
           <div className={clsx("flex items-center justify-center mb-8", (tos_validated) ? null : 'border border-red-600')}>
@@ -472,11 +469,17 @@ function OrderReview({order_data, checkPromoCode, setDefaultInternetHardware}) {
               onChange={handleTosCheckedChange}
               inputProps={{ 'aria-label': 'secondary checkbox' }}
             />
-            <p className="px-1 grey-600">I accept the Canfone <a href="tos" className="text-blue-500">Terms of Service</a>.</p>
+            <p className="px-1 grey-600">
+              {(lang === "en") ? "I accept the Canfone" : "J'accepte le Canfone"} 
+              <a href="tos" className="text-blue-500">
+                {(lang === "en") ? "Terms of Service" : "Conditions de Service"}
+              </a>
+              .
+            </p>
           </div>
           <div className="pt-0 text-center">
             <Button variant="contained" color="primary" size="large" onClick={submitOrder}>
-              <span className="text-2xl font-bold tracking-wide">Pay Now</span>
+              <span className="text-2xl font-bold tracking-wide">{(lang === "en") ? "Pay Now" : "Payer Maintenant"}</span>
             </Button>
           </div>
         </div>

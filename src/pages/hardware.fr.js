@@ -16,21 +16,21 @@ export default function HardwarePage({data}) {
     <script type="text/javascript" src={withPrefix("https://ws1.postescanada-canadapost.ca/js/addresscomplete-2.30.min.js")}></script>
     <script type="text/javascript" src={withPrefix("js/base.js")}></script>
   </Helmet>
-  <Layout title={data.site.siteMetadata.title} lang="en">
-    <Hardware  intro={data.allPrismicHomeP.edges[0].node.data.intro_content[0]} lang="en" />
+  <Layout title={data.site.siteMetadata.title} lang="fr">
+    <Hardware  intro={data.allPrismicHomeP.edges[0].node.data.intro_content[0]} lang="fr"/>
   </Layout>
   </>
 }
 
 export const query = graphql`
-  query HardwarePageQuery {
+  query HardwareFRPageQuery {
     site {
       siteMetadata {
         title
         description
       }
     }
-    allPrismicHomeP(filter: {lang: {eq: "en-us"}, tags: {in: "hardware"}}) {
+    allPrismicHomeP(filter: {lang: {eq: "fr-fr"}, tags: {in: "hardware"}}) {
       edges {
         node {
           data {

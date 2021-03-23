@@ -292,35 +292,17 @@ class Shop extends Component {
     // Next Step Decision Tree
     if (!validation_error && window) {
       if (current_path.indexOf('internet') > 0) {
-        if ( this.props.lang === "en")
-          window.location.href = "../tv"
-        else 
-          window.location.href = "../fr/tv"
+        window.location.href = "../tv"
       } else if (current_path.indexOf('tv') > 0) {
-        if ( this.props.lang === "en")
-          window.location.href = "../phone"
-        else 
-          window.location.href = "../fr/phone"
+        window.location.href = "../phone"
       } else if (current_path.indexOf('phone') > 0) {
-        if ( this.props.lang === "en")
-          window.location.href = "../hardware"
-        else 
-          window.location.href = "../fr/hardware"
+        window.location.href = "../hardware"
       } else if (current_path.indexOf('hardware') > 0) {
-        if ( this.props.lang === "en")
-          window.location.href = "../service_details"
-        else 
-          window.location.href = "../fr/service_details"
+        window.location.href = "../service_details"
       } else if (current_path.indexOf('service_details') > 0) {
-        if ( this.props.lang === "en")
-          window.location.href = "../order_review"
-        else 
-          window.location.href = "../fr/order_review"
+        window.location.href = "../order_review"
       } else if (current_path.indexOf('order_review') > 0) {
-        if ( this.props.lang === "en")
-          window.location.href = "../thanks"
-        else 
-          window.location.href = "../fr/thanks"
+        window.location.href = "../thanks"
       } else {
         console.log("NEXT ERROR current_path: ", current_path)
       }

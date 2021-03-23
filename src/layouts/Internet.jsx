@@ -63,7 +63,7 @@ export default function Internet({intro, section, lang}) {
     </div> 
 
     <div className="px-8 pt-16 pb-24">
-      <LandingSection type={true} section_data={section[0]} />
+      <LandingSection type={2} section_data={section[0]} />
     </div>
   </>
 }

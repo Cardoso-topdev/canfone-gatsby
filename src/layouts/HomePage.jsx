@@ -248,7 +248,7 @@ export default function HomePage({intro, section, lang}) {
     </div>
 
     <div className="bg-white">
-      <LandingSection type={true} section_data={section[0]}/>
+      <LandingSection type={1} section_data={section[0]}/>
       <div className="text-center mr-4 pt-4 pb-10">
         <button
           type="button"
@@ -345,7 +345,7 @@ export default function HomePage({intro, section, lang}) {
 
     <div className="bg-white">
       <h1 className="md:hidden text-3xl font-semibold text-steel-blue-600 text-center leading-tight">{ (lang === "en") ? "Phone Packages" : "Forfaits téléphoniques"}</h1>
-      <LandingSection type={false} section_data={section[1]} />
+      <LandingSection type={0} section_data={section[1]} />
       <div className="text-center mr-4 pt-4 pb-8">
         <button
           type="button"

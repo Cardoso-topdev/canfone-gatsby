@@ -471,7 +471,7 @@ function OrderReview({ order_data, checkPromoCode, setDefaultInternetHardware, l
             />
             <p className="px-1 grey-600">
               {(lang === "en") ? "I accept the Canfone" : "J'accepte le Canfone"} 
-              <a href="tos" className="text-blue-500">
+              <a href="../tos" className="text-blue-500">
                 {(lang === "en") ? "Terms of Service" : "Conditions de Service"}
               </a>
               .
